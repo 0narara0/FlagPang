@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">FlagPang</string>
+    <string name="textViewProgress" />
+    <string name="textViewSelectCountry">Select the Country</string>
+    <string name="buttonCountry1" />
+    <string name="buttonCountry2" />
+    <string name="buttonCountry3" />
+    <string name="buttonCountry4" />
+    <string name="TextViewReset">Reset</string>
+    <string name="TextViewScore" />
+    <string name="buttonReset">Reset</string>
 </resources>
