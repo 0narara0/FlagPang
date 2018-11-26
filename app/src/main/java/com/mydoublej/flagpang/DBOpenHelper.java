@@ -51,9 +51,31 @@ public class DBOpenHelper extends SQLiteOpenHelper {
     }
 
     private void table_inputdata(SQLiteDatabase db){
-        sql = "INSERT INTO flag " +
-                "VALUES(null, 'austria', 'oceania', 'austria.png','1')";
+       /* sql = "INSERT INTO flag " + "VALUES(null, 'afghanistan', 'asia', 'afghanistan.png','1')";
         db.execSQL(sql);
+        sql = "INSERT INTO flag " + "VALUES(null, 'armenia', 'asia', 'armenia.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " + "VALUES(null, 'azerbaijan', 'asia', 'azerbaijan.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " + "VALUES(null, 'bahrain', 'asia', 'bahrain.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " + "VALUES(null, 'bangladesh', 'asia', 'bangladesh.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " + "VALUES(null, 'bhutan', 'asia', 'bhutan.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " + "VALUES(null, 'brunei', 'asia', 'brunei.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " + "VALUES(null, 'cambodia', 'asia', 'cambodia.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " + "VALUES(null, 'cyprus', 'asia', 'cyprus.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " + "VALUES(null, 'east_timor', 'asia', 'east_timor.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " + "VALUES(null, 'egypt', 'asia', 'egypt.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " + "VALUES(null, 'georgia', 'asia', 'georgia.png','1')";
+        db.execSQL(sql);*/
+
     }
 
     public ArrayList<GetRecord> selectGetRecord(){
