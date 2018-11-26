@@ -1,12 +1,16 @@
 package com.mydoublej.flagpang;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class FlagPang extends AppCompatActivity implements View.OnClickListener {
+    private DBOpenHelper dbOpenHelper;
+    private SQLiteDatabase mdb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +20,10 @@ public class FlagPang extends AppCompatActivity implements View.OnClickListener 
         ((Button)findViewById(R.id.btn_country)).setOnClickListener(this);
         ((Button)findViewById(R.id.btn_ox)).setOnClickListener(this);
         ((Button)findViewById(R.id.btn_flag)).setOnClickListener(this);
+
+        ((ImageView)findViewById(R.id.imageView)).setImageResource(R.drawable.ag);
+
+        dbOpenHelper = DBOpenHelper.getInstance(this);
     }
 
     @Override

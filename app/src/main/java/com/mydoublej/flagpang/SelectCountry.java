@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Toast;
 
 public class SelectCountry extends AppCompatActivity implements View.OnClickListener{
+    private  DBOpenHelper dbOpenHelper;
+
 
     TextView textViewScore, textViewProgress, textViewSelectCountry;
     ImageView imageViewFlag;
@@ -32,6 +34,7 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         (buttonCountry3 = findViewById(R.id.buttonCountry3)).setOnClickListener(this);
         (buttonCountry4 = findViewById(R.id.buttonCountry4)).setOnClickListener(this);
 
+        dbOpenHelper = DBOpenHelper.getInstance(this);
         QuizSet();
     }
 
@@ -70,6 +73,7 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
 
         // 랜덤하게 이미지 적용
         //imageViewFlag.setImageDrawable("Korea.png");
+
         imageTag = "Korea";
 
         // 랜덤하게 테스트 적용
