@@ -51,8 +51,11 @@ public class DBOpenHelper extends SQLiteOpenHelper {
     }
 
     private void table_inputdata(SQLiteDatabase db){
+//        sql = "INSERT INTO flag " +
+//                "VALUES(null, 'austria', 'oceania', 'austria.png','1')";
+//        db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'austria', 'oceania', 'austria.png','1')";
+                "VALUES(null, 'argentina', 'samerica', 'argentina.png','1')";
         db.execSQL(sql);
     }
 
