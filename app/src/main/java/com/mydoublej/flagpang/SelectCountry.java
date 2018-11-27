@@ -11,13 +11,11 @@ import android.widget.Toast;
 public class SelectCountry extends AppCompatActivity implements View.OnClickListener{
     private  DBOpenHelper dbOpenHelper;
 
-
     TextView textViewScore, textViewProgress, textViewSelectCountry;
     ImageView imageViewFlag;
     Button buttonCountry1, buttonCountry2, buttonCountry3, buttonCountry4, buttonReset;
     int score = 0, quizNum = 0;
     String imageTag = "";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
