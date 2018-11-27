@@ -34,7 +34,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         sql = "CREATE TABLE flag" +
-                "(id integer NOT NULL UNIQUE PRIMARY KEY AUTOINCREMENT, " +
+                "(id integer UNIQUE PRIMARY KEY AUTOINCREMENT, " +
                 "country text NOT NULL UNIQUE, " +
                 "continent text NOT NULL, " +
                 "image text NOT NULL UNIQUE," +
@@ -48,12 +48,6 @@ public class DBOpenHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE flag");
         onCreate(db);
-    }
-
-    private void table_inputdata(SQLiteDatabase db){
-        sql = "INSERT INTO flag " +
-                "VALUES(null, 'austria', 'oceania', 'austria.png','1')";
-        db.execSQL(sql);
     }
 
     public ArrayList<GetRecord> selectGetRecord(){
@@ -78,4 +72,9 @@ public class DBOpenHelper extends SQLiteOpenHelper {
 
         return arrayList;
     }
- }
+
+    private void table_inputdata(SQLiteDatabase db){
+    }
+
+
+}
