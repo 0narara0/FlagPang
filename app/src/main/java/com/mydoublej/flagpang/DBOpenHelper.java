@@ -409,12 +409,134 @@ public class DBOpenHelper extends SQLiteOpenHelper {
                 "VALUES(null, 'zimbabwe', 'africa', 'zimbabwe.png','1')";
         db.execSQL(sql);
 
+        //north-america
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'antigun_and_barbuda', 'namerica', 'antigun_and_barbuda.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'barbados', 'namerica', 'barbados.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'belize', 'namerica', 'belize.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'canada', 'namerica', 'canada.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'costa', 'namerica', 'costa.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'cuba', 'namerica', 'cuba.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'dominica', 'namerica', 'dominica.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'el_savador', 'namerica', 'el_savador.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'grenada', 'namerica', 'grenada.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'guatemala', 'namerica', 'guatemala.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'haiti', 'namerica', 'haiti.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'honduras', 'namerica', 'honduras.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'jamaica', 'namerica', 'jamaica.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'mexico', 'namerica', 'mexico.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'nicaragua', 'namerica', 'nicaragua.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'panama', 'namerica', 'panama.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'saint_kitts_and_nevis', 'namerica', 'saint_kitts_and_nevis.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'saint_lucia', 'namerica', 'saint_lucia.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'saint_vincent_and_the_grenadines', 'namerica', 'saint_vincent_and_the_grenadines.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'the_bahamas', 'namerica', 'the_bahamas.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'the_dominican_republic', 'namerica', 'the_dominican_republic.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'the_united_states', 'namerica', 'the_united_states.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'trinidad_and_tobago', 'namerica', 'trinidad_and_tobago.png','1')";
+        db.execSQL(sql);
 
 
-
-
-
-
+        //oceania(18)
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'australia', 'oceania', 'australia.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'cook_islands', 'oceania', 'cook_islands.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'east_timor', 'oceania', 'east_timor.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'fiji', 'oceania', 'fiji.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'indonesia', 'oceania', 'indonesia.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'kiribati', 'oceania', 'kiribati.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'micronesia', 'oceania', 'micronesia.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'nauru', 'oceania', 'nauru.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'new_zealand', 'oceania', 'new_zealand.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'niue', 'oceania', 'niue.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'palau', 'oceania', 'palau.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'papua_new_guinea', 'oceania', 'papua_new_guinea.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'samoa', 'oceania', 'samoa.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'the_marshall_islands', 'oceania', 'the_marshall_islands.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'the_solomon_islands', 'oceania', 'the_solomon_islands.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'tonga', 'oceania', 'tonga.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'tuvalu', 'oceania', 'tuvalu.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'vanuatu', 'oceania', 'vanuatu.png','1')";
+        db.execSQL(sql);
+        
 
     }
 
