@@ -54,8 +54,9 @@ public class DBOpenHelper extends SQLiteOpenHelper {
 //        sql = "INSERT INTO flag " +
 //                "VALUES(null, 'austria', 'oceania', 'austria.png','1')";
 //        db.execSQL(sql);
-        sql = "INSERT INTO flag " +
-                "VALUES(null, 'argentina', 'samerica', 'argentina.png','1')";
+
+        //asia
+        sql = "INSERT INTO flag VALUES(null, 'argentina', 'samerica', 'argentina.png','1')";
         db.execSQL(sql);
     }
 
