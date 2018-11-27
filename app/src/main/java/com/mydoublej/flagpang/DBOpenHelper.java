@@ -22,6 +22,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
             instance = new DBOpenHelper(context);
         }
         mdb = instance.getWritableDatabase();
+
         return instance;
     }
 
@@ -410,12 +411,160 @@ public class DBOpenHelper extends SQLiteOpenHelper {
         db.execSQL(sql);
 
 
-
-
-
-
-
-
+        //asia
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'afghanistan', 'asia', 'afghanistan.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'armenia', 'asia', 'armenia.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'azerbaijan', 'asia', 'azerbaijan.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'bahrain', 'asia', 'bahrain.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'bangladesh', 'asia', 'bangladesh.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'bhutan', 'asia', 'bhutan.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'brunei', 'asia', 'brunei.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'cambodia', 'asia', 'cambodia.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'cyprus', 'asia', 'cyprus.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'east_timor', 'asia', 'east_timor.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'egypt', 'asia', 'egypt.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'georgia', 'asia', 'georgia.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'india', 'asia', 'india.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'indonesia', 'asia', 'indonesia.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'iran', 'asia', 'iran.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'iraq', 'asia', 'iraq.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'israel', 'asia', 'israel.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'japan', 'asia', 'japan.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'jordan', 'asia', 'jordan.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'kazakhstan', 'asia', 'kazakhstan.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'kuwait', 'asia', 'kuwait.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'kyrgyzstan', 'asia', 'kyrgyzstan.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'laos', 'asia', 'laos.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'lebanon', 'asia', 'lebanon.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'malaysia', 'asia', 'malaysia.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'maldives', 'asia', 'maldives.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'mongolia', 'asia', 'mongolia.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'myanmar', 'asia', 'myanmar.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'nepal', 'asia', 'nepal.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'north_korea', 'asia', 'north_korea.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'oman', 'asia', 'oman.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'pakistan', 'asia', 'pakistan.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'qatar', 'asia', 'qatar.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'russia', 'asia', 'russia.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'russia', 'asia', 'russia.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'saudi_arabia', 'asia', 'saudi_arabia.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'singapore', 'asia', 'singapore.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'south_korea', 'asia', 'south_korea.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'sri_lanka', 'asia', 'sri_lanka.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'syria', 'asia', 'syria.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'tajikistan', 'asia', 'tajikistan.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'thailand', 'asia', 'thailand.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'the_people_s_republic_of_china', 'asia', 'the_people_s_republic_of_china.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'the_philippines', 'asia', 'the_philippines.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'the_republic_of_china', 'asia', 'the_republic_of_china.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'the_united_arab_emirates', 'asia', 'the_united_arab_emirates.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'turkey', 'asia', 'turkey.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'turkmenistan', 'asia', 'turkmenistan.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'uzbekistan', 'asia', 'uzbekistan.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'vietnam', 'asia', 'vietnam.png','1')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'yemen', 'asia', 'yemen.png','1')";
+        db.execSQL(sql);
     }
 
     public ArrayList<GetRecord> selectGetRecord(){
