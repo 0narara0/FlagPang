@@ -22,7 +22,6 @@ public class DBOpenHelper extends SQLiteOpenHelper {
             instance = new DBOpenHelper(context);
         }
         mdb = instance.getWritableDatabase();
-
         return instance;
     }
 
