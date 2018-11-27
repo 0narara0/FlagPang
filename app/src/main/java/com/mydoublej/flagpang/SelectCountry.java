@@ -59,7 +59,7 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
 
         // 정답일 때
         else if(view.getTag().equals(imageViewFlag.getTag())){
-            Toast.makeText(this, "정답입니다!", Toast.LENGTH_SHORT);
+            Toast.makeText(this, "정답입니다!", Toast.LENGTH_SHORT).show();
             score++;
             QuizSet();
         }
@@ -67,13 +67,13 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         // 오답일 때
         else {
             view.setEnabled(false);
-            Toast.makeText(this, "오답입니다!", Toast.LENGTH_SHORT);
+            Toast.makeText(this, "오답입니다!", Toast.LENGTH_SHORT).show();
         }
     }
 
     //퀴즈 새로 셋팅
     public void QuizSet(){
-        ArrayList<GetRecord> arrayList = new ArrayList<>();
+        ArrayList<GetRecord> arrayList = new ArrayList<GetRecord>();
         String country, continent, image, level;
         int id;
 
@@ -81,17 +81,12 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         textViewScore.setText(" Score : " + score);
         textViewProgress.setText(quizNum + "of 10");
 
-
-
         // 랜덤하게 이미지 적용
-        //imageViewFlag.setImageDrawable("Korea.png");
-
         arrayList = dbOpenHelper.selectGetRecord();
         int member = arrayList.size();
         int rid =((int) (Math.random() * 100)) % member;
         AssetManager am = getResources().getAssets();
         InputStream is = null ;
-
 
  //       String filename = "oceania/austria.png";
         String filename = arrayList.get(rid).getContinent().toString();
@@ -117,9 +112,6 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         }
 
         imageViewFlag.setImageBitmap(bitmap);
-        // 랜덤하게 이미지 적용
-        //imageViewFlag.setImageDrawable("Korea.png");
-
 
         imageTag = "Korea";
 

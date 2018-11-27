@@ -50,12 +50,30 @@ public class DBOpenHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    private void table_inputdata(SQLiteDatabase db){
-//        sql = "INSERT INTO flag " +
-//                "VALUES(null, 'austria', 'oceania', 'austria.png','1')";
-//        db.execSQL(sql);
+    public ArrayList<GetRecord> selectGetRecord(){
+        sql = "SELECT * FROM flag";
+        cursor = mdb.rawQuery(sql,null);
 
-        //south_america
+        ArrayList<GetRecord> arrayList = new ArrayList<>();
+        GetRecord getRecord;
+        String country, continent, image, level;
+        int id;
+
+        while(cursor.moveToNext()){
+            id = cursor.getInt(cursor.getColumnIndex("id"));
+            country = cursor.getString(cursor.getColumnIndex("country"));
+            continent = cursor.getString(cursor.getColumnIndex("continent"));
+            image = cursor.getString(cursor.getColumnIndex("image"));
+            level = cursor.getString(cursor.getColumnIndex("level"));
+
+            getRecord = new GetRecord(id, country, continent, image, level);
+            arrayList.add(getRecord);
+        }
+
+        return arrayList;
+    }
+
+    private void table_inputdata(SQLiteDatabase db){
         sql = "INSERT INTO flag " +
                 "VALUES(null, 'argentina', 'samerica', 'argentina.png','1')";
         db.execSQL(sql);
@@ -567,21 +585,24 @@ public class DBOpenHelper extends SQLiteOpenHelper {
         sql = "INSERT INTO flag " +
                 "VALUES(null, 'cyprus', 'asia', 'cyprus.png','1')";
         db.execSQL(sql);
-        //sql = "INSERT INTO flag " +
-        //        "VALUES(null, 'east_timor', 'asia', 'east_timor.png','1')";
-        //db.execSQL(sql);
-        /*sql = "INSERT INTO flag " +
-                "VALUES(null, 'egypt', 'asia', 'egypt.png','1')";
+
+
+
+       /* sql = "INSERT INTO flag " +
+                "VALUES(null, 'east_timor', 'asia', 'east_timor.png','1')";
         db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'egypt', 'asia', 'egypt.png','1')";
+        db.execSQL(sql);*/
         sql = "INSERT INTO flag " +
                 "VALUES(null, 'georgia', 'asia', 'georgia.png','1')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
                 "VALUES(null, 'india', 'asia', 'india.png','1')";
         db.execSQL(sql);
-        sql = "INSERT INTO flag " +
+        /*sql = "INSERT INTO flag " +
                 "VALUES(null, 'indonesia', 'asia', 'indonesia.png','1')";
-        db.execSQL(sql);
+        db.execSQL(sql);*/
         sql = "INSERT INTO flag " +
                 "VALUES(null, 'iran', 'asia', 'iran.png','1')";
         db.execSQL(sql);
@@ -639,12 +660,12 @@ public class DBOpenHelper extends SQLiteOpenHelper {
         sql = "INSERT INTO flag " +
                 "VALUES(null, 'qatar', 'asia', 'qatar.png','1')";
         db.execSQL(sql);
-        sql = "INSERT INTO flag " +
+        /*sql = "INSERT INTO flag " +
                 "VALUES(null, 'russia', 'asia', 'russia.png','1')";
-        db.execSQL(sql);
-        sql = "INSERT INTO flag " +
+        db.execSQL(sql);*/
+       /* sql = "INSERT INTO flag " +
                 "VALUES(null, 'russia', 'asia', 'russia.png','1')";
-        db.execSQL(sql);
+        db.execSQL(sql);*/
         sql = "INSERT INTO flag " +
                 "VALUES(null, 'saudi_arabia', 'asia', 'saudi_arabia.png','1')";
         db.execSQL(sql);
@@ -678,9 +699,9 @@ public class DBOpenHelper extends SQLiteOpenHelper {
         sql = "INSERT INTO flag " +
                 "VALUES(null, 'the_united_arab_emirates', 'asia', 'the_united_arab_emirates.png','1')";
         db.execSQL(sql);
-        sql = "INSERT INTO flag " +
+        /*sql = "INSERT INTO flag " +
                 "VALUES(null, 'turkey', 'asia', 'turkey.png','1')";
-        db.execSQL(sql);
+        db.execSQL(sql);*/
         sql = "INSERT INTO flag " +
                 "VALUES(null, 'turkmenistan', 'asia', 'turkmenistan.png','1')";
         db.execSQL(sql);
@@ -692,30 +713,6 @@ public class DBOpenHelper extends SQLiteOpenHelper {
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
                 "VALUES(null, 'yemen', 'asia', 'yemen.png','1')";
-        db.execSQL(sql);*/
-
-    }
-
-    public ArrayList<GetRecord> selectGetRecord(){
-        sql = "SELECT * FROM flag";
-        cursor = mdb.rawQuery(sql,null);
-
-        ArrayList<GetRecord> arrayList = new ArrayList<>();
-        GetRecord getRecord;
-        String country, continent, image, level;
-        int id;
-
-        while(cursor.moveToNext()){
-            id = cursor.getInt(cursor.getColumnIndex("id"));
-            country = cursor.getString(cursor.getColumnIndex("country"));
-            continent = cursor.getString(cursor.getColumnIndex("continent"));
-            image = cursor.getString(cursor.getColumnIndex("image"));
-            level = cursor.getString(cursor.getColumnIndex("level"));
-
-            getRecord = new GetRecord(id, country, continent, image, level);
-            arrayList.add(getRecord);
-        }
-
-        return arrayList;
+        db.execSQL(sql);
     }
  }
