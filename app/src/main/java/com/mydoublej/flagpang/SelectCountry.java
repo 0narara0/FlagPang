@@ -14,16 +14,19 @@ import android.view.View;
 import android.widget.Toast;
 
 import java.io.InputStream;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.TreeSet;
 
 public class SelectCountry extends AppCompatActivity implements View.OnClickListener{
+    int score = 0, quizNum = 0, buttonCount = 4;
     private  DBOpenHelper dbOpenHelper;
-
     TextView textViewScore, textViewProgress, textViewSelectCountry;
     ImageView imageViewFlag;
-    Button buttonCountry1, buttonCountry2, buttonCountry3, buttonCountry4, buttonReset;
-    int score = 0, quizNum = 0;
-    String imageTag = "";
+    Button[] buttonCountry = new Button[buttonCount];
+    Button buttonReset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +38,10 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         textViewSelectCountry = findViewById(R.id.textViewSelectCountry);
         imageViewFlag = findViewById(R.id.imageViewFlag);
         (buttonReset = findViewById(R.id.buttonReset)).setOnClickListener(this);
-        (buttonCountry1 = findViewById(R.id.buttonCountry1)).setOnClickListener(this);
-        (buttonCountry2 = findViewById(R.id.buttonCountry2)).setOnClickListener(this);
-        (buttonCountry3 = findViewById(R.id.buttonCountry3)).setOnClickListener(this);
-        (buttonCountry4 = findViewById(R.id.buttonCountry4)).setOnClickListener(this);
+        (buttonCountry[0] = findViewById(R.id.buttonCountry1)).setOnClickListener(this);
+        (buttonCountry[1] = findViewById(R.id.buttonCountry2)).setOnClickListener(this);
+        (buttonCountry[2] = findViewById(R.id.buttonCountry3)).setOnClickListener(this);
+        (buttonCountry[3] = findViewById(R.id.buttonCountry4)).setOnClickListener(this);
 
         dbOpenHelper = DBOpenHelper.getInstance(this);
         QuizSet();
@@ -50,10 +53,6 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         if(view.getId() == (R.id.buttonReset)){
             score = 0;
             quizNum = 0;
-            buttonCountry1.setEnabled(true);
-            buttonCountry2.setEnabled(true);
-            buttonCountry3.setEnabled(true);
-            buttonCountry4.setEnabled(true);
             QuizSet();
         }
 
@@ -66,29 +65,40 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
 
         // 오답일 때
         else {
-            view.setEnabled(false);
             Toast.makeText(this, "오답입니다!", Toast.LENGTH_SHORT).show();
+            view.setEnabled(false);
         }
     }
 
     //퀴즈 새로 셋팅
     public void QuizSet(){
-        ArrayList<GetRecord> arrayList = new ArrayList<GetRecord>();
-        String country, continent, image, level;
-        int id;
-
         quizNum++;
         textViewScore.setText(" Score : " + score);
-        textViewProgress.setText(quizNum + "of 10");
+        textViewProgress.setText(quizNum + " of 10");
 
-        // 랜덤하게 이미지 적용
-        arrayList = dbOpenHelper.selectGetRecord();
+        // 버튼 활성화
+        for(int i = 0; i < 4; i++) {
+            buttonCountry[i].setEnabled(true);
+        }
+
+        // DB 가져오기
+        ArrayList<GetRecord> arrayList = dbOpenHelper.selectGetRecord();
         int member = arrayList.size();
         int rid =((int) (Math.random() * 100)) % member;
+
+        // 이미지뷰에 국기 적용
+        setCountryImageView(arrayList, rid);
+        // 버튼에 나라 적용
+        setContryButton(arrayList, rid);
+    }
+
+    public void setCountryImageView(ArrayList<GetRecord> arrayList, int rid){
+
+        // 이미지 가져오기
         AssetManager am = getResources().getAssets();
         InputStream is = null ;
 
- //       String filename = "oceania/austria.png";
+        // String filename = "oceania/austria.png";
         String filename = arrayList.get(rid).getContinent().toString();
         filename += "/";
         filename += arrayList.get(rid).getImage().toString();
@@ -111,18 +121,37 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
             }
         }
 
+        // 이미지 적용
         imageViewFlag.setImageBitmap(bitmap);
+        imageViewFlag.setTag(arrayList.get(rid).getCountry());
+    }
 
-        imageTag = "Korea";
+    public void setContryButton (ArrayList<GetRecord>  arrayList, int randomID) {
 
-        // 랜덤하게 테스트 적용
-        buttonCountry1.setText("Korea");
-        buttonCountry1.setTag("Korea");
-        buttonCountry2.setText("Japan");
-        buttonCountry2.setTag("Japan");
-        buttonCountry3.setText("China");
-        buttonCountry3.setTag("China");
-        buttonCountry4.setText("India");
-        buttonCountry4.setTag("India");
+        // db에서 랜덤하게 나라 가져옴.
+        HashSet<Integer> setDBPK = new HashSet<>();
+        setDBPK.add(randomID);// image에 적용한 나라 넣어줌.
+        int arraySize = arrayList.size();
+        while (setDBPK.size() < buttonCount) {// set은 중복된 값을 허용하지 않음. 다른 수 4개가 저장되면 루프 탈출
+            int num = (int)(Math.random() * 100) % arraySize +1;
+            setDBPK.add(num);
+        }
+
+        // 버튼 인덱스 랜덤하게
+        HashSet<Integer> setButtonIndex = new HashSet<>();
+        while(setButtonIndex.size() < buttonCount) {
+            int num = (int)(Math.random() * 100) % buttonCount;
+            setButtonIndex.add(num);
+        }
+
+        // 버튼에 텍스트 적용
+        Iterator<Integer> iterDBPK =  setDBPK.iterator();
+        Iterator<Integer> iterButtonIndex = setButtonIndex.iterator();
+        while(iterDBPK.hasNext() && iterButtonIndex.hasNext()) {
+            int index = iterButtonIndex.next();
+            String country = arrayList.get(iterDBPK.next()).getCountry();
+            buttonCountry[index].setText(country);
+            buttonCountry[index].setTag(country);
+        }
     }
 }
