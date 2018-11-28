@@ -153,18 +153,21 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
         //랜덤하게 이미지 적용
         arrayList = dbOpenHelper.selectGetRecord();
         int member = arrayList.size();
-        int rid =((int) (Math.random() * 100)) % member;
+
+        int[] rid = new int[2];
+        rid[0] = ((int) (Math.random() * 100)) % member;//정답
+        rid[1] = ((int) (Math.random() * 100)) % member;//오답
         AssetManager am = getResources().getAssets();
         InputStream is = null ;
 
-        String filename = arrayList.get(rid).getContinent().toString();
+        String filename = arrayList.get(rid[0]).getContinent().toString();
         filename += "/";
-        filename += arrayList.get(rid).getImage().toString();
+        filename += arrayList.get(rid[0]).getImage().toString();
         Bitmap bitmap = null;
-        country = arrayList.get(rid).getCountry().toString();
+        country = arrayList.get(rid[0]).getCountry().toString();
 
-        rid = ((int) (Math.random() * 100)) % member;
-        countryQuiz = arrayList.get(rid).getCountry().toString();
+        int randomIndex = (int) ((Math.random()) * 10 % 2);//정답 오답을 랜덤하게 뽑음
+        countryQuiz = arrayList.get(rid[randomIndex]).getCountry().toString();
         textViewQuiz.setText(countryQuiz);
 
         try {
