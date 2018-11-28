@@ -5,6 +5,7 @@
     android:id="@+id/TextViewScore"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:background="@android:color/holo_blue_dark"
     tools:context=".SelectCountry"
     tools:layout_editor_absoluteY="81dp">
 

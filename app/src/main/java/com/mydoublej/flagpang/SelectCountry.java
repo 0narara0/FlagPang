@@ -1,12 +1,15 @@
 package com.mydoublej.flagpang;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Handler;
+import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,7 +27,7 @@ import java.util.Iterator;
 import java.util.TreeSet;
 
 public class SelectCountry extends AppCompatActivity implements View.OnClickListener{
-    int score = 0, quizNum = 0, buttonCount = 4;
+    int score = 0, quizNum = 0, quizTotal = 10, buttonCount = 4;
     private  DBOpenHelper dbOpenHelper;
     TextView textViewScore, textViewProgress, textViewSelectCountry, textViewAnswer;
     ImageView imageViewFlag;
@@ -43,6 +46,7 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         textViewAnswer = findViewById(R.id.textViewAnswer);
         imageViewFlag = findViewById(R.id.imageViewFlag);
         (buttonReset = findViewById(R.id.buttonReset)).setOnClickListener(this);
+        (buttonMain = findViewById(R.id.buttonMain)).setOnClickListener(this);
         (buttonCountry[0] = findViewById(R.id.buttonCountry1)).setOnClickListener(this);
         (buttonCountry[1] = findViewById(R.id.buttonCountry2)).setOnClickListener(this);
         (buttonCountry[2] = findViewById(R.id.buttonCountry3)).setOnClickListener(this);
@@ -54,50 +58,58 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View view) {
-
         switch(view.getId()) {
-
             case R.id.buttonReset:
-                score = 0;
-                quizNum = 0;
+                Init();
                 QuizSet();
                 break;
 
             case R.id.buttonMain:
-                onPause();
+                Intent intent = new Intent();
+                intent.putExtra("result_msg", 100);
+                setResult(RESULT_OK, intent);
+                finish();
                 break;
 
-
-                // 나라 버튼
-                default:
-                String nation = view.getTag().toString();
-                String flag = imageViewFlag.getTag().toString();
-
-                // 정답일 때
-                if (nation.equals(flag)) {
-                    score++;
-                    textViewAnswer.setText("Correct!" + "\n" + nation);
-                    textViewAnswer.setTextColor(Color.GREEN);
-                    textViewAnswer.setVisibility(View.VISIBLE);
-                    for (int i = 0; i < 4; i++)
-                        buttonCountry[i].setEnabled(false);
-
-                    delay();
-                }
-
-                // 오답일 때
-                else {
-                    textViewAnswer.setText("Incorrect!" + "\n" + flag);
-                    textViewAnswer.setTextColor(Color.RED);
-                    textViewAnswer.setVisibility(View.VISIBLE);
-                    for (int i = 0; i < 4; i++)
-                        buttonCountry[i].setEnabled(false);
-
-                    delay();
-                }
+            // 나라 버튼
+            default:
+                pressNationButton(view);
                 break;
 
         }
+    }
+
+    public void pressNationButton(View view){
+        String nation = view.getTag().toString();
+        String flag = imageViewFlag.getTag().toString();
+        textViewAnswer.setVisibility(View.VISIBLE);
+        for (int i = 0; i < buttonCount; i++)
+            buttonCountry[i].setEnabled(false);// 나라 버튼 모두 활성화
+
+        // 정답일 때
+        if (nation.equals(flag)) {
+            score++;
+            textViewScore.setText(" Score : " + score);
+            textViewAnswer.setText("Correct!" + "\n" + flag.toString());
+            textViewAnswer.setTextColor(Color.GREEN);
+        }
+        // 오답일 때
+        else {
+            textViewAnswer.setText("Incoorrect!" + "\n" + flag.toString());
+            textViewAnswer.setTextColor(Color.RED);
+        }
+
+        // 문제 다 풀었는지 체크
+        if(quizNum >= quizTotal)
+            delayGameOver();
+        else
+            delayResult();
+    }
+
+    public void Init(){
+        quizNum = 0;
+        score = 0;
+        textViewAnswer.setVisibility(View.GONE);
     }
 
     //퀴즈 새로 셋팅
@@ -107,7 +119,7 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         textViewProgress.setText(quizNum + " of 10");
 
         // 버튼 활성화
-        for(int i = 0; i < 4; i++)
+        for(int i = 0; i < buttonCount; i++)
             buttonCountry[i].setEnabled(true);
 
         // DB 가져오기
@@ -136,6 +148,7 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         try {
             is = am.open(filename) ;
             bitmap = BitmapFactory.decodeStream(is);
+            // TODO : use is(InputStream).
 
         } catch (Exception e) {
             e.printStackTrace() ;
@@ -183,7 +196,7 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    public void delay() {
+    public void delayResult() {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -192,6 +205,22 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
                 textViewAnswer.setVisibility(View.GONE);
             }
         }, 2000);//2초 지연
+    }
+
+    public void delayGameOver() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("GAME OVER");
+        builder.setMessage("score : " + score);
+        builder.setPositiveButton("다시 게임하기",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Init();
+                        QuizSet();
+                    }
+                });
+        builder.show();
     }
 
     @Override
