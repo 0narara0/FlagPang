@@ -22,6 +22,7 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
     ImageView imageViewOXFlag;
     TextView textViewQuiz, textViewProgress, textViewScore;
     int score, quizNum;
+    String country,countryQuiz;
 
 
     @Override
@@ -45,22 +46,20 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
+        int result=0; //0-toast x, 1-정답 ,2-오답
 
         switch (v.getId()){
             case R.id.btn_O:
-//                if()
-
-                Toast.makeText(this,"정답입니다.",Toast.LENGTH_SHORT).show();
-
-                quizSet();
+                if(country==countryQuiz) result = 1;
+                else result = 2;
 
                 break;
 
             case R.id.btn_X:
+                if(country==countryQuiz) result = 2;
+                else result = 1;
 
-                Toast.makeText(this,"오답입니다.",Toast.LENGTH_SHORT).show();
 
-                quizSet();
 
                 break;
 
@@ -75,13 +74,22 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
                 break;
 
         }
+        if(result == 1) {
+            Toast.makeText(this, "정답입니다.", Toast.LENGTH_SHORT).show();
+            quizSet();
+        }
+        else if(result == 2) {
+            Toast.makeText(this, "오답입니다.", Toast.LENGTH_SHORT).show();
+            quizSet();
+        }
 
     }
+
 
     //퀴즈세팅
     public void quizSet(){
         ArrayList<GetRecord> arrayList = new ArrayList<>();
-        String country, continent, image, level;
+        String continent, image, level;
         int id;
 
         quizNum++;
@@ -101,6 +109,11 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
         filename += "/";
         filename += arrayList.get(rid).getImage().toString();
         Bitmap bitmap = null;
+        country = arrayList.get(rid).getCountry().toString();
+
+        rid = ((int) (Math.random() * 100)) % member;
+        countryQuiz = arrayList.get(rid).getCountry().toString();
+        textViewQuiz.setText(countryQuiz);
 
         try {
             is = am.open(filename) ;
@@ -143,7 +156,7 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
         String filename = arrayList.get(rid).getContinent().toString();
         filename += "/";
         filename += arrayList.get(rid).getImage().toString();
-        Bitmap bitmap = null;
+         Bitmap bitmap = null;
 
         try {
             is = am.open(filename) ;
