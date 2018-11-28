@@ -9,6 +9,8 @@
     <string name="TextViewReset">Reset</string>
     <string name="TextViewScore" />
     <string name="buttonReset">Reset</string>
+    <string name="textViewAnswer" />
+    <string name="buttonMain">Main</string>
     <string name="flagProgress">1/10</string>
     <string name="flagScore">Score : 0</string>
     <string name="flagCountry">korea</string>

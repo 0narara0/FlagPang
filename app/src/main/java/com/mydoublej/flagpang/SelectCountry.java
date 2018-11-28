@@ -1,10 +1,15 @@
 package com.mydoublej.flagpang;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,17 +17,20 @@ import android.view.View;
 import android.widget.Toast;
 
 import java.io.InputStream;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.TreeSet;
 
 public class SelectCountry extends AppCompatActivity implements View.OnClickListener{
     int score = 0, quizNum = 0, buttonCount = 4;
     private  DBOpenHelper dbOpenHelper;
-    TextView textViewScore, textViewProgress, textViewSelectCountry;
+    TextView textViewScore, textViewProgress, textViewSelectCountry, textViewAnswer;
     ImageView imageViewFlag;
     Button[] buttonCountry = new Button[buttonCount];
-    Button buttonReset;
+    Button buttonReset, buttonMain;
+    Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +38,9 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_select_country);
 
         textViewScore = findViewById(R.id.textViewScore);
-        textViewProgress = findViewById(R.id.flagProgress);
+        textViewProgress = findViewById(R.id.textViewProgress);
         textViewSelectCountry = findViewById(R.id.textViewSelectCountry);
+        textViewAnswer = findViewById(R.id.textViewAnswer);
         imageViewFlag = findViewById(R.id.imageViewFlag);
         (buttonReset = findViewById(R.id.buttonReset)).setOnClickListener(this);
         (buttonCountry[0] = findViewById(R.id.buttonCountry1)).setOnClickListener(this);
@@ -45,24 +54,49 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View view) {
-        // Reset 버튼 눌렀을 때
-        if(view.getId() == (R.id.buttonReset)){
-            score = 0;
-            quizNum = 0;
-            QuizSet();
-        }
 
-        // 정답일 때
-        else if(view.getTag().equals(imageViewFlag.getTag())){
-            Toast.makeText(this, "정답입니다!", Toast.LENGTH_SHORT).show();
-            score++;
-            QuizSet();
-        }
+        switch(view.getId()) {
 
-        // 오답일 때
-        else {
-            Toast.makeText(this, "오답입니다!", Toast.LENGTH_SHORT).show();
-            view.setEnabled(false);
+            case R.id.buttonReset:
+                score = 0;
+                quizNum = 0;
+                QuizSet();
+                break;
+
+            case R.id.buttonMain:
+                onPause();
+                break;
+
+
+                // 나라 버튼
+                default:
+                String nation = view.getTag().toString();
+                String flag = imageViewFlag.getTag().toString();
+
+                // 정답일 때
+                if (nation.equals(flag)) {
+                    score++;
+                    textViewAnswer.setText("Correct!" + "\n" + nation.toString());
+                    textViewAnswer.setTextColor(Color.GREEN);
+                    textViewAnswer.setVisibility(View.VISIBLE);
+                    for (int i = 0; i < 4; i++)
+                        buttonCountry[i].setEnabled(false);
+
+                    delay();
+                }
+
+                // 오답일 때
+                else {
+                    textViewAnswer.setText("Incorrect!" + "\n" + nation.toString());
+                    textViewAnswer.setTextColor(Color.RED);
+                    textViewAnswer.setVisibility(View.VISIBLE);
+                    for (int i = 0; i < 4; i++)
+                        buttonCountry[i].setEnabled(false);
+
+                    delay();
+                }
+                break;
+
         }
     }
 
@@ -73,9 +107,8 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         textViewProgress.setText(quizNum + " of 10");
 
         // 버튼 활성화
-        for(int i = 0; i < 4; i++) {
+        for(int i = 0; i < 4; i++)
             buttonCountry[i].setEnabled(true);
-        }
 
         // DB 가져오기
         ArrayList<GetRecord> arrayList = dbOpenHelper.selectGetRecord();
@@ -149,5 +182,22 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
             buttonCountry[index].setText(country);
             buttonCountry[index].setTag(country);
         }
+    }
+
+    public void delay() {
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                QuizSet();
+                textViewAnswer.setVisibility(View.GONE);
+            }
+        }, 2000);//2초 지연
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        finish();
     }
 }
