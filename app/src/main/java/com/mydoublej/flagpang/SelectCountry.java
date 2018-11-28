@@ -1,12 +1,10 @@
 package com.mydoublej.flagpang;
 
-import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,11 +12,9 @@ import android.view.View;
 import android.widget.Toast;
 
 import java.io.InputStream;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.TreeSet;
 
 public class SelectCountry extends AppCompatActivity implements View.OnClickListener{
     int score = 0, quizNum = 0, buttonCount = 4;
@@ -34,7 +30,7 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_select_country);
 
         textViewScore = findViewById(R.id.textViewScore);
-        textViewProgress = findViewById(R.id.textViewProgress);
+        textViewProgress = findViewById(R.id.flagProgress);
         textViewSelectCountry = findViewById(R.id.textViewSelectCountry);
         imageViewFlag = findViewById(R.id.imageViewFlag);
         (buttonReset = findViewById(R.id.buttonReset)).setOnClickListener(this);

@@ -2,6 +2,7 @@ package com.mydoublej.flagpang;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -35,13 +36,18 @@ public class FlagPang extends AppCompatActivity implements View.OnClickListener 
                 break;
             case R.id.btn_ox:
                 Intent intentOX = new Intent(this,SelectOX.class);
-                startActivityForResult(intentOX,100);
+                startActivityForResult(intentOX,200);
                 break;
             case R.id.btn_flag:
                 Intent intentFlag = new Intent(this,SelectFlag.class);
-                startActivityForResult(intentFlag,100);
+                startActivityForResult(intentFlag,300);
                 break;
         }
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

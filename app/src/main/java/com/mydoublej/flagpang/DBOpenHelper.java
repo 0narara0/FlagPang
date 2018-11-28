@@ -269,7 +269,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
                 "VALUES(null, 'botswana', 'africa', 'botswana.png','1')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'burkina', 'africa', 'burkina.png','1')";
+                "VALUES(null, 'burkina_faso', 'africa', 'burkina_faso.png','1')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
                 "VALUES(null, 'burundi', 'africa', 'burundi.png','1')";

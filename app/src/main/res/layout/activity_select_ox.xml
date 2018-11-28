@@ -7,7 +7,7 @@
     tools:context=".SelectOX">
 
     <TextView
-        android:id="@+id/textViewProgress"
+        android:id="@+id/flagProgress"
         android:layout_width="103dp"
         android:layout_height="43dp"
         android:layout_marginTop="31dp"
@@ -29,8 +29,8 @@
         android:text="SCORE: 0"
         app:layout_constraintEnd_toStartOf="@+id/btn_Reset"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textViewProgress"
-        app:layout_constraintTop_toTopOf="@+id/textViewProgress" />
+        app:layout_constraintStart_toEndOf="@+id/flagProgress"
+        app:layout_constraintTop_toTopOf="@+id/flagProgress" />
 
     <Button
         android:id="@+id/btn_Reset"

@@ -36,7 +36,7 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
         ((Button)findViewById(R.id.btn_Reset)).setOnClickListener(this);
         ((Button)findViewById(R.id.btn_Main)).setOnClickListener(this);
         textViewQuiz = findViewById(R.id.textViewQuiz);
-        textViewProgress = findViewById(R.id.textViewProgress);
+        textViewProgress = findViewById(R.id.flagProgress);
         textViewScore = findViewById(R.id.textViewScore);
 
         dbOpenHelper = DBOpenHelper.getInstance(this);
@@ -56,8 +56,8 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
                 break;
 
             case R.id.btn_X:
-                if(country==countryQuiz) result = 2;
-                else result = 1;
+                if(country!=countryQuiz) result = 1;
+                else result = 2;
 
 
 
