@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,12 +20,14 @@ import java.util.HashSet;
 import java.util.Iterator;
 
 public class SelectFlag extends AppCompatActivity implements View.OnClickListener{
-    int score = 0, quizNum = 0, imageCount = 4;
+    int score = 0, quizNum = 0, imageCount = 4, indexCorrect;
     String country, countryQuiz;
     private  DBOpenHelper dbOpenHelper;
     TextView flagScore, flagProgress, flagSelectCountry;
-    ImageView flagImage1,flagImage2,flagImage3,flagImage4;
+//    ImageView flagImage1,flagImage2,flagImage3,flagImage4;
+    ImageView[] flagImage = new ImageView[imageCount];
     Button flagReset,flagMain;
+    Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,14 +37,11 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
         flagScore = findViewById(R.id.flagScore);
         flagProgress = findViewById(R.id.flagProgress);
         flagSelectCountry = findViewById(R.id.flagSelectCountry);
-        flagImage1 = findViewById(R.id.flagImage1);
-        flagImage2 = findViewById(R.id.flagImage2);
-        flagImage3 = findViewById(R.id.flagImage3);
-        flagImage4 = findViewById(R.id.flagImage4);
-        flagImage1.setOnClickListener(this);
-        flagImage2.setOnClickListener(this);
-        flagImage3.setOnClickListener(this);
-        flagImage4.setOnClickListener(this);
+        flagImage[0] = findViewById(R.id.flagImage1);
+        flagImage[1] = findViewById(R.id.flagImage2);
+        flagImage[2] = findViewById(R.id.flagImage3);
+        flagImage[3] = findViewById(R.id.flagImage4);
+        for(int i=0; i < imageCount; i++)flagImage[i].setOnClickListener(this);
         ((Button)findViewById(R.id.flagReset)).setOnClickListener(this);
         ((Button)findViewById(R.id.flagMain)).setOnClickListener(this);
 
@@ -65,6 +66,14 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
             case R.id.flagImage2:
             case R.id.flagImage3:
             case R.id.flagImage4:
+                if ("".equals(country)) {
+                    result = 0;
+
+                    Toast.makeText(this, String.valueOf(score)+"점입니다. " +
+                            "게임을 계속할려면 RESET 버튼을 클릭하세요", Toast.LENGTH_LONG).show();
+                    break;
+                }
+
                 countryQuiz = view.getTag().toString();
                 if(country.equals(countryQuiz)) result = 1;
                 else result = 2;
@@ -73,24 +82,30 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
 
         // 정답일 때
         if(result == 1){
-            Toast.makeText(this, "정답입니다!", Toast.LENGTH_SHORT).show();
             score++;
-            QuizSet();
+//             flagImage[indexCorrect].setBackgroundColor(Color.DKGRAY); //0xff3cb371
+         Toast.makeText(this, "정답입니다!", Toast.LENGTH_SHORT).show();
         }
-
         // 오답일 때
         else if(result == 2){
-            Toast.makeText(this, "오답입니다!", Toast.LENGTH_SHORT).show();
+//             flagImage[indexCorrect].setBackgroundColor(Color.MAGENTA); //0xffeeb2ee
+         Toast.makeText(this, "오답입니다!", Toast.LENGTH_SHORT).show();
+        }
+        // 배경색을 원래대로 ~
+        if(result != 0) {
+//            flagImage[indexCorrect].setBackgroundColor(Color.alpha(0xff778899));//0xff778899
             QuizSet();
-
         }
     }
 
     //퀴즈 새로 셋팅
     public void QuizSet(){
         if(++quizNum > 10) {
-            quizNum = 1;
+            country = "";
+            flagProgress.setText("game over");
+            return;
         }
+
         flagScore.setText(" Score : " + score);
         flagProgress.setText(quizNum + " of 10");
 
@@ -125,8 +140,7 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
         // 이미지 가져오기
         AssetManager am = getResources().getAssets();
         InputStream is = null ;
-        int index, id;
-        String imageViewName = null;
+        int index, id, imgindex;
 
         // 이미지 인덱스 랜덤하게
         HashSet<Integer> setImageIndex = new HashSet<>();
@@ -140,7 +154,7 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
         while(iterDBPK.hasNext() && iterImageIndex.hasNext()) {
             index = iterImageIndex.next();
             id = iterDBPK.next();
-            String country = arrayList.get(id).getCountry().toString();
+            countryQuiz = arrayList.get(id).getCountry().toString();
             String filename = arrayList.get(id).getContinent().toString();
             filename += "/";
             filename += arrayList.get(id).getImage().toString();
@@ -149,8 +163,6 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
             try {
                 is = am.open(filename) ;
                 bitmap = BitmapFactory.decodeStream(is);
-                // TODO : use is(InputStream).
-
             } catch (Exception e) {
                 e.printStackTrace() ;
             }
@@ -163,24 +175,9 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
                 }
             }
             // 이미지 적용
-            switch (index){
-                case 0:
-                    flagImage1.setImageBitmap(bitmap);
-                    flagImage1.setTag(country);
-                    break;
-                case 1:
-                    flagImage2.setImageBitmap(bitmap);
-                    flagImage2.setTag(country);
-                    break;
-                case 2:
-                    flagImage3.setImageBitmap(bitmap);
-                    flagImage3.setTag(country);
-                    break;
-                case 3:
-                    flagImage4.setImageBitmap(bitmap);
-                    flagImage4.setTag(country);
-                    break;
-            }
+            flagImage[index].setImageBitmap(bitmap);
+            flagImage[index].setTag(countryQuiz);
+            if(country.equals(countryQuiz)) indexCorrect = index;
         }
     }
 

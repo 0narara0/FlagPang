@@ -76,7 +76,7 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
                 // 정답일 때
                 if (nation.equals(flag)) {
                     score++;
-                    textViewAnswer.setText("Correct!" + "\n" + nation.toString());
+                    textViewAnswer.setText("Correct!" + "\n" + nation);
                     textViewAnswer.setTextColor(Color.GREEN);
                     textViewAnswer.setVisibility(View.VISIBLE);
                     for (int i = 0; i < 4; i++)
@@ -87,7 +87,7 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
 
                 // 오답일 때
                 else {
-                    textViewAnswer.setText("Incorrect!" + "\n" + nation.toString());
+                    textViewAnswer.setText("Incorrect!" + "\n" + flag);
                     textViewAnswer.setTextColor(Color.RED);
                     textViewAnswer.setVisibility(View.VISIBLE);
                     for (int i = 0; i < 4; i++)
@@ -136,7 +136,6 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         try {
             is = am.open(filename) ;
             bitmap = BitmapFactory.decodeStream(is);
-            // TODO : use is(InputStream).
 
         } catch (Exception e) {
             e.printStackTrace() ;
