@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -25,6 +27,7 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
     String country,countryQuiz;
     Button btn_GameOver;
     ImageButton btn_O, btn_X;
+    Handler handler = new Handler();
 
 
     @Override
@@ -77,10 +80,13 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
                 btn_O.setClickable(true);
                 btn_X.setClickable(true);
                 textViewScore.setText(" Score : " + score);
-                textViewProgress.setText(quizNum + " / 10");
+                textViewProgress.setText(quizNum + " of 10");
                 imageViewOXFlag.setAlpha(1f);
                 btn_O.setAlpha(1f);
                 btn_X.setAlpha(1f);
+                textViewProgress.setAlpha(1f);
+                textViewScore.setAlpha(1f);
+                textViewQuiz.setAlpha(1f);
                 textViewAnswer.setVisibility(View.GONE);
                 quizSet();
                 break;
@@ -98,10 +104,13 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
                 btn_O.setClickable(true);
                 btn_X.setClickable(true);
                 textViewScore.setText(" Score : " + score);
-                textViewProgress.setText(quizNum + " / 10");
+                textViewProgress.setText(quizNum + " of 10");
                 imageViewOXFlag.setAlpha(1f);
                 btn_O.setAlpha(1f);
                 btn_X.setAlpha(1f);
+                textViewProgress.setAlpha(1f);
+                textViewScore.setAlpha(1f);
+                textViewQuiz.setAlpha(1f);
                 textViewAnswer.setVisibility(View.GONE);
                 quizSet();
                 break;
@@ -110,12 +119,14 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
         if(result == 1) {
             textViewAnswer.setVisibility(View.VISIBLE);
             textViewAnswer.setText("CORRECT!!");
+            textViewAnswer.setTextColor(Color.YELLOW);
             score++;
             quizSet();
         }
         else if(result == 2) {
             textViewAnswer.setVisibility(View.VISIBLE);
             textViewAnswer.setText("INCORRECT!!");
+            textViewAnswer.setTextColor(Color.RED);
             quizSet();
         }
 
@@ -134,8 +145,8 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
         btn_GameOver.setVisibility(View.GONE);
         quizNum++;
 
-        textViewScore.setText(" Score : " + score);
-        textViewProgress.setText(quizNum + "/ 10");
+        textViewScore.setText(" Score: " + score);
+        textViewProgress.setText(quizNum + " of 10");
 
 
 
@@ -175,13 +186,28 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
         imageViewOXFlag.setImageBitmap(bitmap);
         if(quizNum>=10){
             btn_GameOver.setVisibility(View.VISIBLE);
-            imageViewOXFlag.setAlpha(0.5f);
-            btn_O.setAlpha(0.5f);
-            btn_X.setAlpha(0.5f);
+            imageViewOXFlag.setAlpha(0.2f);
+            btn_O.setAlpha(0.2f);
+            btn_X.setAlpha(0.2f);
+            textViewProgress.setAlpha(0.2f);
+            textViewScore.setAlpha(0.2f);
+            textViewQuiz.setAlpha(0.2f);
+            textViewAnswer.setVisibility(View.GONE);
             btn_O.setClickable(false);
             btn_X.setClickable(false);
 
         }
+    }
+
+    public void delay() {
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                quizSet();
+                textViewAnswer.setVisibility(View.GONE);
+            }
+        }, 2000);//2초 지연
     }
 
     @Override

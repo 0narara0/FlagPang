@@ -22,7 +22,7 @@ public class FlagPang extends AppCompatActivity implements View.OnClickListener 
         ((Button)findViewById(R.id.btn_ox)).setOnClickListener(this);
         ((Button)findViewById(R.id.btn_flag)).setOnClickListener(this);
 
-        ((ImageView)findViewById(R.id.imageView)).setImageResource(R.drawable.ag);
+        ((ImageView)findViewById(R.id.imageView)).setImageResource(R.drawable.map);
 
         dbOpenHelper = DBOpenHelper.getInstance(this);
     }
