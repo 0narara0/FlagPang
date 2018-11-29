@@ -54,7 +54,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="12dp"
-        android:background="#FF8193BF"
+        android:background="#FF8498CA"
         android:padding="10dp"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
@@ -81,8 +81,10 @@
     <Button
         android:id="@+id/buttonCountry1"
         android:layout_width="0dp"
-        android:layout_height="69dp"
+        android:layout_height="70dp"
+        android:layout_margin="10dp"
         android:background="#FF8193BF"
+        android:padding="10dp"
         android:text="@string/buttonCountry1"
         android:textColor="#ffffff"
         android:textSize="20sp"
@@ -94,8 +96,10 @@
     <Button
         android:id="@+id/buttonCountry2"
         android:layout_width="0dp"
-        android:layout_height="69dp"
+        android:layout_height="70dp"
+        android:layout_margin="10dp"
         android:background="#FF8193BF"
+        android:padding="10dp"
         android:text="@string/buttonCountry2"
         android:textColor="#ffffff"
         android:textSize="20sp"
@@ -106,9 +110,11 @@
 
     <Button
         android:id="@+id/buttonCountry3"
-        android:layout_width="190dp"
-        android:layout_height="71dp"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_margin="10dp"
         android:background="#FF8193BF"
+        android:padding="10dp"
         android:text="@string/buttonCountry3"
         android:textColor="#ffffff"
         android:textSize="20sp"
@@ -121,7 +127,9 @@
         android:id="@+id/buttonCountry4"
         android:layout_width="0dp"
         android:layout_height="70dp"
+        android:layout_margin="10dp"
         android:background="#FF8193BF"
+        android:padding="10dp"
         android:text="@string/buttonCountry4"
         android:textColor="#ffffff"
         android:textSize="20sp"
@@ -187,14 +195,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="295dp" />
+        app:layout_constraintGuide_begin="282dp" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="373dp" />
+        app:layout_constraintGuide_begin="361dp" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline4"
