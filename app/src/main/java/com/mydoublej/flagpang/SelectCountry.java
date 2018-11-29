@@ -85,7 +85,7 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
             score++;
             textViewScore.setText(" Score : " + score);
             textViewAnswer.setText("Correct!" + "\n" + flag.toString());
-            textViewAnswer.setTextColor(Color.GREEN);
+            textViewAnswer.setTextColor(Color.parseColor("#FF00893C"));
         }
         // 오답일 때
         else {
