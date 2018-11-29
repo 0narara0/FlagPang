@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -25,8 +26,8 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
     TextView textViewQuiz, textViewProgress, textViewScore, textViewAnswer;
     int score, quizNum;
     String country,countryQuiz;
-    Button btn_GameOver;
-    ImageButton btn_O, btn_X;
+    Button btn_GameOver, btn_O, btn_X;
+
     Handler handler = new Handler();
 
 
@@ -57,6 +58,9 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
 
     }
 
+
+
+
     @Override
     public void onClick(View v) {
         int result=0; //0-textviewAnswer x, 1-정답 ,2-오답
@@ -65,11 +69,42 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
             case R.id.btn_O:
                 if(country==countryQuiz) result = 1;
                 else result = 2;
+
+                btn_O.setOnTouchListener(new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event) {
+                        switch (event.getAction()){
+                            case MotionEvent.ACTION_DOWN:{
+                                btn_O.setBackgroundResource(R.drawable.btn_o1);
+                                break;
+                            }
+                            case MotionEvent.ACTION_UP:{
+                                btn_O.setBackgroundResource(R.drawable.btn_o2);
+                            }
+                        }
+                        return false;
+                    }
+                });
                 break;
 
             case R.id.btn_X:
                 if(country!=countryQuiz) result = 1;
                 else result = 2;
+                btn_X.setOnTouchListener(new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event) {
+                        switch (event.getAction()){
+                            case MotionEvent.ACTION_DOWN:{
+                                btn_X.setBackgroundResource(R.drawable.btn_x1);
+                                break;
+                            }
+                            case MotionEvent.ACTION_UP:{
+                                btn_X.setBackgroundResource(R.drawable.btn_x2);
+                            }
+                        }
+                        return false;
+                    }
+                });
 
                 break;
 

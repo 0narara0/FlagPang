@@ -64,38 +64,37 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_GameOver" />
 
-    <ImageButton
+    <Button
         android:id="@+id/btn_O"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_marginBottom="32dp"
-        android:background="@android:color/transparent"
+        android:background="@drawable/btn_o2"
         android:scaleType="fitXY"
+        android:src="@drawable/btn_o2"
         android:textSize="26sp"
         app:layout_constraintBottom_toTopOf="@+id/btn_Main"
         app:layout_constraintEnd_toStartOf="@+id/btn_X"
         app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toEndOf="@+id/guideline8"
         app:layout_constraintTop_toBottomOf="@+id/imageViewOXFlag"
-        app:layout_constraintVertical_bias="0.228"
-        app:srcCompat="@drawable/btn_o2" />
+        app:layout_constraintVertical_bias="0.228" />
 
-    <ImageButton
+    <Button
         android:id="@+id/btn_X"
         android:layout_width="120dp"
         android:layout_height="120dp"
-
         android:layout_marginBottom="32dp"
-        android:background="@android:color/transparent"
+        android:background="@drawable/btn_x2"
         android:scaleType="fitXY"
+        android:src="@drawable/btn_x2"
         android:textSize="26sp"
         app:layout_constraintBottom_toTopOf="@+id/btn_Reset"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btn_O"
         app:layout_constraintTop_toBottomOf="@+id/imageViewOXFlag"
-        app:layout_constraintVertical_bias="0.228"
-        app:srcCompat="@drawable/btn_x2" />
+        app:layout_constraintVertical_bias="0.228" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
