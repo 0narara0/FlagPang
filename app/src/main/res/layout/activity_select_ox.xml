@@ -9,9 +9,8 @@
 
     <TextView
         android:id="@+id/textViewProgress"
-        android:layout_width="103dp"
+        android:layout_width="wrap_content"
         android:layout_height="43dp"
-        android:layout_marginTop="3dp"
         android:gravity="center"
         android:text="1/10"
         android:textColor="#ffffff"
@@ -24,9 +23,8 @@
 
     <TextView
         android:id="@+id/textViewScore"
-        android:layout_width="100dp"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginTop="3dp"
         android:gravity="center"
         android:text="SCORE: 0"
         android:textColor="#ffffff"
@@ -128,7 +126,7 @@
         android:id="@+id/btn_Reset"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="20dp"
         android:background="@android:color/transparent"
         android:text="RESET"
         android:textColor="#ffffff"
@@ -142,7 +140,7 @@
         android:id="@+id/btn_Main"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="20dp"
         android:background="@android:color/transparent"
         android:text="MAIN"
         android:textColor="#ffffff"

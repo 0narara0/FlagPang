@@ -12,33 +12,27 @@
         android:id="@+id/flagProgress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginTop="20dp"
         android:text="@string/flagProgress"
+        android:textColor="#ffffff"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/flagSelectCountry"
+        app:layout_constraintEnd_toStartOf="@+id/flagScore"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        android:textColor="#ffffff"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/flagScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginTop="20dp"
         android:text="@string/flagScore"
+        android:textColor="#ffffff"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/flagSelectCountry"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/flagProgress"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textColor="#ffffff"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/flagSelectCountry"
@@ -120,8 +114,7 @@
         android:id="@+id/flagMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="20dp"
         android:background="@android:color/transparent"
         android:text="@string/flagMain"
         android:textColor="#ffffff"
@@ -129,23 +122,21 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/flagReset"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/flagImage3" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/flagReset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="20dp"
         android:background="@android:color/transparent"
         android:keepScreenOn="false"
         android:text="@string/flagReset"
         android:textColor="#ffffff"
         android:textSize="26sp"
-        app:layout_constraintBottom_toBottomOf="@+id/flagMain"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/flagMain"
-        app:layout_constraintTop_toTopOf="@+id/flagMain" />
+        app:layout_constraintStart_toEndOf="@+id/flagMain" />
 
 </android.support.constraint.ConstraintLayout>
