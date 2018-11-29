@@ -122,13 +122,13 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
             textViewAnswer.setText("CORRECT!!" + "\n" + country);
             textViewAnswer.setTextColor(Color.parseColor("#FF00893C"));
             score++;
-            delay();
+            delayResult();
         }
         else if(result == 2) {
             textViewAnswer.setVisibility(View.VISIBLE);
             textViewAnswer.setText("INCORRECT!!" + "\n" + country);
             textViewAnswer.setTextColor(Color.RED);
-            delay();
+            delayResult();
         }
 
     }
@@ -203,14 +203,14 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
         }
     }
 
-    public void delay() {
+    public void delayResult() {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 quizSet();
                 textViewAnswer.setVisibility(View.GONE);
             }
-        }, 1000);//1초 지연
+        }, 500);//0.5초 지연
     }
 
     @Override

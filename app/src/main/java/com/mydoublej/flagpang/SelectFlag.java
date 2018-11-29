@@ -60,9 +60,12 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
                 QuizSet();
                 break;
             case R.id.flagMain:
-                Intent intent = new Intent(this, FlagPang.class);
-                startActivity(intent);
+                Intent intent = new Intent();
+                intent.putExtra("result_msg", 300);
+                setResult(RESULT_OK, intent);
+                finish();
                 break;
+
             case R.id.flagImage1:
             case R.id.flagImage2:
             case R.id.flagImage3:
@@ -88,6 +91,7 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
             textViewAnswer.setVisibility(View.VISIBLE);
             textViewAnswer.setText("CORRECT!!");
             textViewAnswer.setTextColor(Color.parseColor("#FF00893C"));
+            delayResult();
         }
         // 오답일 때
         else if(result == 2){
@@ -95,12 +99,13 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
             textViewAnswer.setVisibility(View.VISIBLE);
             textViewAnswer.setText("INCORRECT!!");
             textViewAnswer.setTextColor(Color.RED);
+            delayResult();
         }
         // 배경색을 원래대로 ~
-        if(result != 0) {
+        //if(result != 0) {
 //            flagImage[indexCorrect].setBackgroundColor(Color.alpha(0xff778899));//0xff778899
-            QuizSet();
-        }
+          //  QuizSet();
+        //}
     }
 
     //퀴즈 새로 셋팅
@@ -184,6 +189,17 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
             flagImage[index].setTag(countryQuiz);
             if(country.equals(countryQuiz)) indexCorrect = index;
         }
+    }
+
+    public void delayResult() {
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                QuizSet();
+                textViewAnswer.setVisibility(View.GONE);
+            }
+        }, 500);//지연
     }
 
     @Override
