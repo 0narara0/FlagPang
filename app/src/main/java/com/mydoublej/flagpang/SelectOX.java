@@ -92,8 +92,9 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
                 break;
 
             case R.id.btn_Main:
-                Intent intent = new Intent(this,FlagPang.class);
-                startActivity(intent);
+                Intent intent = new Intent();
+                intent.putExtra("result_msg", 200);
+                setResult(RESULT_OK, intent);
                 finish();
                 break;
 
@@ -121,13 +122,13 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
             textViewAnswer.setText("CORRECT!!");
             textViewAnswer.setTextColor(Color.parseColor("#FF00893C"));
             score++;
-            quizSet();
+            delay();
         }
         else if(result == 2) {
             textViewAnswer.setVisibility(View.VISIBLE);
             textViewAnswer.setText("INCORRECT!!");
             textViewAnswer.setTextColor(Color.RED);
-            quizSet();
+            delay();
         }
 
     }
@@ -206,11 +207,10 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-
                 quizSet();
                 textViewAnswer.setVisibility(View.GONE);
             }
-        }, 2000);//2초 지연
+        }, 1000);//1초 지연
     }
 
     @Override
