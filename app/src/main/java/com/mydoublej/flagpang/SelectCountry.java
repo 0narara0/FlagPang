@@ -198,7 +198,7 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
                 QuizSet();
                 textViewAnswer.setVisibility(View.GONE);
             }
-        }, 2000);//2초 지연
+        }, 1000);//지연
     }
 
     public void delayGameOver() {

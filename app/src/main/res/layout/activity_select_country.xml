@@ -5,7 +5,7 @@
     android:id="@+id/TextViewScore"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#bdd3f2"
+    android:background="#9bb3ef"
     tools:context=".SelectCountry"
     tools:layout_editor_absoluteY="81dp">
 
@@ -20,7 +20,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewScore" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewScore"
+        android:textColor="#ffffff" />
 
     <TextView
         android:id="@+id/textViewScore"
@@ -31,7 +32,8 @@
         app:layout_constraintEnd_toStartOf="@+id/buttonReset"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        android:textColor="#ffffff" />
 
     <Button
         android:id="@+id/buttonReset"
@@ -45,7 +47,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textViewScore"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@android:color/transparent"
+        android:textColor="#ffffff" />
 
     <ImageView
         android:id="@+id/imageViewFlag"
@@ -53,7 +57,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="6dp"
         android:layout_marginBottom="10dp"
-        android:background="#999797"
+        android:background="#a0b5ea"
         android:padding="10dp"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
@@ -74,7 +78,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline5" />
+        app:layout_constraintTop_toTopOf="@+id/guideline5"
+        android:textColor="#ffffff" />
 
     <TextView
         android:id="@+id/textViewAnswer"
@@ -91,7 +96,8 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline6" />
+        app:layout_constraintTop_toTopOf="@+id/guideline6"
+        android:textColor="#ffffff" />
 
     <Button
         android:id="@+id/buttonCountry1"
@@ -104,7 +110,9 @@
         app:layout_constraintEnd_toStartOf="@+id/buttonCountry2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSelectCountry" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewSelectCountry"
+        android:background="@android:color/transparent"
+        android:textColor="#ffffff"/>
 
     <Button
         android:id="@+id/buttonCountry2"
@@ -117,7 +125,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/buttonCountry1"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSelectCountry" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewSelectCountry"
+        android:background="@android:color/transparent"
+        android:textColor="#ffffff" />
 
     <Button
         android:id="@+id/buttonCountry3"
@@ -128,7 +138,9 @@
         app:layout_constraintEnd_toStartOf="@+id/buttonCountry4"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/buttonCountry4" />
+        app:layout_constraintTop_toTopOf="@+id/buttonCountry4"
+        android:background="@android:color/transparent"
+        android:textColor="#ffffff" />
 
     <Button
         android:id="@+id/buttonCountry4"
@@ -139,7 +151,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/buttonCountry3"
-        app:layout_constraintTop_toTopOf="@+id/guideline7" />
+        app:layout_constraintTop_toTopOf="@+id/guideline7"
+        android:background="@android:color/transparent"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/buttonMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/buttonMain"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonCountry3"
+        android:background="@android:color/transparent"
+        android:textColor="#ffffff" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline2"
@@ -189,16 +216,5 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="454dp" />
-
-    <Button
-        android:id="@+id/buttonMain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="@string/buttonMain"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonCountry3" />
 
 </android.support.constraint.ConstraintLayout>

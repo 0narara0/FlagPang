@@ -119,7 +119,7 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
         if(result == 1) {
             textViewAnswer.setVisibility(View.VISIBLE);
             textViewAnswer.setText("CORRECT!!");
-            textViewAnswer.setTextColor(Color.YELLOW);
+            textViewAnswer.setTextColor(Color.parseColor("#FF00893C"));
             score++;
             quizSet();
         }
