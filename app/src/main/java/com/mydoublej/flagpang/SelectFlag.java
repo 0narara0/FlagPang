@@ -74,7 +74,7 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
             case R.id.flagImage3:
             case R.id.flagImage4:
                 //if ("".equals(country)) {
-                if(quizNum > 10){
+                if(quizNum >= 10){
                     result = 0;
 
                     /*Toast.makeText(this, String.valueOf(score)+"점입니다. " +
