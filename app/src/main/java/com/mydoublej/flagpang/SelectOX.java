@@ -119,14 +119,14 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
         }
         if(result == 1) {
             textViewAnswer.setVisibility(View.VISIBLE);
-            textViewAnswer.setText("CORRECT!!");
+            textViewAnswer.setText("CORRECT!!" + "\n" + country);
             textViewAnswer.setTextColor(Color.parseColor("#FF00893C"));
             score++;
             delay();
         }
         else if(result == 2) {
             textViewAnswer.setVisibility(View.VISIBLE);
-            textViewAnswer.setText("INCORRECT!!");
+            textViewAnswer.setText("INCORRECT!!" + "\n" + country);
             textViewAnswer.setTextColor(Color.RED);
             delay();
         }

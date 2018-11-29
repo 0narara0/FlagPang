@@ -58,7 +58,8 @@
         android:gravity="center"
         android:text="KOREA"
         android:textColor="#000000"
-        android:textSize="36sp"
+        android:textSize="32sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_GameOver" />
@@ -67,39 +68,33 @@
         android:id="@+id/btn_O"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="124dp"
+        android:layout_marginBottom="32dp"
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
         android:textSize="26sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_Main"
+        app:layout_constraintEnd_toStartOf="@+id/btn_X"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toEndOf="@+id/guideline8"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.895"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewOXFlag"
+        app:layout_constraintVertical_bias="0.228"
         app:srcCompat="@drawable/btn_o2" />
 
     <ImageButton
         android:id="@+id/btn_X"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
 
-        android:layout_marginEnd="60dp"
-        android:layout_marginRight="60dp"
-        android:layout_marginBottom="124dp"
+        android:layout_marginBottom="32dp"
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
         android:textSize="26sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_Reset"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btn_O"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.895"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewOXFlag"
+        app:layout_constraintVertical_bias="0.228"
         app:srcCompat="@drawable/btn_x2" />
 
     <android.support.constraint.Guideline
@@ -152,8 +147,8 @@
 
     <TextView
         android:id="@+id/textViewAnswer"
-        android:layout_width="368dp"
-        android:layout_height="52dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -163,13 +158,13 @@
         android:elevation="2dp"
         android:gravity="center"
         android:textSize="32sp"
+        android:textStyle="bold"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_Main"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.84" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_O" />
 
     <Button
         android:id="@+id/btn_GameOver"
