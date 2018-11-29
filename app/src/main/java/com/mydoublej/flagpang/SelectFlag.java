@@ -23,7 +23,7 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
     int score = 0, quizNum = 0, imageCount = 4, indexCorrect;
     String country, countryQuiz;
     private  DBOpenHelper dbOpenHelper;
-    TextView flagScore, flagProgress, flagSelectCountry;
+    TextView flagScore, flagProgress, flagSelectCountry, textViewAnswer;
 //    ImageView flagImage1,flagImage2,flagImage3,flagImage4;
     ImageView[] flagImage = new ImageView[imageCount];
     Button flagReset,flagMain;
@@ -44,6 +44,7 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
         for(int i=0; i < imageCount; i++)flagImage[i].setOnClickListener(this);
         ((Button)findViewById(R.id.flagReset)).setOnClickListener(this);
         ((Button)findViewById(R.id.flagMain)).setOnClickListener(this);
+        textViewAnswer = findViewById(R.id.textViewAnswer);
 
         dbOpenHelper = DBOpenHelper.getInstance(this);
         QuizSet();
@@ -84,12 +85,16 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
         if(result == 1){
             score++;
 //             flagImage[indexCorrect].setBackgroundColor(Color.DKGRAY); //0xff3cb371
-         Toast.makeText(this, "정답입니다!", Toast.LENGTH_SHORT).show();
+            textViewAnswer.setVisibility(View.VISIBLE);
+            textViewAnswer.setText("CORRECT!!");
+            textViewAnswer.setTextColor(Color.parseColor("#FF00893C"));
         }
         // 오답일 때
         else if(result == 2){
 //             flagImage[indexCorrect].setBackgroundColor(Color.MAGENTA); //0xffeeb2ee
-         Toast.makeText(this, "오답입니다!", Toast.LENGTH_SHORT).show();
+            textViewAnswer.setVisibility(View.VISIBLE);
+            textViewAnswer.setText("INCORRECT!!");
+            textViewAnswer.setTextColor(Color.RED);
         }
         // 배경색을 원래대로 ~
         if(result != 0) {
