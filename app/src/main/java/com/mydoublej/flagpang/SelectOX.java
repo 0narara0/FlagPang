@@ -165,7 +165,6 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
             textViewAnswer.setTextColor(Color.RED);
             delayResult();
         }
-
     }
 
 
@@ -183,8 +182,6 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
 
         textViewScore.setText(" Score: " + score);
         textViewProgress.setText(quizNum + " of 10");
-
-
 
         //랜덤하게 이미지 적용
         arrayList = dbOpenHelper.selectGetRecord();

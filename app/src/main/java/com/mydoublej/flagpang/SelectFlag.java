@@ -1,13 +1,16 @@
 package com.mydoublej.flagpang;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -70,14 +73,17 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
             case R.id.flagImage2:
             case R.id.flagImage3:
             case R.id.flagImage4:
-                if ("".equals(country)) {
+                //if ("".equals(country)) {
+                if(quizNum > 10){
                     result = 0;
 
-                    Toast.makeText(this, String.valueOf(score)+"점입니다. " +
-                            "게임을 계속할려면 RESET 버튼을 클릭하세요", Toast.LENGTH_LONG).show();
+                    /*Toast.makeText(this, String.valueOf(score)+"점입니다. " +
+                            "게임을 계속할려면 RESET 버튼을 클릭하세요", Toast.LENGTH_LONG).show();*/
+                    country = "";
+                    flagProgress.setText("game over");
+                    delayGameOver();
                     break;
                 }
-
                 countryQuiz = view.getTag().toString();
                 if(country.equals(countryQuiz)) result = 1;
                 else result = 2;
@@ -89,32 +95,32 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
             score++;
 //             flagImage[indexCorrect].setBackgroundColor(Color.DKGRAY); //0xff3cb371
             textViewAnswer.setVisibility(View.VISIBLE);
-            textViewAnswer.setText("CORRECT!!");
+            textViewAnswer.setText("CORRECT!!" + "\n" + country);
             textViewAnswer.setTextColor(Color.parseColor("#FF00893C"));
-            delayResult();
         }
         // 오답일 때
         else if(result == 2){
 //             flagImage[indexCorrect].setBackgroundColor(Color.MAGENTA); //0xffeeb2ee
             textViewAnswer.setVisibility(View.VISIBLE);
-            textViewAnswer.setText("INCORRECT!!");
+            textViewAnswer.setText("INCORRECT!!" + "\n" + country);
             textViewAnswer.setTextColor(Color.RED);
-            delayResult();
         }
         // 배경색을 원래대로 ~
-        //if(result != 0) {
+        if(result != 0) {
 //            flagImage[indexCorrect].setBackgroundColor(Color.alpha(0xff778899));//0xff778899
-          //  QuizSet();
-        //}
+            //QuizSet();
+            delayResult();
+        }
     }
 
     //퀴즈 새로 셋팅
     public void QuizSet(){
-        if(++quizNum > 10) {
+        ++quizNum;
+        /*if(++quizNum > 10) {
             country = "";
             flagProgress.setText("game over");
             return;
-        }
+        }*/
 
         flagScore.setText(" Score : " + score);
         flagProgress.setText(quizNum + " of 10");
@@ -134,7 +140,6 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
         country = arrayList.get(rid).getCountry().toString();
         flagSelectCountry.setText(country);
     }
-
 
     public void setContryImage (ArrayList<GetRecord>  arrayList, int randomID) {
 
@@ -175,6 +180,7 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
                 bitmap = BitmapFactory.decodeStream(is);
             } catch (Exception e) {
                 e.printStackTrace() ;
+                Log.d("country", filename);
             }
 
             if (is != null) {
@@ -200,6 +206,23 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
                 textViewAnswer.setVisibility(View.GONE);
             }
         }, 500);//지연
+    }
+
+    public void delayGameOver() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("GAME OVER");
+        builder.setMessage("score : " + score);
+        builder.setPositiveButton("다시 게임하기",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        score = 0;
+                        quizNum = 0;
+                        QuizSet();
+                    }
+                });
+        builder.show();
     }
 
     @Override

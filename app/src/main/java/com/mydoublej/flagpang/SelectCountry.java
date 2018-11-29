@@ -19,6 +19,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 
 public class SelectCountry extends AppCompatActivity implements View.OnClickListener{
     int score = 0, quizNum = 0, quizTotal = 10, buttonCount = 4;
@@ -198,7 +199,7 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
                 QuizSet();
                 textViewAnswer.setVisibility(View.GONE);
             }
-        }, 1000);//지연
+        }, 500);//지연
     }
 
     public void delayGameOver() {
