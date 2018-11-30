@@ -80,31 +80,21 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
                             }
                             case MotionEvent.ACTION_UP:{
                                 btn_O.setBackgroundResource(R.drawable.btn_o2);
+                                break;
                             }
                         }
                         return false;
                     }
                 });
-
-
                 if(quizNum>=10){
 
                 result = 0;
                 country = "";
                 textViewProgress.setText("game over");
                 delayGameOver();
-                imageViewOXFlag.setAlpha(0.2f);
-                btn_O.setAlpha(0.2f);
-                btn_X.setAlpha(0.2f);
-                textViewProgress.setAlpha(0.2f);
-                textViewScore.setAlpha(0.2f);
-                textViewQuiz.setAlpha(0.2f);
                 textViewAnswer.setVisibility(View.GONE);
-                btn_O.setClickable(false);
-                btn_X.setClickable(false);
-                break;
-
             }
+            break;
 
             case R.id.btn_X:
                 if(country!=countryQuiz) result = 1;
@@ -119,43 +109,24 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
                             }
                             case MotionEvent.ACTION_UP:{
                                 btn_X.setBackgroundResource(R.drawable.btn_x2);
+                                break;
                             }
                         }
                         return false;
                     }
                 });
                 if(quizNum>=10){
-
                     result = 0;
                     country = "";
                     textViewProgress.setText("game over");
                     delayGameOver();
-                    imageViewOXFlag.setAlpha(0.2f);
-                    btn_O.setAlpha(0.2f);
-                    btn_X.setAlpha(0.2f);
-                    textViewProgress.setAlpha(0.2f);
-                    textViewScore.setAlpha(0.2f);
-                    textViewQuiz.setAlpha(0.2f);
                     textViewAnswer.setVisibility(View.GONE);
-                    btn_O.setClickable(false);
-                    btn_X.setClickable(false);
-                    break;
-
-
                 }
                 break;
 
             case R.id.btn_Reset:
                 quizNum=0;
                 score = 0;
-                btn_O.setClickable(true);
-                btn_X.setClickable(true);
-                imageViewOXFlag.setAlpha(1f);
-                btn_O.setAlpha(1f);
-                btn_X.setAlpha(1f);
-                textViewProgress.setAlpha(1f);
-                textViewScore.setAlpha(1f);
-                textViewQuiz.setAlpha(1f);
                 textViewAnswer.setVisibility(View.GONE);
                 quizSet();
                 break;
@@ -195,14 +166,6 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
         int id;
 
         quizNum++;
-        btn_O.setClickable(true);
-        btn_X.setClickable(true);
-        imageViewOXFlag.setAlpha(1f);
-        btn_O.setAlpha(1f);
-        btn_X.setAlpha(1f);
-        textViewProgress.setAlpha(1f);
-        textViewScore.setAlpha(1f);
-        textViewQuiz.setAlpha(1f);
         textViewScore.setText(" Score: " + score);
         textViewProgress.setText(quizNum + " of 10");
 
@@ -243,8 +206,6 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
             }
         }
         imageViewOXFlag.setImageBitmap(bitmap);
-
-
     }
 
     public void delayResult() {
@@ -254,7 +215,7 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
                 quizSet();
                 textViewAnswer.setVisibility(View.GONE);
             }
-        }, 500);//0.5초 지연
+        }, 500);//지연
     }
 
     public void delayGameOver() {
