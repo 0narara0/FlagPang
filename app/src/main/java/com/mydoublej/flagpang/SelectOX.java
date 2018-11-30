@@ -1,5 +1,6 @@
 package com.mydoublej.flagpang;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.AssetManager;
@@ -63,6 +64,7 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
 
 
 
+//    @SuppressLint("ClickableViewAccessibility")
     @Override
     public void onClick(View v) {
         int result=0; //0-textviewAnswer x, 1-정답 ,2-오답
@@ -72,22 +74,22 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
                 if(country==countryQuiz) result = 1;
                 else result = 2;
 
-                btn_O.setOnTouchListener(new View.OnTouchListener() {
-                    @Override
-                    public boolean onTouch(View v, MotionEvent event) {
-                        switch (event.getAction()){
-                            case MotionEvent.ACTION_DOWN:{
-                                btn_O.setBackgroundResource(R.drawable.btn_o1);
-                                break;
-                            }
-                            case MotionEvent.ACTION_UP:{
-                                btn_O.setBackgroundResource(R.drawable.btn_o2);
-                                break;
-                            }
-                        }
-                        return false;
-                    }
-                });
+//                btn_O.setOnTouchListener(new View.OnTouchListener() {
+//                    @Override
+//                    public boolean onTouch(View v, MotionEvent event) {
+//                        switch (event.getAction()){
+//                            case MotionEvent.ACTION_DOWN:{
+//                                btn_O.setBackgroundResource(R.drawable.btn_o1);
+//                                break;
+//                            }
+//                            case MotionEvent.ACTION_UP:{
+//                                btn_O.setBackgroundResource(R.drawable.btn_o2);
+//                                break;
+//                            }
+//                        }
+//                        return false;
+//                    }
+//                });
                 if(quizNum>=10){
 
                 result = 0;
@@ -101,22 +103,22 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
             case R.id.btn_X:
                 if(country!=countryQuiz) result = 1;
                 else result = 2;
-                btn_X.setOnTouchListener(new View.OnTouchListener() {
-                    @Override
-                    public boolean onTouch(View v, MotionEvent event) {
-                        switch (event.getAction()){
-                            case MotionEvent.ACTION_DOWN:{
-                                btn_X.setBackgroundResource(R.drawable.btn_x1);
-                                break;
-                            }
-                            case MotionEvent.ACTION_UP:{
-                                btn_X.setBackgroundResource(R.drawable.btn_x2);
-                                break;
-                            }
-                        }
-                        return false;
-                    }
-                });
+//                btn_X.setOnTouchListener(new View.OnTouchListener() {
+//                    @Override
+//                    public boolean onTouch(View v, MotionEvent event) {
+//                        switch (event.getAction()){
+//                            case MotionEvent.ACTION_DOWN:{
+//                                btn_X.setBackgroundResource(R.drawable.btn_x1);
+//                                break;
+//                            }
+//                            case MotionEvent.ACTION_UP:{
+//                                btn_X.setBackgroundResource(R.drawable.btn_x2);
+//                                break;
+//                            }
+//                        }
+//                        return false;
+//                    }
+//                });
                 if(quizNum>=10){
                     result = 0;
                     country = "";
