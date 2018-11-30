@@ -11,6 +11,8 @@ import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -90,6 +92,8 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         }
         // 오답일 때
         else {
+            Animation shake = AnimationUtils.loadAnimation(this,R.anim.shake);
+            imageViewFlag.startAnimation(shake);
             textViewAnswer.setText("Incorrect!" + "\n" + flag.toString());
             textViewAnswer.setTextColor(Color.RED);
         }

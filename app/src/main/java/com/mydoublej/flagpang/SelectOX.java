@@ -12,6 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -148,6 +150,8 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
             delayResult();
         }
         else if(result == 2) {
+            Animation shake = AnimationUtils.loadAnimation(this,R.anim.shake);
+            imageViewOXFlag.startAnimation(shake);
             textViewAnswer.setVisibility(View.VISIBLE);
             textViewAnswer.setText("INCORRECT!!" + "\n" + country);
             textViewAnswer.setTextColor(Color.RED);

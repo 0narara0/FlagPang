@@ -6,7 +6,10 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 public class FlagPang extends AppCompatActivity implements View.OnClickListener {
@@ -21,8 +24,13 @@ public class FlagPang extends AppCompatActivity implements View.OnClickListener 
         ((Button)findViewById(R.id.btn_country)).setOnClickListener(this);
         ((Button)findViewById(R.id.btn_ox)).setOnClickListener(this);
         ((Button)findViewById(R.id.btn_flag)).setOnClickListener(this);
-
-        //((ImageView)findViewById(R.id.imageView)).setImageResource(R.drawable.map);
+        //애니메이션xml 파일을 로드
+        Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.wave);
+        ImageView imageViewFlagpang = findViewById(R.id.imageViewFlagpang);
+        //애니메이션을 시작
+        imageViewFlagpang.startAnimation(animation);
+        //화면을 갱신
+        imageViewFlagpang.invalidate();
 
         dbOpenHelper = DBOpenHelper.getInstance(this);
     }
