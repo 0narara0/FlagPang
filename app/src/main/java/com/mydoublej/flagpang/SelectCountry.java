@@ -90,7 +90,7 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         }
         // 오답일 때
         else {
-            textViewAnswer.setText("Incoorrect!" + "\n" + flag.toString());
+            textViewAnswer.setText("Incorrect!" + "\n" + flag.toString());
             textViewAnswer.setTextColor(Color.RED);
         }
 

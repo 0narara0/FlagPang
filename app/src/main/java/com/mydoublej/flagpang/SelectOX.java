@@ -1,11 +1,13 @@
 package com.mydoublej.flagpang;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -26,7 +28,7 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
     TextView textViewQuiz, textViewProgress, textViewScore, textViewAnswer;
     int score, quizNum;
     String country,countryQuiz;
-    Button btn_GameOver, btn_O, btn_X;
+    Button btn_O, btn_X;
 
     Handler handler = new Handler();
 
@@ -43,8 +45,6 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
         btn_X.setOnClickListener(this);
         ((Button)findViewById(R.id.btn_Reset)).setOnClickListener(this);
         ((Button)findViewById(R.id.btn_Main)).setOnClickListener(this);
-        btn_GameOver = findViewById(R.id.btn_GameOver);
-        btn_GameOver.setOnClickListener(this);
         textViewQuiz = findViewById(R.id.textViewQuiz);
         textViewProgress = findViewById(R.id.textViewProgress);
         textViewScore = findViewById(R.id.textViewScore);
@@ -85,7 +85,26 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
                         return false;
                     }
                 });
+
+
+                if(quizNum>=10){
+
+                result = 0;
+                country = "";
+                textViewProgress.setText("game over");
+                delayGameOver();
+                imageViewOXFlag.setAlpha(0.2f);
+                btn_O.setAlpha(0.2f);
+                btn_X.setAlpha(0.2f);
+                textViewProgress.setAlpha(0.2f);
+                textViewScore.setAlpha(0.2f);
+                textViewQuiz.setAlpha(0.2f);
+                textViewAnswer.setVisibility(View.GONE);
+                btn_O.setClickable(false);
+                btn_X.setClickable(false);
                 break;
+
+            }
 
             case R.id.btn_X:
                 if(country!=countryQuiz) result = 1;
@@ -105,17 +124,32 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
                         return false;
                     }
                 });
+                if(quizNum>=10){
 
+                    result = 0;
+                    country = "";
+                    textViewProgress.setText("game over");
+                    delayGameOver();
+                    imageViewOXFlag.setAlpha(0.2f);
+                    btn_O.setAlpha(0.2f);
+                    btn_X.setAlpha(0.2f);
+                    textViewProgress.setAlpha(0.2f);
+                    textViewScore.setAlpha(0.2f);
+                    textViewQuiz.setAlpha(0.2f);
+                    textViewAnswer.setVisibility(View.GONE);
+                    btn_O.setClickable(false);
+                    btn_X.setClickable(false);
+                    break;
+
+
+                }
                 break;
 
             case R.id.btn_Reset:
-                btn_GameOver.setVisibility(View.GONE);
                 quizNum=0;
                 score = 0;
                 btn_O.setClickable(true);
                 btn_X.setClickable(true);
-                textViewScore.setText(" Score : " + score);
-                textViewProgress.setText(quizNum + " of 10");
                 imageViewOXFlag.setAlpha(1f);
                 btn_O.setAlpha(1f);
                 btn_X.setAlpha(1f);
@@ -133,23 +167,6 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
                 finish();
                 break;
 
-            case R.id.btn_GameOver:
-                btn_GameOver.setVisibility(View.GONE);
-                quizNum=0;
-                score = 0;
-                btn_O.setClickable(true);
-                btn_X.setClickable(true);
-                textViewScore.setText(" Score : " + score);
-                textViewProgress.setText(quizNum + " of 10");
-                imageViewOXFlag.setAlpha(1f);
-                btn_O.setAlpha(1f);
-                btn_X.setAlpha(1f);
-                textViewProgress.setAlpha(1f);
-                textViewScore.setAlpha(1f);
-                textViewQuiz.setAlpha(1f);
-                textViewAnswer.setVisibility(View.GONE);
-                quizSet();
-                break;
 
         }
         if(result == 1) {
@@ -177,9 +194,15 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
         String continent, image, level;
         int id;
 
-        btn_GameOver.setVisibility(View.GONE);
         quizNum++;
-
+        btn_O.setClickable(true);
+        btn_X.setClickable(true);
+        imageViewOXFlag.setAlpha(1f);
+        btn_O.setAlpha(1f);
+        btn_X.setAlpha(1f);
+        textViewProgress.setAlpha(1f);
+        textViewScore.setAlpha(1f);
+        textViewQuiz.setAlpha(1f);
         textViewScore.setText(" Score: " + score);
         textViewProgress.setText(quizNum + " of 10");
 
@@ -220,19 +243,8 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
             }
         }
         imageViewOXFlag.setImageBitmap(bitmap);
-        if(quizNum>=10){
-            btn_GameOver.setVisibility(View.VISIBLE);
-            imageViewOXFlag.setAlpha(0.2f);
-            btn_O.setAlpha(0.2f);
-            btn_X.setAlpha(0.2f);
-            textViewProgress.setAlpha(0.2f);
-            textViewScore.setAlpha(0.2f);
-            textViewQuiz.setAlpha(0.2f);
-            textViewAnswer.setVisibility(View.GONE);
-            btn_O.setClickable(false);
-            btn_X.setClickable(false);
 
-        }
+
     }
 
     public void delayResult() {
@@ -243,6 +255,23 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
                 textViewAnswer.setVisibility(View.GONE);
             }
         }, 500);//0.5초 지연
+    }
+
+    public void delayGameOver() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("GAME OVER");
+        builder.setMessage("score : " + score);
+        builder.setPositiveButton("다시 게임하기",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        score = 0;
+                        quizNum = 0;
+                        quizSet();
+                    }
+                });
+        builder.show();
     }
 
     @Override
