@@ -119,314 +119,314 @@ public class DBOpenHelper extends SQLiteOpenHelper {
 
         //europe
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'albania', 'europe', 'albania.png','1')";
+                "VALUES(null, 'albania','알바니아', 'europe', 'albania.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'andorra', 'europe', 'andorra.png','1')";
+                "VALUES(null, 'andorra','안도라', 'europe', 'andorra.png','3')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'austria', 'europe', 'austria.png','1')";
+                "VALUES(null, 'austria','오스트리아', 'europe', 'austria.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'belarus', 'europe', 'belarus.png','1')";
+                "VALUES(null, 'belarus','벨라루스' ,'europe', 'belarus.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'belgium', 'europe', 'belgium.png','1')";
+                "VALUES(null, 'belgium','벨기에', 'europe', 'belgium.png','1')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'bosnia_and_herzegovina', 'europe', 'bosnia_and_herzegovina.png','1')";
+                "VALUES(null, 'bosnia_and_herzegovina','보스니아 헤르체고비나' ,'europe', 'bosnia_and_herzegovina.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'bulgaria', 'europe', 'bulgaria.png','1')";
+                "VALUES(null, 'bulgaria','불가리아', 'europe', 'bulgaria.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'croatia', 'europe', 'croatia.png','1')";
+                "VALUES(null, 'croatia','크로아티아', 'europe', 'croatia.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'denmark', 'europe', 'denmark.png','1')";
+                "VALUES(null, 'denmark','덴마크', 'europe', 'denmark.png','1')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'estonia', 'europe', 'estonia.png','1')";
+                "VALUES(null, 'estonia','에스토니아', 'europe', 'estonia.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'finland', 'europe', 'finland.png','1')";
+                "VALUES(null, 'finland','핀란드', 'europe', 'finland.png','1')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'france', 'europe', 'france.png','1')";
+                "VALUES(null, 'france','프랑스', 'europe', 'france.png','1')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'germany', 'europe', 'germany.png','1')";
+                "VALUES(null, 'germany','독일', 'europe', 'germany.png','1')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'greece', 'europe', 'greece.png','1')";
+                "VALUES(null, 'greece','그리스', 'europe', 'greece.png','1')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'hungary', 'europe', 'hungary.png','1')";
+                "VALUES(null, 'hungary','헝가리', 'europe', 'hungary.png','1')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'iceland', 'europe', 'iceland.png','1')";
+                "VALUES(null, 'iceland','아이슬란드' ,'europe', 'iceland.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'ireland', 'europe', 'ireland.png','1')";
+                "VALUES(null, 'ireland','아일랜드', 'europe', 'ireland.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'italy', 'europe', 'italy.png','1')";
+                "VALUES(null, 'italy','이탈리아', 'europe', 'italy.png','1')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'kosovo', 'europe', 'kosovo.png','1')";
+                "VALUES(null, 'kosovo','코소보', 'europe', 'kosovo.png','3')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'latvia', 'europe', 'latvia.png','1')";
+                "VALUES(null, 'latvia','라트비아', 'europe', 'latvia.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'liechtenstein', 'europe', 'liechtenstein.png','1')";
+                "VALUES(null, 'liechtenstein','리히텐슈타인', 'europe', 'liechtenstein.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'lithuania', 'europe', 'lithuania.png','1')";
+                "VALUES(null, 'lithuania','리투아니아','europe', 'lithuania.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'luxembourg', 'europe', 'luxembourg.png','1')";
+                "VALUES(null, 'luxembourg','룩셈부르크', 'europe', 'luxembourg.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'macedonia', 'europe', 'macedonia.png','1')";
+                "VALUES(null, 'macedonia','마케도니아', 'europe', 'macedonia.png','3')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'malta', 'europe', 'malta.png','1')";
+                "VALUES(null, 'malta','몰타', 'europe', 'malta.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'moldova', 'europe', 'moldova.png','1')";
+                "VALUES(null, 'moldova','몰도바', 'europe', 'moldova.png','3')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'monaco', 'europe', 'monaco.png','1')";
+                "VALUES(null, 'monaco','모나코', 'europe', 'monaco.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'montenegro', 'europe', 'montenegro.png','1')";
+                "VALUES(null, 'montenegro','몬테네그로', 'europe', 'montenegro.png','3')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'norway', 'europe', 'norway.png','1')";
+                "VALUES(null, 'norway','노르웨이', 'europe', 'norway.png','1')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'poland', 'europe', 'poland.png','1')";
+                "VALUES(null, 'poland','폴란드', 'europe', 'poland.png','1')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'portugal', 'europe', 'portugal.png','1')";
+                "VALUES(null, 'portugal','포르투갈', 'europe', 'portugal.png','1')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'romania', 'europe', 'romania.png','1')";
+                "VALUES(null, 'romania','루마니아', 'europe', 'romania.png','1')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'russia', 'europe', 'russia.png','1')";
+                "VALUES(null, 'russia','러시아', 'europe', 'russia.png','1')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'san_marino', 'europe', 'san_marino.png','1')";
+                "VALUES(null, 'san_marino','산마리노', 'europe', 'san_marino.png','3')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'serbia', 'europe', 'serbia.png','1')";
+                "VALUES(null, 'serbia','세르비아', 'europe', 'serbia.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'slovakia', 'europe', 'slovakia.png','1')";
+                "VALUES(null, 'slovakia','슬로바키아','europe', 'slovakia.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'slovenia', 'europe', 'slovenia.png','1')";
+                "VALUES(null, 'slovenia','슬로베니아', 'europe', 'slovenia.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'spain', 'europe', 'spain.png','1')";
+                "VALUES(null, 'spain','스페인', 'europe', 'spain.png','1')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'sweden', 'europe', 'sweden.png','1')";
+                "VALUES(null, 'sweden','스웨덴', 'europe', 'sweden.png','1')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'switzerland', 'europe', 'switzerland.png','1')";
+                "VALUES(null, 'switzerland','스위스', 'europe', 'switzerland.png','1')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'the_czech_republic', 'europe', 'the_czech_republic.png','1')";
+                "VALUES(null, 'the_czech_republic','체코', 'europe', 'the_czech_republic.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'the_netherlands', 'europe', 'the_netherlands.png','1')";
+                "VALUES(null, 'the_netherlands','네덜란드', 'europe', 'the_netherlands.png','1')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'the_united_kingdom', 'europe', 'the_united_kingdom.png','1')";
+                "VALUES(null, 'the_united_kingdom','영국', 'europe', 'the_united_kingdom.png','1')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'the_vatican_city', 'europe', 'the_vatican_city.png','1')";
+                "VALUES(null, 'the_vatican_city','바티칸 시국', 'europe', 'the_vatican_city.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'turkey', 'europe', 'turkey.png','1')";
+                "VALUES(null, 'turkey','터키','europe', 'turkey.png','1')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'ukraine', 'europe', 'ukraine.png','1')";
+                "VALUES(null, 'ukraine', '우크라이나','europe', 'ukraine.png','2')";
         db.execSQL(sql);
 
         //africa
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'algeria', 'africa', 'algeria.png','1')";
+                "VALUES(null, 'algeria','알제리', 'africa', 'algeria.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'angola', 'africa', 'angola.png','1')";
+                "VALUES(null, 'angola','앙골라' ,'africa', 'angola.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'benin', 'africa', 'benin.png','1')";
+                "VALUES(null, 'benin','베냉', 'africa', 'benin.png','3')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'botswana', 'africa', 'botswana.png','1')";
+                "VALUES(null, 'botswana','보츠와나', 'africa', 'botswana.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'burkina_faso', 'africa', 'burkina_faso.png','1')";
+                "VALUES(null, 'burkina_faso','부르키나파소', 'africa', 'burkina_faso.png','3')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'burundi', 'africa', 'burundi.png','1')";
+                "VALUES(null, 'burundi','부루나이', 'africa', 'burundi.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'cameroon', 'africa', 'cameroon.png','1')";
+                "VALUES(null, 'cameroon','카메룬', 'africa', 'cameroon.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'cape_verde', 'africa', 'cape_verde.png','1')";
+                "VALUES(null, 'cape_verde', '카보베르데','africa', 'cape_verde.png','3')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'chad', 'africa', 'chad.png','1')";
+                "VALUES(null, 'chad','차드', 'africa', 'chad.png','3')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'cote_d_ivoire', 'africa', 'cote_d_ivoire.png','1')";
+                "VALUES(null, 'cote_d_ivoire','코트디부아르', 'africa', 'cote_d_ivoire.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'djibouti', 'africa', 'djibouti.png','1')";
+                "VALUES(null, 'djibouti','지부티' ,'africa', 'djibouti.png','3')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'egypt', 'africa', 'egypt.png','1')";
+                "VALUES(null, 'egypt','이집트', 'africa', 'egypt.png','1')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'equatorial_guinea', 'africa', 'equatorial_guinea.png','1')";
+                "VALUES(null, 'equatorial_guinea','적도 기니', 'africa', 'equatorial_guinea.png','3')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'eritrea', 'africa', 'eritrea.png','1')";
+                "VALUES(null, 'eritrea','에리트레아', 'africa', 'eritrea.png','3')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'ethiopia', 'africa', 'ethiopia.png','1')";
+                "VALUES(null, 'ethiopia','에티오피아', 'africa', 'ethiopia.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'gabon', 'africa', 'gabon.png','1')";
+                "VALUES(null, 'gabon','가봉' ,'africa', 'gabon.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'ghana', 'africa', 'ghana.png','1')";
+                "VALUES(null, 'ghana','가나', 'africa', 'ghana.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'guinea', 'africa', 'guinea.png','1')";
+                "VALUES(null, 'guinea','기니', 'africa', 'guinea.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'guinea_bissau', 'africa', 'guinea_bissau.png','1')";
+                "VALUES(null, 'guinea_bissau','기니비사우','africa', 'guinea_bissau.png','3')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'kenya', 'africa', 'kenya.png','1')";
+                "VALUES(null, 'kenya','케냐', 'africa', 'kenya.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'lesotho', 'africa', 'lesotho.png','1')";
+                "VALUES(null, 'lesotho','레소토', 'africa', 'lesotho.png','3')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'liberia', 'africa', 'liberia.png','1')";
+                "VALUES(null, 'liberia','라이베리아' ,'africa', 'liberia.png','3')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'libya', 'africa', 'libya.png','1')";
+                "VALUES(null, 'libya','리비아', 'africa', 'libya.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'madagascar', 'africa', 'madagascar.png','1')";
+                "VALUES(null, 'madagascar','마다가스카르','africa', 'madagascar.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'malawi', 'africa', 'malawi.png','1')";
+                "VALUES(null, 'malawi','말라위' ,'africa', 'malawi.png','3')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'mali', 'africa', 'mali.png','1')";
+                "VALUES(null, 'mali','말리', 'africa', 'mali.png','3')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'mauritania', 'africa', 'mauritania.png','1')";
+                "VALUES(null, 'mauritania','모리타니', 'africa', 'mauritania.png','3')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'mauritius', 'africa', 'mauritius.png','1')";
-        db.execSQL(sql);
-
-        sql = "INSERT INTO flag " +
-                "VALUES(null, 'morocco', 'africa', 'morocco.png','1')";
+                "VALUES(null, 'mauritius','모리셔스', 'africa', 'mauritius.png','2')";
         db.execSQL(sql);
 
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'mozambique', 'africa', 'mozambique.png','1')";
+                "VALUES(null, 'morocco','모로코', 'africa', 'morocco.png','2')";
         db.execSQL(sql);
 
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'namibia', 'africa', 'namibia.png','1')";
+                "VALUES(null, 'mozambique','모잠비크' ,'africa', 'mozambique.png','2')";
         db.execSQL(sql);
 
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'niger', 'africa', 'niger.png','1')";
+                "VALUES(null, 'namibia','나미비아', 'africa', 'namibia.png','3')";
         db.execSQL(sql);
 
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'nigeria', 'africa', 'nigeria.png','1')";
+                "VALUES(null, 'niger','니제르', 'africa', 'niger.png','3')";
+        db.execSQL(sql);
+
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'nigeria','나이지리아','africa', 'nigeria.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'rwanda', 'africa', 'rwanda.png','1')";
+                "VALUES(null, 'rwanda', '르완다', 'africa', 'rwanda.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'sao_tome_and_principe', 'africa', 'sao_tome_and_principe.png','1')";
+                "VALUES(null, 'sao_tome_and_principe','상투메 프린시페', 'africa', 'sao_tome_and_principe.png','3')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'senegal', 'africa', 'senegal.png','1')";
+                "VALUES(null, 'senegal','세네갈', 'africa', 'senegal.png','3')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'sierra_leone', 'africa', 'sierra_leone.png','1')";
+                "VALUES(null, 'sierra_leone','시에라리온', 'africa', 'sierra_leone.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'somalia', 'africa', 'somalia.png','1')";
+                "VALUES(null, 'somalia','소말리아', 'africa', 'somalia.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'south_africa', 'africa', 'south_africa.png','1')";
+                "VALUES(null, 'south_africa','남아프리카 공화국', 'africa', 'south_africa.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'south_sudan', 'africa', 'south_sudan.png','1')";
+                "VALUES(null, 'south_sudan','남수단','africa', 'south_sudan.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'sudan', 'africa', 'sudan.png','1')";
+                "VALUES(null, 'sudan','수단', 'africa', 'sudan.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'swaziland', 'africa', 'swaziland.png','1')";
+                "VALUES(null, 'swaziland','에스와티니', 'africa', 'swaziland.png','3')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'tanzania', 'africa', 'tanzania.png','1')";
+                "VALUES(null, 'tanzania','탄자니아', 'africa', 'tanzania.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'the_central_african_republic', 'africa', 'the_central_african_republic.png','1')";
+                "VALUES(null, 'the_central_african_republic','중앙아프리카 공화국','africa', 'the_central_african_republic.png','3')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'the_comoros', 'africa', 'the_comoros.png','1')";
+                "VALUES(null, 'the_comoros','코모로', 'africa', 'the_comoros.png','3')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'the_democratic_republic_of_congo', 'africa', 'the_democratic_republic_of_congo.png','1')";
+                "VALUES(null, 'the_democratic_republic_of_congo','콩고 민주 공화국', 'africa', 'the_democratic_republic_of_congo.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'the_gambia', 'africa', 'the_gambia.png','1')";
+                "VALUES(null, 'the_gambia','감비아', 'africa', 'the_gambia.png','3')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'the_republic_of_the_congo', 'africa', 'the_republic_of_the_congo.png','1')";
+                "VALUES(null, 'the_republic_of_the_congo','콩고 공화국', 'africa', 'the_republic_of_the_congo.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'the_seychelles', 'africa', 'the_seychelles.png','1')";
+                "VALUES(null, 'the_seychelles', '세이셸', 'africa', 'the_seychelles.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'togo', 'africa', 'togo.png','1')";
+                "VALUES(null, 'togo','토고', 'africa', 'togo.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'tunisia', 'africa', 'tunisia.png','1')";
+                "VALUES(null, 'tunisia','튀니지' ,'africa', 'tunisia.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'uganda', 'africa', 'uganda.png','1')";
+                "VALUES(null, 'uganda','우간다', 'africa', 'uganda.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'western_sahara', 'africa', 'western_sahara.png','1')";
+                "VALUES(null, 'western_sahara','서사하라', 'africa', 'western_sahara.png','3')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'zambia', 'africa', 'zambia.png','1')";
+                "VALUES(null, 'zambia','잠비아' ,'africa', 'zambia.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'zimbabwe', 'africa', 'zimbabwe.png','1')";
+                "VALUES(null, 'zimbabwe','짐바브웨', 'africa', 'zimbabwe.png','2')";
         db.execSQL(sql);
 
         //north-america
