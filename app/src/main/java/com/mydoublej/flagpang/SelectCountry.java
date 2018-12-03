@@ -190,8 +190,10 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         while(iterDBPK.hasNext() && iterButtonIndex.hasNext()) {
             int index = iterButtonIndex.next();
             String country = arrayList.get(iterDBPK.next()).getCountry();
-            buttonCountry[index].setText(country);
-            buttonCountry[index].setTag(country);
+            String country_kor = arrayList.get(iterDBPK.next()).getCountryKor();
+
+            buttonCountry[index].setText(country_kor);
+            buttonCountry[index].setTag(country_kor);
         }
     }
 

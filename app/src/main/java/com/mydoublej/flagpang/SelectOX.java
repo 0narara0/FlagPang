@@ -30,7 +30,7 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
     ImageView imageViewOXFlag;
     TextView textViewQuiz, textViewProgress, textViewScore, textViewAnswer;
     int score, quizNum;
-    String country,countryQuiz;
+    String country,country_kor,countryQuiz;
     Button btn_O, btn_X;
 
     Handler handler = new Handler();
@@ -193,7 +193,9 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
 
         int randomIndex = (int) ((Math.random()) * 10 % 2);//정답 오답을 랜덤하게 뽑음
         countryQuiz = arrayList.get(rid[randomIndex]).getCountry().toString();
-        textViewQuiz.setText(countryQuiz);
+        country_kor = arrayList.get(rid[randomIndex]).getCountryKor().toString();
+//        textViewQuiz.setText(countryQuiz);
+        textViewQuiz.setText(country_kor);
 
         try {
             is = am.open(filename) ;
