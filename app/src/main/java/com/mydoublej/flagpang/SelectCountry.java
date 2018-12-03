@@ -124,7 +124,7 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         // DB 가져오기
         ArrayList<GetRecord> arrayList = dbOpenHelper.selectGetRecord();
         int member = arrayList.size();
-        int rid =((int) (Math.random() * 100)) % member;
+        int rid =(int) (Math.random() * member);
 
         // 이미지뷰에 국기 적용
         setCountryImageView(arrayList, rid);
@@ -173,7 +173,7 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         setDBPK.add(randomID);// image에 적용한 나라 넣어줌.
         int arraySize = arrayList.size();
         while (setDBPK.size() < buttonCount) {// set은 중복된 값을 허용하지 않음. 다른 수 4개가 저장되면 루프 탈출
-            int num = (int)(Math.random() * 100) % arraySize +1;
+            int num = (int)(Math.random() * arraySize);
             setDBPK.add(num);
         }
 

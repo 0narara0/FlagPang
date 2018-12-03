@@ -24,7 +24,7 @@ import java.util.Iterator;
 
 public class SelectFlag extends AppCompatActivity implements View.OnClickListener{
     int score = 0, quizNum = 0, imageCount = 4, indexCorrect;
-    String country, countryQuiz;
+    String country, country_kor, countryQuiz;
     private  DBOpenHelper dbOpenHelper;
     TextView flagScore, flagProgress, flagSelectCountry, textViewAnswer;
 //    ImageView flagImage1,flagImage2,flagImage3,flagImage4;
@@ -128,7 +128,7 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
          // DB 가져오기
         ArrayList<GetRecord> arrayList = dbOpenHelper.selectGetRecord();
         int member = arrayList.size();
-        int rid =((int) (Math.random() * 100)) % member;
+        int rid =(int) (Math.random() * member);
 
         // 이미지뷰에 국기 적용
         setCountryTextView(arrayList, rid);
@@ -138,7 +138,10 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
 
     public void setCountryTextView(ArrayList<GetRecord> arrayList, int rid) {
         country = arrayList.get(rid).getCountry().toString();
-        flagSelectCountry.setText(country);
+        country_kor = arrayList.get(rid).getCountryKor().toString();
+
+ //       flagSelectCountry.setText(country);
+        flagSelectCountry.setText(country_kor);
     }
 
     public void setContryImage (ArrayList<GetRecord>  arrayList, int randomID) {
@@ -148,7 +151,7 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
         setDBPK.add(randomID);// image에 적용한 나라 넣어줌.
         int arraySize = arrayList.size();
         while (setDBPK.size() < imageCount) {// set은 중복된 값을 허용하지 않음. 다른 수 4개가 저장되면 루프 탈출
-            int num = (int)(Math.random() * 100) % arraySize +1;
+            int num = (int)(Math.random() * arraySize);
             setDBPK.add(num);
         }
 

@@ -36,6 +36,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
         sql = "CREATE TABLE flag" +
                 "(id integer NOT NULL UNIQUE PRIMARY KEY AUTOINCREMENT, " +
                 "country text NOT NULL UNIQUE, " +
+                "country_kor text NOT NULL UNIQUE, " +
                 "continent text NOT NULL, " +
                 "image text NOT NULL UNIQUE," +
                 "level text NOT NULL);";
@@ -56,17 +57,18 @@ public class DBOpenHelper extends SQLiteOpenHelper {
 
         ArrayList<GetRecord> arrayList = new ArrayList<>();
         GetRecord getRecord;
-        String country, continent, image, level;
+        String country, country_kor, continent, image, level;
         int id;
 
         while(cursor.moveToNext()){
             id = cursor.getInt(cursor.getColumnIndex("id"));
             country = cursor.getString(cursor.getColumnIndex("country"));
+            country_kor = cursor.getString(cursor.getColumnIndex("country_kor"));
             continent = cursor.getString(cursor.getColumnIndex("continent"));
             image = cursor.getString(cursor.getColumnIndex("image"));
             level = cursor.getString(cursor.getColumnIndex("level"));
 
-            getRecord = new GetRecord(id, country, continent, image, level);
+            getRecord = new GetRecord(id, country, country_kor,continent, image, level);
             arrayList.add(getRecord);
         }
 
@@ -75,19 +77,19 @@ public class DBOpenHelper extends SQLiteOpenHelper {
 
     private void table_inputdata(SQLiteDatabase db){
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'argentina', 'samerica', 'argentina.png','1')";
+                "VALUES(null, 'argentina','아르헨티나', 'samerica', 'argentina.png','1')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'bolivia', 'samerica', 'bolivia.png','1')";
+                "VALUES(null, 'bolivia','볼리비아', 'samerica', 'bolivia.png','1')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'brazil', 'samerica', 'brazil.png','1')";
+                "VALUES(null, 'brazil','브라질', 'samerica', 'brazil.png','1')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'chile', 'samerica', 'chile.png','1')";
+                "VALUES(null, 'chile', '칠레', 'samerica', 'chile.png','1')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'colombia', 'samerica', 'colombia.png','1')";
+                "VALUES(null, 'colombia','콜롬비아', 'samerica', 'colombia.png','1')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
                 "VALUES(null, 'ecuador', 'samerica', 'ecuador.png','1')";

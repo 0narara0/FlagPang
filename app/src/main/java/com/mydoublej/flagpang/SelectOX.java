@@ -180,8 +180,8 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
         int member = arrayList.size();
 
         int[] rid = new int[2];
-        rid[0] = ((int) (Math.random() * 100)) % member;//정답
-        rid[1] = ((int) (Math.random() * 100)) % member;//오답
+        rid[0] = (int) (Math.random() * member);//정답
+        rid[1] = (int) (Math.random() * member);//오답
         AssetManager am = getResources().getAssets();
         InputStream is = null ;
 
