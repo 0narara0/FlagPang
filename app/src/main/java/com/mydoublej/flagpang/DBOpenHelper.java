@@ -71,7 +71,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
             getRecord = new GetRecord(id, country, country_kor,continent, image, level);
             arrayList.add(getRecord);
         }
-
+        mdb.close();
         return arrayList;
     }
 
