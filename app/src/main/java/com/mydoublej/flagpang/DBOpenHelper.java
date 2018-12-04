@@ -343,23 +343,18 @@ public class DBOpenHelper extends SQLiteOpenHelper {
         sql = "INSERT INTO flag " +
                 "VALUES(null, 'mauritius','모리셔스', 'africa', 'mauritius.png','2')";
         db.execSQL(sql);
-
         sql = "INSERT INTO flag " +
                 "VALUES(null, 'morocco','모로코', 'africa', 'morocco.png','2')";
         db.execSQL(sql);
-
         sql = "INSERT INTO flag " +
                 "VALUES(null, 'mozambique','모잠비크' ,'africa', 'mozambique.png','2')";
         db.execSQL(sql);
-
         sql = "INSERT INTO flag " +
                 "VALUES(null, 'namibia','나미비아', 'africa', 'namibia.png','3')";
         db.execSQL(sql);
-
         sql = "INSERT INTO flag " +
                 "VALUES(null, 'niger','니제르', 'africa', 'niger.png','3')";
         db.execSQL(sql);
-
         sql = "INSERT INTO flag " +
                 "VALUES(null, 'nigeria','나이지리아','africa', 'nigeria.png','2')";
         db.execSQL(sql);
@@ -501,61 +496,55 @@ public class DBOpenHelper extends SQLiteOpenHelper {
 
         //oceania(18)
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'australia', 'oceania', 'australia.png','1')";
-        db.execSQL(sql);
-
-        sql = "INSERT INTO flag " +
-                "VALUES(null, 'cook_islands', 'oceania', 'cook_islands.png','1')";
+                "VALUES(null, 'australia', '오스트레일리아', 'oceania', 'australia.png','1')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'east_timor', 'oceania', 'east_timor.png','1')";
+                "VALUES(null, 'cook_islands', '쿡 제도', 'oceania', 'cook_islands.png','3')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'fiji', 'oceania', 'fiji.png','1')";
-        db.execSQL(sql);
-        /*
-        sql = "INSERT INTO flag " +
-                "VALUES(null, 'indonesia', 'oceania', 'indonesia.png','1')";
-        db.execSQL(sql);*/
-
-        sql = "INSERT INTO flag " +
-                "VALUES(null, 'kiribati', 'oceania', 'kiribati.png','1')";
+                "VALUES(null, 'east_timor', '동티모르', 'oceania', 'east_timor.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'micronesia', 'oceania', 'micronesia.png','1')";
+                "VALUES(null, 'fiji', '\n', 'oceania', 'fiji.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'nauru', 'oceania', 'nauru.png','1')";
+                "VALUES(null, 'kiribati', '키리바시', 'oceania', 'kiribati.png','3')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'new_zealand', 'oceania', 'new_zealand.png','1')";
+                "VALUES(null, 'micronesia', '미크로네시아 연방', 'oceania', 'micronesia.png','3')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'niue', 'oceania', 'niue.png','1')";
+                "VALUES(null, 'nauru', '나우루', 'oceania', 'nauru.png','3')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'palau', 'oceania', 'palau.png','1')";
+                "VALUES(null, 'new_zealand', '뉴질랜드', 'oceania', 'new_zealand.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'papua_new_guinea', 'oceania', 'papua_new_guinea.png','1')";
+                "VALUES(null, 'niue', '니우에', 'oceania', 'niue.png','3')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'samoa', 'oceania', 'samoa.png','1')";
+                "VALUES(null, 'palau', '팔라우', 'oceania', 'palau.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'the_marshall_islands', 'oceania', 'the_marshall_islands.png','1')";
+                "VALUES(null, 'papua_new_guinea', '파푸아뉴기니', 'oceania', 'papua_new_guinea.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'the_solomon_islands', 'oceania', 'the_solomon_islands.png','1')";
+                "VALUES(null, 'samoa', '사모아', 'oceania', 'samoa.png','3')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'tonga','oceania', 'tonga.png','1')";
+                "VALUES(null, 'the_marshall_islands', '마셜 제도', 'oceania', 'the_marshall_islands.png','3')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'tuvalu', 'oceania', 'tuvalu.png','1')";
+                "VALUES(null, 'the_solomon_islands', '솔로몬 제도', 'oceania', 'the_solomon_islands.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'vanuatu', 'oceania', 'vanuatu.png','1')";
+                "VALUES(null, 'tonga','통가', 'oceania', 'tonga.png','2')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'tuvalu', '투발루', 'oceania', 'tuvalu.png','3')";
+        db.execSQL(sql);
+        sql = "INSERT INTO flag " +
+                "VALUES(null, 'vanuatu', '바누아투', 'oceania', 'vanuatu.png','3')";
         db.execSQL(sql);
 
 
@@ -673,7 +662,6 @@ public class DBOpenHelper extends SQLiteOpenHelper {
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
                 "VALUES(null, 'thailand', '태국', 'asia', 'thailand.png','2')";
-
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
                 "VALUES(null, 'the_people_s_republic_of_china', '중화인민공화국', 'asia', 'the_people_s_republic_of_china.png','2')";
