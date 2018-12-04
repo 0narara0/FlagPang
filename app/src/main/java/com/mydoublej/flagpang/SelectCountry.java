@@ -186,6 +186,7 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         // 버튼에 텍스트 적용
         Iterator<Integer> iterDBPK =  setDBPK.iterator();
         Iterator<Integer> iterButtonIndex = setButtonIndex.iterator();
+        int a = 0;
         while(iterDBPK.hasNext() && iterButtonIndex.hasNext()) {
             int index = iterButtonIndex.next();
             String country = arrayList.get(iterDBPK.next()).getCountry();
@@ -193,7 +194,9 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
 
             buttonCountry[index].setText(country_kor);
             buttonCountry[index].setTag(country_kor);
+            a++;
         }
+
     }
 
     public void delayResult() {
