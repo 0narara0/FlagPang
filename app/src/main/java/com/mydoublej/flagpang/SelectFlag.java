@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 
@@ -31,6 +32,7 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
     ImageView[] flagImage = new ImageView[imageCount];
     Button flagReset,flagMain;
     Handler handler = new Handler();
+    int correctIndex = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +99,8 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
             textViewAnswer.setVisibility(View.VISIBLE);
             textViewAnswer.setText("CORRECT!!" + "\n" + country);
             textViewAnswer.setTextColor(Color.parseColor("#FF00893C"));
+
+
         }
         // 오답일 때
         else if(result == 2){
@@ -109,7 +113,8 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
         if(result != 0) {
 //            flagImage[indexCorrect].setBackgroundColor(Color.alpha(0xff778899));//0xff778899
             //QuizSet();
-            delayResult();
+            delayResult(view);
+            flagImage[correctIndex].setBackgroundResource(R.drawable.stroke);
         }
     }
 
@@ -167,8 +172,21 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
             setImageIndex.add(num);
         }
 
+        int num[] = { 0, 1, 2, 3};
+
+
+
+        ArrayList<Integer> listIndex = new ArrayList<Integer>();
+        listIndex.add(0);
+        listIndex.add(1);
+        listIndex.add(2);
+        listIndex.add(3);
+
+        Collections.shuffle(listIndex);
+        correctIndex = listIndex.get(0);
+
         Iterator<Integer> iterDBPK =  setDBPK.iterator();
-        Iterator<Integer> iterImageIndex = setImageIndex.iterator();
+        Iterator<Integer> iterImageIndex = listIndex.iterator();
         while(iterDBPK.hasNext() && iterImageIndex.hasNext()) {
             index = iterImageIndex.next();
             id = iterDBPK.next();
@@ -200,13 +218,14 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
         }
     }
 
-    public void delayResult() {
+    public void delayResult(final View view) {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
 
                 QuizSet();
                 textViewAnswer.setVisibility(View.GONE);
+                flagImage[correctIndex].setBackgroundResource(R.drawable.solid);
             }
         }, 500);//지연
     }
