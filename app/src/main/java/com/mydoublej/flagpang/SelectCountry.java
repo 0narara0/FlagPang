@@ -72,7 +72,6 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
             default:
                 pressNationButton(view);
                 break;
-
         }
     }
 
