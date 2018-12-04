@@ -395,7 +395,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
                 "VALUES(null, 'the_comoros','코모로', 'africa', 'the_comoros.png','3')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'the_democratic_republic_of_congo','콩고 민주 공화국', 'africa', 'the_democratic_republic_of_congo.png','2')";
+                "VALUES(null, 'the_democratic_republic_of_the_congo','콩고 민주 공화국', 'africa', 'the_democratic_republic_of_the_congo.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
                 "VALUES(null, 'the_gambia','감비아', 'africa', 'the_gambia.png','3')";
@@ -427,7 +427,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
 
         //north-america
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'antigun_and_barbuda', '앤티가 바부다', 'namerica', 'antigun_and_barbuda.png','3')";
+                "VALUES(null, 'antigua_and_barbuda', '앤티가 바부다', 'namerica', 'antigua_and_barbuda.png','3')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
                 "VALUES(null, 'barbados', '바베이도스', 'namerica', 'barbados.png','3')";
@@ -439,7 +439,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
                 "VALUES(null, 'canada', '캐나다', 'namerica', 'canada.png','1')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
-                "VALUES(null, 'costa', '코스타리카', 'namerica', 'costa.png','2')";
+                "VALUES(null, 'costa_rica', '코스타리카', 'namerica', 'costa_rica.png','2')";
         db.execSQL(sql);
         sql = "INSERT INTO flag " +
                 "VALUES(null, 'cuba', '쿠바', 'namerica', 'cuba.png','2')";
