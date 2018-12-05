@@ -73,23 +73,6 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
             case R.id.btn_O:
                 if(country==countryQuiz) result = 1;
                 else result = 2;
-
-//                btn_O.setOnTouchListener(new View.OnTouchListener() {
-//                    @Override
-//                    public boolean onTouch(View v, MotionEvent event) {
-//                        switch (event.getAction()){
-//                            case MotionEvent.ACTION_DOWN:{
-//                                btn_O.setBackgroundResource(R.drawable.btn_o1);
-//                                break;
-//                            }
-//                            case MotionEvent.ACTION_UP:{
-//                                btn_O.setBackgroundResource(R.drawable.btn_o2);
-//                                break;
-//                            }
-//                        }
-//                        return false;
-//                    }
-//                });
                 if(quizNum>=10){
 
                 result = 0;
@@ -103,22 +86,6 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
             case R.id.btn_X:
                 if(country!=countryQuiz) result = 1;
                 else result = 2;
-//                btn_X.setOnTouchListener(new View.OnTouchListener() {
-//                    @Override
-//                    public boolean onTouch(View v, MotionEvent event) {
-//                        switch (event.getAction()){
-//                            case MotionEvent.ACTION_DOWN:{
-//                                btn_X.setBackgroundResource(R.drawable.btn_x1);
-//                                break;
-//                            }
-//                            case MotionEvent.ACTION_UP:{
-//                                btn_X.setBackgroundResource(R.drawable.btn_x2);
-//                                break;
-//                            }
-//                        }
-//                        return false;
-//                    }
-//                });
                 if(quizNum>=10){
                     result = 0;
                     country = "";
