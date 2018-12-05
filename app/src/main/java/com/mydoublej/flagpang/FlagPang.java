@@ -37,17 +37,26 @@ public class FlagPang extends AppCompatActivity implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
+        Bundle bundle = new Bundle();
+        //load_preference();
+        bundle.putString("p_level","1");
+        bundle.putString("p_sound","on");
+        bundle.putString("p_language","kor");
+
         switch (v.getId()){
             case R.id.btn_country:
                 Intent intentCountry = new Intent(this,SelectCountry.class);
+                intentCountry.putExtras(bundle);
                 startActivityForResult(intentCountry,100);
                 break;
             case R.id.btn_ox:
                 Intent intentOX = new Intent(this,SelectOX.class);
+                intentOX.putExtras(bundle);
                 startActivityForResult(intentOX,200);
                 break;
             case R.id.btn_flag:
                 Intent intentFlag = new Intent(this,SelectFlag.class);
+                intentFlag.putExtras(bundle);
                 startActivityForResult(intentFlag,300);
                 break;
         }
