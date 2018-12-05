@@ -19,6 +19,8 @@ import android.widget.TextView;
 import android.view.View;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -31,6 +33,9 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
     Button[] buttonCountry = new Button[buttonCount];
     Button buttonReset, buttonMain;
     Handler handler = new Handler();
+    private Integer correctIndex = 0;
+    private String p_languge = "korea";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,20 +87,27 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         for (int i = 0; i < buttonCount; i++)
             buttonCountry[i].setEnabled(false);// 나라 버튼 모두 활성화
 
+        System.out.println(nation);
+        System.out.println(flag);
+
+
         // 정답일 때
         if (nation.equals(flag)) {
             score++;
             textViewScore.setText(" Score : " + score);
-            textViewAnswer.setText("Correct!" + "\n" + flag.toString());
+            textViewAnswer.setText("CORRECT!" + "\n" + flag.toString());
             textViewAnswer.setTextColor(Color.parseColor("#FF00893C"));
         }
         // 오답일 때
         else {
             Animation shake = AnimationUtils.loadAnimation(this,R.anim.shake);
             imageViewFlag.startAnimation(shake);
-            textViewAnswer.setText("Incorrect!" + "\n" + flag.toString());
+            textViewAnswer.setText("INCORRECT!" + "\n" + flag.toString());
             textViewAnswer.setTextColor(Color.RED);
         }
+
+        //정답 테두리
+        buttonCountry[correctIndex].setBackgroundResource(R.drawable.stroke);
 
         // 문제 다 풀었는지 체크
         if(quizNum >= quizTotal)
@@ -115,6 +127,9 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         quizNum++;
         textViewScore.setText(" Score : " + score);
         textViewProgress.setText(quizNum + " of 10");
+
+        // 버튼 바탕색 넣어줌
+        buttonCountry[correctIndex].setBackgroundColor(0xFF8498CA);
 
         // 버튼 활성화
         for(int i = 0; i < buttonCount; i++)
@@ -162,7 +177,12 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
 
         // 이미지 적용
         imageViewFlag.setImageBitmap(bitmap);
-        imageViewFlag.setTag(arrayList.get(rid).getCountry());
+        if("korea".equals(p_languge)){
+            imageViewFlag.setTag(arrayList.get(rid).getCountryKor());
+        }
+        else if("english".equals(p_languge)){
+            imageViewFlag.setTag(arrayList.get(rid).getCountry());
+        }
     }
 
     public void setContryButton (ArrayList<GetRecord>  arrayList, int randomID) {
@@ -177,33 +197,39 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         }
 
         // 버튼 인덱스 랜덤하게
-        HashSet<Integer> setButtonIndex = new HashSet<>();
-        while(setButtonIndex.size() < buttonCount) {
-            int num = (int)(Math.random() * 100) % buttonCount;
-            setButtonIndex.add(num);
-        }
+        ArrayList<Integer> listIndex = new ArrayList<>();
+        listIndex.add(0);
+        listIndex.add(1);
+        listIndex.add(2);
+        listIndex.add(3);
+        System.out.println("pre"+listIndex);
+        Collections.shuffle(listIndex);
+        System.out.println("aft"+listIndex);
+        correctIndex = listIndex.get(0);
 
         // 버튼에 텍스트 적용
         Iterator<Integer> iterDBPK =  setDBPK.iterator();
-        Iterator<Integer> iterButtonIndex = setButtonIndex.iterator();
-        int a = 0;
+        Iterator<Integer> iterButtonIndex = listIndex.iterator();
         while(iterDBPK.hasNext() && iterButtonIndex.hasNext()) {
             int index = iterButtonIndex.next();
-            String country = arrayList.get(iterDBPK.next()).getCountry();
-            String country_kor = arrayList.get(iterDBPK.next()).getCountryKor();
 
-            buttonCountry[index].setText(country_kor);
-            buttonCountry[index].setTag(country_kor);
-            a++;
+            String country = null;
+            if("korea".equals(p_languge)){
+                country = arrayList.get(iterDBPK.next()).getCountryKor();
+            }
+            else if("english".equals(p_languge)){
+                country = arrayList.get(iterDBPK.next()).getCountry();
+            }
+
+            buttonCountry[index].setText(country);
+            buttonCountry[index].setTag(country);
         }
-
     }
 
     public void delayResult() {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-
                 QuizSet();
                 textViewAnswer.setVisibility(View.GONE);
             }

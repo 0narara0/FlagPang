@@ -161,16 +161,6 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
         int index, id, imgindex;
 
         // 이미지 인덱스 랜덤하게
-        HashSet<Integer> setImageIndex = new HashSet<>();
-        while(setImageIndex.size() < imageCount) {
-            int num = (int)(Math.random() * 100) % imageCount;
-            setImageIndex.add(num);
-        }
-
-        int num[] = { 0, 1, 2, 3};
-
-
-
         ArrayList<Integer> listIndex = new ArrayList<Integer>();
         listIndex.add(0);
         listIndex.add(1);
