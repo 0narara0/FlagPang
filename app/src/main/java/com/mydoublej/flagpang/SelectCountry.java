@@ -7,6 +7,8 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -33,8 +35,10 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
     Button[] buttonCountry = new Button[buttonCount];
     Button buttonReset, buttonMain;
     Handler handler = new Handler();
-    private Integer correctIndex = 0;
+    private int correctIndex = 0;
     private String p_languge = "korea";
+    SoundPool soundPool;
+    int soundCorrect, soundIncorrect;
 
 
     @Override
@@ -54,6 +58,10 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         (buttonCountry[2] = findViewById(R.id.buttonCountry3)).setOnClickListener(this);
         (buttonCountry[3] = findViewById(R.id.buttonCountry4)).setOnClickListener(this);
 
+       /* soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
+        soundCorrect = soundPool.load(this, R.raw.polong, 1);
+        soundIncorrect = soundPool.load(this, R.raw.tick, 1);
+*/
         dbOpenHelper = DBOpenHelper.getInstance(this);
         QuizSet();
     }
@@ -87,16 +95,13 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         for (int i = 0; i < buttonCount; i++)
             buttonCountry[i].setEnabled(false);// 나라 버튼 모두 활성화
 
-        System.out.println(nation);
-        System.out.println(flag);
-
-
         // 정답일 때
         if (nation.equals(flag)) {
             score++;
             textViewScore.setText(" Score : " + score);
             textViewAnswer.setText("CORRECT!" + "\n" + flag.toString());
             textViewAnswer.setTextColor(Color.parseColor("#FF00893C"));
+            //soundPool.play(soundCorrect, 1, 1, 0, 0, 1.0f);
         }
         // 오답일 때
         else {
@@ -104,6 +109,7 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
             imageViewFlag.startAnimation(shake);
             textViewAnswer.setText("INCORRECT!" + "\n" + flag.toString());
             textViewAnswer.setTextColor(Color.RED);
+            //soundPool.play(soundIncorrect, 1, 1, 0, 0, 1.0f);
         }
 
         //정답 테두리
@@ -138,24 +144,24 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         // DB 가져오기
         ArrayList<GetRecord> arrayList = dbOpenHelper.selectGetRecord();
         int member = arrayList.size();
-        int rid =(int) (Math.random() * member);
+        correctIndex =(int) (Math.random() * member);
 
         // 이미지뷰에 국기 적용
-        setCountryImageView(arrayList, rid);
+        setCountryImageView(arrayList, correctIndex);
         // 버튼에 나라 적용
-        setContryButton(arrayList, rid);
+        setContryButton(arrayList, correctIndex);
     }
 
-    public void setCountryImageView(ArrayList<GetRecord> arrayList, int rid){
+    public void setCountryImageView(ArrayList<GetRecord> arrayList, int randomId){
 
         // 이미지 가져오기
         AssetManager am = getResources().getAssets();
         InputStream is = null ;
 
         // String filename = "oceania/austria.png";
-        String filename = arrayList.get(rid).getContinent().toString();
+        String filename = arrayList.get(randomId).getContinent().toString();
         filename += "/";
-        filename += arrayList.get(rid).getImage().toString();
+        filename += arrayList.get(randomId).getImage().toString();
         Bitmap bitmap = null;
 
         try {
@@ -178,10 +184,10 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         // 이미지 적용
         imageViewFlag.setImageBitmap(bitmap);
         if("korea".equals(p_languge)){
-            imageViewFlag.setTag(arrayList.get(rid).getCountryKor());
+            imageViewFlag.setTag(arrayList.get(randomId).getCountryKor());
         }
         else if("english".equals(p_languge)){
-            imageViewFlag.setTag(arrayList.get(rid).getCountry());
+            imageViewFlag.setTag(arrayList.get(randomId).getCountry());
         }
     }
 
@@ -205,7 +211,7 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         System.out.println("pre"+listIndex);
         Collections.shuffle(listIndex);
         System.out.println("aft"+listIndex);
-        correctIndex = listIndex.get(0);
+       // correctIndex = listIndex.get(0);
 
         // 버튼에 텍스트 적용
         Iterator<Integer> iterDBPK =  setDBPK.iterator();
