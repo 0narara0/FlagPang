@@ -7,7 +7,6 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
@@ -21,11 +20,9 @@ import android.widget.TextView;
 import android.view.View;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
+import java.util.LinkedHashSet;
 
 public class SelectCountry extends AppCompatActivity implements View.OnClickListener{
     int score = 0, quizNum = 0, quizTotal = 10, buttonCount = 4;
@@ -39,6 +36,7 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
     private String p_languge = "korea";
     SoundPool soundPool;
     int soundCorrect, soundIncorrect;
+    private int randomFlag;
 
 
     @Override
@@ -144,12 +142,12 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         // DB 가져오기
         ArrayList<GetRecord> arrayList = dbOpenHelper.selectGetRecord();
         int member = arrayList.size();
-        correctIndex =(int) (Math.random() * member);
+        randomFlag =(int) (Math.random() * member);
 
         // 이미지뷰에 국기 적용
-        setCountryImageView(arrayList, correctIndex);
+        setCountryImageView(arrayList, randomFlag);
         // 버튼에 나라 적용
-        setContryButton(arrayList, correctIndex);
+        setContryButton(arrayList, randomFlag);
     }
 
     public void setCountryImageView(ArrayList<GetRecord> arrayList, int randomId){
@@ -159,9 +157,9 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         InputStream is = null ;
 
         // String filename = "oceania/austria.png";
-        String filename = arrayList.get(randomId).getContinent().toString();
+        String filename = arrayList.get(randomFlag).getContinent().toString();
         filename += "/";
-        filename += arrayList.get(randomId).getImage().toString();
+        filename += arrayList.get(randomFlag).getImage().toString();
         Bitmap bitmap = null;
 
         try {
@@ -184,18 +182,18 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         // 이미지 적용
         imageViewFlag.setImageBitmap(bitmap);
         if("korea".equals(p_languge)){
-            imageViewFlag.setTag(arrayList.get(randomId).getCountryKor());
+            imageViewFlag.setTag(arrayList.get(randomFlag).getCountryKor());
         }
         else if("english".equals(p_languge)){
-            imageViewFlag.setTag(arrayList.get(randomId).getCountry());
+            imageViewFlag.setTag(arrayList.get(randomFlag).getCountry());
         }
     }
 
-    public void setContryButton (ArrayList<GetRecord>  arrayList, int randomID) {
+    public void setContryButton (ArrayList<GetRecord>  arrayList, int randomFlag) {
 
         // db에서 랜덤하게 나라 가져옴.
-        HashSet<Integer> setDBPK = new HashSet<>();
-        setDBPK.add(randomID);// image에 적용한 나라 넣어줌.
+        LinkedHashSet<Integer> setDBPK = new LinkedHashSet<>();
+        setDBPK.add(randomFlag);// image에 적용한 나라 넣어줌.
         int arraySize = arrayList.size();
         while (setDBPK.size() < buttonCount) {// set은 중복된 값을 허용하지 않음. 다른 수 4개가 저장되면 루프 탈출
             int num = (int)(Math.random() * arraySize);
@@ -208,10 +206,8 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         listIndex.add(1);
         listIndex.add(2);
         listIndex.add(3);
-        System.out.println("pre"+listIndex);
         Collections.shuffle(listIndex);
-        System.out.println("aft"+listIndex);
-       // correctIndex = listIndex.get(0);
+        correctIndex = listIndex.get(0);
 
         // 버튼에 텍스트 적용
         Iterator<Integer> iterDBPK =  setDBPK.iterator();

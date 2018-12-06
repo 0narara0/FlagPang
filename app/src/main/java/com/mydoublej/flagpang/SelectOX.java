@@ -53,12 +53,11 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
         textViewScore = findViewById(R.id.textViewScore);
         textViewAnswer = findViewById(R.id.textViewAnswer);
 
+        //Bundle bundle = getIntent().getExtras();
+        //String text = bundle.getString("saveValue", "NO DATA");
 
         dbOpenHelper = DBOpenHelper.getInstance(this);
         quizSet();
-
-
-
     }
 
 

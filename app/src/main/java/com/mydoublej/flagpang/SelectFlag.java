@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 
 public class SelectFlag extends AppCompatActivity implements View.OnClickListener{
     int score = 0, quizNum = 0, imageCount = 4, correctIndex,index;
@@ -147,7 +148,7 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
     public void setContryImage (ArrayList<GetRecord>  arrayList, int randomID) {
 
         // db에서 랜덤하게 나라 가져옴.
-        HashSet<Integer> setDBPK = new HashSet<>();
+        LinkedHashSet<Integer> setDBPK = new LinkedHashSet<>();
         setDBPK.add(randomID);// image에 적용한 나라 넣어줌.
         int arraySize = arrayList.size();
         while (setDBPK.size() < imageCount) {// set은 중복된 값을 허용하지 않음. 다른 수 4개가 저장되면 루프 탈출
