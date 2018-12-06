@@ -7,6 +7,7 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
@@ -57,10 +58,11 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         (buttonCountry[2] = findViewById(R.id.buttonCountry3)).setOnClickListener(this);
         (buttonCountry[3] = findViewById(R.id.buttonCountry4)).setOnClickListener(this);
 
-       /* soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
+        //tkdnsem
+        soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
         soundCorrect = soundPool.load(this, R.raw.polong, 1);
         soundIncorrect = soundPool.load(this, R.raw.tick, 1);
-*/
+
         dbOpenHelper = DBOpenHelper.getInstance(this);
         QuizSet();
     }
@@ -100,7 +102,7 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
             textViewScore.setText(" Score : " + score);
             textViewAnswer.setText("CORRECT!" + "\n" + flag.toString());
             textViewAnswer.setTextColor(Color.parseColor("#FF00893C"));
-            //soundPool.play(soundCorrect, 1, 1, 0, 0, 1.0f);
+            soundPool.play(soundCorrect, 1, 1, 0, 0, 1.0f);
         }
         // 오답일 때
         else {
@@ -108,7 +110,7 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
             imageViewFlag.startAnimation(shake);
             textViewAnswer.setText("INCORRECT!" + "\n" + flag.toString());
             textViewAnswer.setTextColor(Color.RED);
-            //soundPool.play(soundIncorrect, 1, 1, 0, 0, 1.0f);
+            soundPool.play(soundIncorrect, 1, 1, 0, 0, 1.0f);
         }
 
         //정답 테두리
