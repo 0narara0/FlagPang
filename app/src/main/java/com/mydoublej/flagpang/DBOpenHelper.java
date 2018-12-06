@@ -51,8 +51,9 @@ public class DBOpenHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public ArrayList<GetRecord> selectGetRecord(){
-        sql = "SELECT * FROM flag";
+    public ArrayList<GetRecord> selectGetRecord(String plevel){
+        sql = "SELECT * FROM flag WHERE level <= '" + plevel + "'";
+ //       sql = "SELECT * FROM flag";
         cursor = mdb.rawQuery(sql,null);
 
         ArrayList<GetRecord> arrayList = new ArrayList<>();

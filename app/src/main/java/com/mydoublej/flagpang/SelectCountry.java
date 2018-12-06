@@ -26,6 +26,7 @@ import java.util.LinkedHashSet;
 
 public class SelectCountry extends AppCompatActivity implements View.OnClickListener{
     int score = 0, quizNum = 0, quizTotal = 10, buttonCount = 4;
+    String p_level="1";
     private  DBOpenHelper dbOpenHelper;
     TextView textViewScore, textViewProgress, textViewSelectCountry, textViewAnswer;
     ImageView imageViewFlag;
@@ -140,7 +141,7 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
             buttonCountry[i].setEnabled(true);
 
         // DB 가져오기
-        ArrayList<GetRecord> arrayList = dbOpenHelper.selectGetRecord();
+        ArrayList<GetRecord> arrayList = dbOpenHelper.selectGetRecord(p_level);
         int member = arrayList.size();
         randomFlag =(int) (Math.random() * member);
 

@@ -28,6 +28,7 @@ import java.util.LinkedHashSet;
 
 public class SelectFlag extends AppCompatActivity implements View.OnClickListener{
     int score = 0, quizNum = 0, imageCount = 4, correctIndex,index;
+    String p_level="1";
     String country, country_kor, countryQuiz;
     private  DBOpenHelper dbOpenHelper;
     TextView flagScore, flagProgress, flagSelectCountry, textViewAnswer;
@@ -100,7 +101,6 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
                     /*Toast.makeText(this, String.valueOf(score)+"점입니다. " +
                             "게임을 계속할려면 RESET 버튼을 클릭하세요", Toast.LENGTH_LONG).show();*/
             country = "";
-            quizNum = 0;
             flagScore.setText(" Score : " + score);
             flagProgress.setText("game over");
             delayGameOver();
@@ -127,7 +127,7 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
         flagProgress.setText(quizNum + " of 10");
 
          // DB 가져오기
-        ArrayList<GetRecord> arrayList = dbOpenHelper.selectGetRecord();
+        ArrayList<GetRecord> arrayList = dbOpenHelper.selectGetRecord(p_level);
         int member = arrayList.size();
         int rid =(int) (Math.random() * member);
 
@@ -169,7 +169,7 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
         listIndex.add(3);
 
         Collections.shuffle(listIndex);
-        correctIndex = listIndex.get(0);
+//        correctIndex = listIndex.get(0);
 
         Iterator<Integer> iterDBPK =  setDBPK.iterator();
         Iterator<Integer> iterImageIndex = listIndex.iterator();

@@ -30,6 +30,7 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
     ImageView imageViewOXFlag;
     TextView textViewQuiz, textViewProgress, textViewScore, textViewAnswer;
     int score, quizNum;
+    String p_level="1";
     String country,country_kor,countryQuiz;
     Button btn_O, btn_X;
 
@@ -142,7 +143,7 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
         textViewProgress.setText(quizNum + " of 10");
 
         //랜덤하게 이미지 적용
-        arrayList = dbOpenHelper.selectGetRecord();
+        arrayList = dbOpenHelper.selectGetRecord(p_level);
         int member = arrayList.size();
 
         int[] rid = new int[2];
