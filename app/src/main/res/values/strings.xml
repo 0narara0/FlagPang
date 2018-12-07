@@ -16,6 +16,7 @@
     <string name="flagCountry">korea</string>
     <string name="flagMain">Main</string>
     <string name="flagReset">reset</string>
+    <string name="OX_country">OX_country</string>
     <string name="textSettingTitle">FlagPang Settings</string>
     <string name="textLanguage">Language</string>
     <string name="textLevel">Level</string>
