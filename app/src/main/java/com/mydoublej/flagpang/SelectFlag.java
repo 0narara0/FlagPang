@@ -27,7 +27,7 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 
 public class SelectFlag extends AppCompatActivity implements View.OnClickListener{
-    int score = 0, quizNum = 0, imageCount = 4, correctIndex,index;
+    int score = 0, quizNum = 0, quizTotal = 10, imageCount = 4, correctIndex,index;
     String p_level="1";
     String country, country_kor, countryQuiz;
     private  DBOpenHelper dbOpenHelper;
@@ -81,35 +81,30 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
         }
         if(index != 5) {
             countryQuiz = view.getTag().toString();
+
             if (country.equals(countryQuiz)) {  //정답일때...
                 score++;
+                flagScore.setText(" Score : " + score);
                 textViewAnswer.setVisibility(View.VISIBLE);
                 textViewAnswer.setText("CORRECT!!" + "\n" + country);
                 textViewAnswer.setTextColor(Color.parseColor("#FF00893C"));
-             }
-            else {  //오답일때...
-                Animation shake = AnimationUtils.loadAnimation(this,R.anim.shake);
+            } else {  //오답일때...
+                Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
                 flagImage[index].startAnimation(shake);
                 textViewAnswer.setVisibility(View.VISIBLE);
                 textViewAnswer.setText("INCORRECT!!" + "\n" + country);
                 textViewAnswer.setTextColor(Color.RED);
             }
-        }
 
-        flagImage[correctIndex].setBackgroundResource(R.drawable.stroke);
-        if(quizNum >= 10){
-                    /*Toast.makeText(this, String.valueOf(score)+"점입니다. " +
-                            "게임을 계속할려면 RESET 버튼을 클릭하세요", Toast.LENGTH_LONG).show();*/
-            country = "";
-            flagScore.setText(" Score : " + score);
-            flagProgress.setText("game over");
-            delayGameOver();
-            flagImage[correctIndex].setBackgroundResource(R.drawable.solid);
-            textViewAnswer.setVisibility(View.GONE);
+            //정답 테두리
+            flagImage[correctIndex].setBackgroundResource(R.drawable.stroke);
 
-        }
-        else{
-            delayResult(view);
+            if (quizNum >= quizTotal) {
+                delayGameOver();
+
+            } else {
+                delayResult(view);
+            }
         }
 
     }
@@ -117,16 +112,13 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
     //퀴즈 새로 셋팅
     public void QuizSet(){
         ++quizNum;
-        /*if(++quizNum > 10) {
-            country = "";
-            flagProgress.setText("game over");
-            return;
-        }*/
-
         flagScore.setText(" Score : " + score);
         flagProgress.setText(quizNum + " of 10");
+        flagImage[correctIndex].setBackgroundResource(R.drawable.solid);
+        textViewAnswer.setVisibility(View.GONE);
 
-         // DB 가져오기
+
+        // DB 가져오기
         ArrayList<GetRecord> arrayList = dbOpenHelper.selectGetRecord(p_level);
         int member = arrayList.size();
         int rid =(int) (Math.random() * member);
@@ -159,7 +151,7 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
         // 이미지 가져오기
         AssetManager am = getResources().getAssets();
         InputStream is = null ;
-        int index, id, imgindex;
+        int index, id;
 
         // 이미지 인덱스 랜덤하게
         ArrayList<Integer> listIndex = new ArrayList<Integer>();
@@ -169,7 +161,6 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
         listIndex.add(3);
 
         Collections.shuffle(listIndex);
-//        correctIndex = listIndex.get(0);
 
         Iterator<Integer> iterDBPK =  setDBPK.iterator();
         Iterator<Integer> iterImageIndex = listIndex.iterator();

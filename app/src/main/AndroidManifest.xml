@@ -19,6 +19,7 @@
         <activity android:name=".SelectCountry" />
         <activity android:name=".SelectOX" />
         <activity android:name=".SelectFlag" />
+        <activity android:name=".PreferenceSetting"></activity>
     </application>
 
 </manifest>

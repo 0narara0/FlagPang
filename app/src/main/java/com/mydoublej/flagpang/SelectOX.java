@@ -101,8 +101,6 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
                 startActivity(intentWikipedia);
                 break;
 
-
-
             case R.id.btn_O:
                 if(country==countryQuiz) result = 1;
                 else result = 2;

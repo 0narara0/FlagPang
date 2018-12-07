@@ -16,4 +16,19 @@
     <string name="flagCountry">korea</string>
     <string name="flagMain">Main</string>
     <string name="flagReset">reset</string>
+    <string name="textSettingTitle">FlagPang Settings</string>
+    <string name="textLanguage">Language</string>
+    <string name="textLevel">Level</string>
+    <string name="textSound">Sound</string>
+    <string name="btnQuit">Quit</string>
+    <string name="rbKorean">Korean</string>
+    <string name="rbEnglish">English</string>
+    <string name="rbBasic">Basic</string>
+    <string name="rbMiddle">Middle</string>
+    <string name="rbAdvanced">Advanced</string>
+    <string name="rbOn">On</string>
+    <string name="rbOff">Off</string>
+    <string name="btnClear">Clear</string>
+    <string name="btnSave">Save</string>
+    <string name="textby">MyDoubleJ</string>
 </resources>
