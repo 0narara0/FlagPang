@@ -1,6 +1,5 @@
 package com.mydoublej.flagpang;
 
-import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.AssetManager;
@@ -9,32 +8,17 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Handler;
-import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URI;
-import java.net.URL;
 import java.util.ArrayList;
 
 import static android.content.Intent.ACTION_VIEW;
@@ -42,16 +26,14 @@ import static android.content.Intent.parseUri;
 
 public class SelectOX extends AppCompatActivity implements View.OnClickListener {
     private  DBOpenHelper dbOpenHelper;
-
     ImageView imageViewOXFlag;
     TextView textViewQuiz, textViewProgress, textViewScore, textViewAnswer;
     int score, quizNum;
-    String p_level="1";
     String country,country_kor,countryQuiz;
-    Button btn_O, btn_X;
-    FloatingActionButton btn_Info;
-
+    Button btn_O, btn_X, btn_Info;
     Handler handler = new Handler();
+    String p_level="1";
+    private String p_languge = "korea";
 
 
 
@@ -76,8 +58,8 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
 
 
 
-        //Bundle bundle = getIntent().getExtras();
-        //String text = bundle.getString("saveValue", "NO DATA");
+        Bundle bundle = getIntent().getExtras();
+        String text = bundle.getString("saveValue", "NO DATA");
 
         dbOpenHelper = DBOpenHelper.getInstance(this);
         quizSet();
@@ -128,7 +110,8 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
         }
         if(result == 1) {
             textViewAnswer.setVisibility(View.VISIBLE);
-            textViewAnswer.setText("CORRECT!!" + "\n" + country);
+            textViewAnswer.setText("정답입니다!!" + "\n" + country_kor);
+            //textViewAnswer.setText("CORRECT!!" + "\n" + country);
             textViewAnswer.setTextColor(Color.parseColor("#FF00893C"));
             score++;
         }
@@ -136,7 +119,8 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
             Animation shake = AnimationUtils.loadAnimation(this,R.anim.shake);
             imageViewOXFlag.startAnimation(shake);
             textViewAnswer.setVisibility(View.VISIBLE);
-            textViewAnswer.setText("INCORRECT!!" + "\n" + country);
+            textViewAnswer.setText("오답입니다!!" + "\n" + country_kor);
+            //textViewAnswer.setText("INCORRECT!!" + "\n" + country);
             textViewAnswer.setTextColor(Color.RED);
         }
 
