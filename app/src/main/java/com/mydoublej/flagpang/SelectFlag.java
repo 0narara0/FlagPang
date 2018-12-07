@@ -27,20 +27,23 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 
 public class SelectFlag extends AppCompatActivity implements View.OnClickListener{
-    int score = 0, quizNum = 0, quizTotal = 10, imageCount = 4, correctIndex,index;
-    String p_level="1";
+    int score = 0, quizNum = 0, quizTotal = 10, imageCount = 4, correctIndex;
+    String p_level="1", p_language="korean", p_sound="on";
     String country, country_kor, countryQuiz;
     private  DBOpenHelper dbOpenHelper;
     TextView flagScore, flagProgress, flagSelectCountry, textViewAnswer;
-//    ImageView flagImage1,flagImage2,flagImage3,flagImage4;
     ImageView[] flagImage = new ImageView[imageCount];
-    Button flagReset,flagMain;
     Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_flag);
+
+        Bundle bundle = getIntent().getExtras();
+        p_language = bundle.getString("p_language","korean");
+        p_level = bundle.getString("p_level", "1");
+        p_sound = bundle.getString("p_sound", "on");
 
         flagScore = findViewById(R.id.flagScore);
         flagProgress = findViewById(R.id.flagProgress);
@@ -60,7 +63,6 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
 
     @Override
     public void onClick(View view) {
-        index = 5;
         switch(view.getId()){
             case R.id.flagReset:
                 score = 0;
@@ -74,39 +76,46 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
                 finish();
                 break;
 
-            case R.id.flagImage1: index = 0; break;
-            case R.id.flagImage2: index = 1; break;
-            case R.id.flagImage3: index = 2; break;
-            case R.id.flagImage4: index = 3; break;
-        }
-        if(index != 5) {
-            countryQuiz = view.getTag().toString();
-
-            if (country.equals(countryQuiz)) {  //정답일때...
-                score++;
-                flagScore.setText(" Score : " + score);
-                textViewAnswer.setVisibility(View.VISIBLE);
-                textViewAnswer.setText("CORRECT!!" + "\n" + country);
-                textViewAnswer.setTextColor(Color.parseColor("#FF00893C"));
-            } else {  //오답일때...
-                Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
-                flagImage[index].startAnimation(shake);
-                textViewAnswer.setVisibility(View.VISIBLE);
-                textViewAnswer.setText("INCORRECT!!" + "\n" + country);
-                textViewAnswer.setTextColor(Color.RED);
-            }
-
-            //정답 테두리
-            flagImage[correctIndex].setBackgroundResource(R.drawable.stroke);
-
-            if (quizNum >= quizTotal) {
-                delayGameOver();
-
-            } else {
-                delayResult(view);
-            }
+            case R.id.flagImage1:
+            case R.id.flagImage2:
+            case R.id.flagImage3:
+            case R.id.flagImage4:
+                pressImageButton(view);
+                break;
         }
 
+    }
+
+    private void pressImageButton(View view) {
+        String text;
+
+        countryQuiz = view.getTag().toString();
+
+        if (country.equals(countryQuiz)) {  //정답일때...
+            score++;
+            flagScore.setText(" Score : " + score);
+            textViewAnswer.setVisibility(View.VISIBLE);
+            text = (p_language .equals( "korean")) ? ("정답!!" + "\n" + country_kor):("CORRECT!!" + "\n" + country);
+            textViewAnswer.setText(text);
+            textViewAnswer.setTextColor(Color.parseColor("#FF00893C"));
+        } else {  //오답일때...
+            Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
+            ((ImageView)findViewById(view.getId())).startAnimation(shake);
+            textViewAnswer.setVisibility(View.VISIBLE);
+            text = (p_language .equals( "korean")) ? ("오답!!" + "\n" + country_kor):("INCORRECT!!" + "\n" + country);
+            textViewAnswer.setText(text);
+            textViewAnswer.setTextColor(Color.RED);
+        }
+
+        //정답 테두리
+        flagImage[correctIndex].setBackgroundResource(R.drawable.stroke);
+
+        if (quizNum >= quizTotal) {
+            delayGameOver();
+
+        } else {
+            delayResult(view);
+        }
     }
 
     //퀴즈 새로 셋팅
@@ -130,11 +139,12 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
     }
 
     public void setCountryTextView(ArrayList<GetRecord> arrayList, int rid) {
+        String text;
         country = arrayList.get(rid).getCountry().toString();
         country_kor = arrayList.get(rid).getCountryKor().toString();
 
- //       flagSelectCountry.setText(country);
-        flagSelectCountry.setText(country_kor);
+        text = (p_language .equals( "korean")) ? country_kor : country;
+        flagSelectCountry.setText(text);
     }
 
     public void setContryImage (ArrayList<GetRecord>  arrayList, int randomID) {

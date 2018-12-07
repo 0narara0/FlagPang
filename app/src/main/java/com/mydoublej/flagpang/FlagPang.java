@@ -78,15 +78,7 @@ public class FlagPang extends AppCompatActivity implements View.OnClickListener 
     @Override
     protected void onStop() {
         super.onStop();
-        // Activity 가 종료되기 전에 저장한다
-        // SharedPreferences 에 설정값(특별히 기억해야할 사용자 값)을 저장하기
-//        SharedPreferences pref = getSharedPreferences(sfName, 0);
-//        SharedPreferences.Editor editor = sf.edit();//저장하려면 editor가 필요
-//        String str = et.getText().toString(); // 사용자가 입력한 값
-//        editor.putString("name", str); // 입력
-//        editor.putString("xx", "xx"); // 입력
-//        editor.commit(); // 파일에 최종 반영함
-    }
+     }
     private void loadPreference() {
         //ShardPreferences와 Editor 객체 얻어오기
         SharedPreferences pref = getSharedPreferences("pref", 0);
