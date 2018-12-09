@@ -59,7 +59,7 @@
     <ImageView
         android:id="@+id/flagImage1"
         android:layout_width="150dp"
-        android:layout_height="0dp"
+        android:layout_height="150dp"
         android:layout_marginBottom="15dp"
         android:background="#e2beb3"
         android:padding="8dp"
@@ -73,7 +73,7 @@
     <ImageView
         android:id="@+id/flagImage4"
         android:layout_width="150dp"
-        android:layout_height="0dp"
+        android:layout_height="150dp"
         android:background="#e2beb3"
         android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/flagImage3"
@@ -81,12 +81,13 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/flagImage3"
         app:layout_constraintTop_toTopOf="@+id/flagImage3"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/canada" />
 
     <ImageView
         android:id="@+id/flagImage3"
         android:layout_width="150dp"
-        android:layout_height="0dp"
+        android:layout_height="150dp"
         android:layout_marginBottom="9dp"
         android:background="#e2beb3"
         android:padding="8dp"
@@ -100,7 +101,7 @@
     <ImageView
         android:id="@+id/flagImage2"
         android:layout_width="150dp"
-        android:layout_height="0dp"
+        android:layout_height="150dp"
         android:background="#e2beb3"
         android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/flagImage1"
@@ -114,7 +115,7 @@
         android:id="@+id/flagMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="52dp"
         android:background="@android:color/transparent"
         android:text="@string/flagMain"
         android:textColor="#ffffff"
@@ -128,7 +129,7 @@
         android:id="@+id/flagReset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="52dp"
         android:background="@android:color/transparent"
         android:keepScreenOn="false"
         android:text="@string/flagReset"
@@ -158,5 +159,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.56" />
+
+    <Button
+        android:id="@+id/flagInfo"
+        android:layout_width="54dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/search_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.973"
+        app:layout_constraintStart_toStartOf="@+id/flagSelectCountry"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/search" />
+
+    <TextView
+        android:id="@+id/flagtextby"
+        android:layout_width="wrap_content"
+        android:layout_height="14dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/flagtextby"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

@@ -33,7 +33,7 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
     Button btn_O, btn_X, btn_Info;
     Handler handler = new Handler();
     String p_level="1";
-    private String p_language = "korea";
+    private String p_language = "korean";
 
 
 

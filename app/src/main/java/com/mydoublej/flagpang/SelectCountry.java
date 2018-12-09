@@ -58,7 +58,7 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         (buttonCountry[2] = findViewById(R.id.buttonCountry3)).setOnClickListener(this);
         (buttonCountry[3] = findViewById(R.id.buttonCountry4)).setOnClickListener(this);
 
-        //tkdnsem
+        //사운드
         soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
         soundCorrect = soundPool.load(this, R.raw.polong, 1);
         soundIncorrect = soundPool.load(this, R.raw.tick, 1);

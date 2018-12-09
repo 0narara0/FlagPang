@@ -6,6 +6,9 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.media.AudioManager;
+import android.media.SoundPool;
+import android.net.Uri;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -17,12 +20,10 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 
@@ -34,6 +35,8 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
     TextView flagScore, flagProgress, flagSelectCountry, textViewAnswer;
     ImageView[] flagImage = new ImageView[imageCount];
     Handler handler = new Handler();
+    SoundPool soundPool;
+    int soundCorrect, soundIncorrect;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +56,15 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
         flagImage[2] = findViewById(R.id.flagImage3);
         flagImage[3] = findViewById(R.id.flagImage4);
         for(int i=0; i < imageCount; i++)flagImage[i].setOnClickListener(this);
+        ((Button)findViewById(R.id.flagInfo)).setOnClickListener(this);
         ((Button)findViewById(R.id.flagReset)).setOnClickListener(this);
         ((Button)findViewById(R.id.flagMain)).setOnClickListener(this);
         textViewAnswer = findViewById(R.id.textViewAnswer);
+
+        //사운드
+        soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
+        soundCorrect = soundPool.load(this, R.raw.polong, 1);
+        soundIncorrect = soundPool.load(this, R.raw.tick, 1);
 
         dbOpenHelper = DBOpenHelper.getInstance(this);
         QuizSet();
@@ -64,6 +73,14 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
     @Override
     public void onClick(View view) {
         switch(view.getId()){
+
+            //wikipedia button 추가
+            case R.id.flagInfo:
+                String defaultUrl = "https://ko.wikipedia.org/wiki/"+country_kor;
+                Intent intentWikipedia = new Intent(Intent.ACTION_VIEW, Uri.parse(defaultUrl));
+                startActivity(intentWikipedia);
+                break;
+
             case R.id.flagReset:
                 score = 0;
                 quizNum = 0;
@@ -98,6 +115,9 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
             text = (p_language .equals( "korean")) ? ("정답!!" + "\n" + country_kor):("CORRECT!!" + "\n" + country);
             textViewAnswer.setText(text);
             textViewAnswer.setTextColor(Color.parseColor("#FF00893C"));
+            if(p_sound.equals("on")) {
+                soundPool.play(soundCorrect, 1, 1, 0, 0, 1.0f);
+            }
         } else {  //오답일때...
             Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
             ((ImageView)findViewById(view.getId())).startAnimation(shake);
@@ -105,6 +125,9 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
             text = (p_language .equals( "korean")) ? ("오답!!" + "\n" + country_kor):("INCORRECT!!" + "\n" + country);
             textViewAnswer.setText(text);
             textViewAnswer.setTextColor(Color.RED);
+            if(p_sound.equals("on")) {
+                soundPool.play(soundCorrect, 1, 1, 0, 0, 1.0f);
+            }
         }
 
         //정답 테두리
@@ -236,7 +259,7 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
     @Override
     protected void onPause() {
         super.onPause();
-        finish();
+//        finish();
     }
 }
 

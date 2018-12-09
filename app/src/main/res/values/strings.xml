@@ -32,4 +32,5 @@
     <string name="btnClear">Clear</string>
     <string name="btnSave">Save</string>
     <string name="textby">MyDoubleJ</string>
+    <string name="flagtextby">MyDoubleJ</string>
 </resources>
