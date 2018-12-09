@@ -6,6 +6,8 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.net.Uri;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -32,8 +34,10 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
     String country,country_kor,countryQuiz;
     Button btn_O, btn_X, btn_Info;
     Handler handler = new Handler();
-    String p_level="1";
-    private String p_language = "korean";
+    String p_level="1", p_language="korean", p_sound="on";
+    SoundPool soundPool;
+    int soundCorrect, soundIncorrect;
+    Bitmap bitmap = null;
 
 
 
@@ -56,10 +60,15 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
         btn_Info = findViewById(R.id.btn_Info);
         btn_Info.setOnClickListener(this);
 
-
+        //사운드
+        soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
+        soundCorrect = soundPool.load(this, R.raw.polong, 1);
+        soundIncorrect = soundPool.load(this, R.raw.tick, 1);
 
         Bundle bundle = getIntent().getExtras();
-        String text = bundle.getString("saveValue", "NO DATA");
+        p_language = bundle.getString("p_language","korean");
+        p_level = bundle.getString("p_level", "1");
+        p_sound = bundle.getString("p_sound", "on");
 
         dbOpenHelper = DBOpenHelper.getInstance(this);
         quizSet();
@@ -71,7 +80,9 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
+        String  text;
         int result=0; //0-textviewAnswer x, 1-정답 ,2-오답
+        String flag = imageViewOXFlag.getTag().toString();
 
         switch (v.getId()){
 
@@ -86,7 +97,7 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
             case R.id.btn_O:
                 if(country==countryQuiz) result = 1;
                 else result = 2;
-            break;
+                break;
 
             case R.id.btn_X:
                 if(country!=countryQuiz) result = 1;
@@ -110,18 +121,28 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
         }
         if(result == 1) {
             textViewAnswer.setVisibility(View.VISIBLE);
-            textViewAnswer.setText("정답입니다!!" + "\n" + country_kor);
-            //textViewAnswer.setText("CORRECT!!" + "\n" + country);
+            text = (p_language .equals( "korean")) ? ("정답!!" + "\n" + flag.toString()):("CORRECT!!" + "\n" + flag.toString());
+            textViewAnswer.setText(text);
+//            textViewAnswer.setText("CORRECT!" + "\n" + flag.toString());
             textViewAnswer.setTextColor(Color.parseColor("#FF00893C"));
             score++;
+            if(p_sound.equals("on")) {
+                soundPool.play(soundCorrect, 1, 1, 0, 0, 1.0f);
+            }
+
+
         }
         else if(result == 2) {
             Animation shake = AnimationUtils.loadAnimation(this,R.anim.shake);
             imageViewOXFlag.startAnimation(shake);
             textViewAnswer.setVisibility(View.VISIBLE);
-            textViewAnswer.setText("오답입니다!!" + "\n" + country_kor);
-            //textViewAnswer.setText("INCORRECT!!" + "\n" + country);
+            text = (p_language .equals( "korean")) ? ("오답!!" + "\n" +flag.toString()):("INCORRECT!!" + "\n" + flag.toString());
+            textViewAnswer.setText(text);
+//            textViewAnswer.setText("INCORRECT!" + "\n" + flag.toString());
             textViewAnswer.setTextColor(Color.RED);
+            if(p_sound.equals("on")) {
+                soundPool.play(soundCorrect, 1, 1, 0, 0, 1.0f);
+            }
         }
 
         if(quizNum == 10){
@@ -147,7 +168,7 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
 
     //퀴즈세팅
     public void quizSet(){
-
+        String  text;
         ArrayList<GetRecord> arrayList = new ArrayList<>();
         String continent, image, level;
         int id;
@@ -169,14 +190,17 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
         String filename = arrayList.get(rid[0]).getContinent().toString();
         filename += "/";
         filename += arrayList.get(rid[0]).getImage().toString();
-        Bitmap bitmap = null;
+//        Bitmap bitmap = null;
         country = arrayList.get(rid[0]).getCountry().toString();
 
         int randomIndex = (int) ((Math.random()) * 10 % 2);//정답 오답을 랜덤하게 뽑음
         countryQuiz = arrayList.get(rid[randomIndex]).getCountry().toString();
         country_kor = arrayList.get(rid[randomIndex]).getCountryKor().toString();
+
+
+        text = (p_language .equals( "korean")) ? country_kor : countryQuiz;
 //        textViewQuiz.setText(countryQuiz);
-        textViewQuiz.setText(country_kor);
+        textViewQuiz.setText(text);
 
         try {
             is = am.open(filename) ;
@@ -194,7 +218,15 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
                 e.printStackTrace() ;
             }
         }
+
+        // 이미지 적용
         imageViewOXFlag.setImageBitmap(bitmap);
+        if("korean".equals(p_language)){
+            imageViewOXFlag.setTag(arrayList.get(rid[randomIndex]).getCountryKor());
+        }
+        else if("english".equals(p_language)){
+            imageViewOXFlag.setTag(arrayList.get(rid[randomIndex]).getCountry());
+        }
     }
 
     public void delayResult() {
