@@ -27,7 +27,6 @@ import java.util.LinkedHashSet;
 
 public class SelectCountry extends AppCompatActivity implements View.OnClickListener{
     int score = 0, quizNum = 0, quizTotal = 10, buttonCount = 4;
-    String p_level="1";
     private  DBOpenHelper dbOpenHelper;
     TextView textViewScore, textViewProgress, textViewSelectCountry, textViewAnswer;
     ImageView imageViewFlag;
@@ -35,10 +34,10 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
     Button buttonReset, buttonMain;
     Handler handler = new Handler();
     private int correctIndex = 0;
-    private String p_languge = "korea";
     SoundPool soundPool;
     int soundCorrect, soundIncorrect;
     private int randomFlag;
+    String p_level, p_language, p_sound;
 
 
     @Override
@@ -57,6 +56,11 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         (buttonCountry[1] = findViewById(R.id.buttonCountry2)).setOnClickListener(this);
         (buttonCountry[2] = findViewById(R.id.buttonCountry3)).setOnClickListener(this);
         (buttonCountry[3] = findViewById(R.id.buttonCountry4)).setOnClickListener(this);
+
+        Bundle bundle = getIntent().getExtras();
+        p_level = bundle.getString("p_level", "1");
+        p_language = bundle.getString("p_language", "korean");
+        p_sound = bundle.getString("p_sound", "on");
 
         //사운드
         soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
@@ -102,7 +106,9 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
             textViewScore.setText(" Score : " + score);
             textViewAnswer.setText("CORRECT!" + "\n" + flag.toString());
             textViewAnswer.setTextColor(Color.parseColor("#FF00893C"));
-            soundPool.play(soundCorrect, 1, 1, 0, 0, 1.0f);
+            if(p_sound.equals("on")) {
+                soundPool.play(soundCorrect, 1, 1, 0, 0, 1.0f);
+            }
         }
         // 오답일 때
         else {
@@ -110,7 +116,9 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
             imageViewFlag.startAnimation(shake);
             textViewAnswer.setText("INCORRECT!" + "\n" + flag.toString());
             textViewAnswer.setTextColor(Color.RED);
-            soundPool.play(soundIncorrect, 1, 1, 0, 0, 1.0f);
+            if(p_sound.equals("on")) {
+                soundPool.play(soundIncorrect, 1, 1, 0, 0, 1.0f);
+            }
         }
 
         //정답 테두리
@@ -184,10 +192,10 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
 
         // 이미지 적용
         imageViewFlag.setImageBitmap(bitmap);
-        if("korea".equals(p_languge)){
+        if("korean".equals(p_language)){
             imageViewFlag.setTag(arrayList.get(randomFlag).getCountryKor());
         }
-        else if("english".equals(p_languge)){
+        else if("english".equals(p_language)){
             imageViewFlag.setTag(arrayList.get(randomFlag).getCountry());
         }
     }
@@ -219,10 +227,10 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
             int index = iterButtonIndex.next();
 
             String country = null;
-            if("korea".equals(p_languge)){
+            if("korean".equals(p_language)){
                 country = arrayList.get(iterDBPK.next()).getCountryKor();
             }
-            else if("english".equals(p_languge)){
+            else if("english".equals(p_language)){
                 country = arrayList.get(iterDBPK.next()).getCountry();
             }
 
