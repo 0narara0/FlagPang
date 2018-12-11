@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.SoundPool;
+import android.net.Uri;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -31,7 +32,7 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
     TextView textViewScore, textViewProgress, textViewSelectCountry, textViewAnswer;
     ImageView imageViewFlag;
     Button[] buttonCountry = new Button[buttonCount];
-    Button buttonReset, buttonMain;
+    Button buttonReset, buttonMain, buttonInfo;
     Handler handler = new Handler();
     private int correctIndex = 0;
     SoundPool soundPool;
@@ -56,6 +57,7 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         (buttonCountry[1] = findViewById(R.id.buttonCountry2)).setOnClickListener(this);
         (buttonCountry[2] = findViewById(R.id.buttonCountry3)).setOnClickListener(this);
         (buttonCountry[3] = findViewById(R.id.buttonCountry4)).setOnClickListener(this);
+        (buttonInfo = findViewById(R.id.buttonInfo)).setOnClickListener(this);
 
         Bundle bundle = getIntent().getExtras();
         p_level = bundle.getString("p_level", "1");
@@ -74,6 +76,13 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
         switch(view.getId()) {
+
+            case R.id.buttonInfo:
+                String defaultUrl = "https://ko.wikipedia.org/wiki/"+ imageViewFlag.getTag().toString();
+                Intent intentWikipedia = new Intent(Intent.ACTION_VIEW, Uri.parse(defaultUrl));
+                startActivity(intentWikipedia);
+                break;
+
             case R.id.buttonReset:
                 Init();
                 QuizSet();

@@ -10,6 +10,21 @@
     tools:layout_editor_absoluteY="81dp">
 
     <TextView
+        android:id="@+id/textby2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/textby"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
         android:id="@+id/textViewProgress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -52,7 +67,7 @@
 
     <ImageView
         android:id="@+id/imageViewFlag"
-        android:layout_width="254dp"
+        android:layout_width="260dp"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="12dp"
@@ -82,63 +97,63 @@
 
     <Button
         android:id="@+id/buttonCountry1"
-        android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:layout_margin="10dp"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
         android:background="#FF8193BF"
-        android:padding="10dp"
+        android:padding="5dp"
         android:text="@string/buttonCountry1"
         android:textColor="#ffffff"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/buttonCountry2"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCountry2"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/guideline6" />
 
     <Button
         android:id="@+id/buttonCountry2"
-        android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:layout_margin="10dp"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
         android:background="#FF8193BF"
-        android:padding="10dp"
+        android:padding="5dp"
         android:text="@string/buttonCountry2"
         android:textColor="#ffffff"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCountry3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/buttonCountry1"
-        app:layout_constraintTop_toBottomOf="@+id/guideline6" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonCountry1" />
 
     <Button
         android:id="@+id/buttonCountry3"
-        android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:layout_margin="10dp"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
         android:background="#FF8193BF"
-        android:padding="10dp"
+        android:padding="5dp"
         android:text="@string/buttonCountry3"
         android:textColor="#ffffff"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/buttonCountry4"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCountry4"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/guideline7" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonCountry2" />
 
     <Button
         android:id="@+id/buttonCountry4"
-        android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:layout_margin="10dp"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
         android:background="#FF8193BF"
-        android:padding="10dp"
+        android:padding="5dp"
         android:text="@string/buttonCountry4"
         android:textColor="#ffffff"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/buttonCountry3"
-        app:layout_constraintTop_toBottomOf="@+id/guideline7" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonCountry3" />
 
     <Button
         android:id="@+id/buttonMain"
@@ -169,7 +184,9 @@
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/buttonReset"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonCountry4"
+        tools:text="correct" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline2"
@@ -192,6 +209,27 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="123dp" />
 
+    <Button
+        android:id="@+id/buttonInfo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:alpha="0.5"
+        android:background="@drawable/search"
+        android:clickable="true"
+        android:text="@string/buttonInfo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageViewFlag"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.423"
+        app:srcCompat="@drawable/search" />
+
     <android.support.constraint.Guideline
         android:id="@+id/guideline6"
         android:layout_width="wrap_content"
@@ -200,17 +238,10 @@
         app:layout_constraintGuide_begin="282dp" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/guideline7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="361dp" />
-
-    <android.support.constraint.Guideline
         android:id="@+id/guideline4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="450dp" />
+        app:layout_constraintGuide_begin="489dp" />
 
 </android.support.constraint.ConstraintLayout>

@@ -33,4 +33,5 @@
     <string name="btnSave">Save</string>
     <string name="textby">MyDoubleJ</string>
     <string name="flagtextby">MyDoubleJ</string>
+    <string name="buttonInfo" />
 </resources>
