@@ -3,6 +3,7 @@ package com.mydoublej.flagpang;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.MediaPlayer;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ public class FlagPang extends AppCompatActivity implements View.OnClickListener 
     private DBOpenHelper dbOpenHelper;
     private SQLiteDatabase mdb;
     String language, level, sound;
+    private MediaPlayer mediaPlayer = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,9 @@ public class FlagPang extends AppCompatActivity implements View.OnClickListener 
         imageViewFlagpang.startAnimation(animation);
         //화면을 갱신
         imageViewFlagpang.invalidate();
+
+        //배경음악
+        mediaPlayerStart();
 
         dbOpenHelper = DBOpenHelper.getInstance(this);
     }
@@ -68,17 +73,12 @@ public class FlagPang extends AppCompatActivity implements View.OnClickListener 
                 startActivityForResult(intent,500);
                 break;
         }
-
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
     }
-    @Override
-    protected void onStop() {
-        super.onStop();
-     }
     private void loadPreference() {
         //ShardPreferences와 Editor 객체 얻어오기
         SharedPreferences pref = getSharedPreferences("pref", 0);
@@ -88,8 +88,37 @@ public class FlagPang extends AppCompatActivity implements View.OnClickListener 
         sound = pref.getString("p_sound", "on");
     }
 
+    void mediaPlayerStart(){
+        if (mediaPlayer == null) {
+            mediaPlayer = MediaPlayer.create(this, R.raw.cupcake_marshall);
+            mediaPlayer.setLooping(true);
+            mediaPlayer.start();
+        }
+    }
+
+    void mediaPlayerStop(){
+        if(mediaPlayer != null) {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+    }
+
     @Override
-    protected void onPause() {
-        super.onPause();
+    protected void onResume() {
+        super.onResume();
+        mediaPlayerStart();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mediaPlayerStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mediaPlayerStop();
     }
 }
