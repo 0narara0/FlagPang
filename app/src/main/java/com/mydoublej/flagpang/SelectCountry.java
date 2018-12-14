@@ -1,6 +1,7 @@
 package com.mydoublej.flagpang;
 
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.AssetManager;
@@ -26,11 +27,13 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 
+import static com.mydoublej.flagpang.R.drawable.correct;
+
 public class SelectCountry extends AppCompatActivity implements View.OnClickListener{
     int score = 0, quizNum = 0, quizTotal = 10, buttonCount = 4;
     private  DBOpenHelper dbOpenHelper;
     TextView textViewScore, textViewProgress, textViewSelectCountry, textViewAnswer;
-    ImageView imageViewFlag;
+    ImageView imageViewFlag, imageViewResult;
     Button[] buttonCountry = new Button[buttonCount];
     Button buttonReset, buttonMain, buttonInfo;
     Handler handler = new Handler();
@@ -51,6 +54,7 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         textViewSelectCountry = findViewById(R.id.textViewSelectCountry);
         textViewAnswer = findViewById(R.id.textViewAnswer);
         imageViewFlag = findViewById(R.id.imageViewFlag);
+        imageViewResult = findViewById(R.id.imageViewResult);
         (buttonReset = findViewById(R.id.buttonReset)).setOnClickListener(this);
         (buttonMain = findViewById(R.id.buttonMain)).setOnClickListener(this);
         (buttonCountry[0] = findViewById(R.id.buttonCountry1)).setOnClickListener(this);
@@ -102,10 +106,13 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    @SuppressLint("WrongConstant")
     public void pressNationButton(View view){
         String nation = view.getTag().toString();
         String flag = imageViewFlag.getTag().toString();
-        textViewAnswer.setVisibility(View.VISIBLE);
+        //textViewAnswer.setVisibility(View.VISIBLE);
+
+        imageViewResult.setVisibility(View.VISIBLE);
         for (int i = 0; i < buttonCount; i++)
             buttonCountry[i].setEnabled(false);// 나라 버튼 모두 활성화
 
@@ -113,8 +120,10 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         if (nation.equals(flag)) {
             score++;
             textViewScore.setText(" Score : " + score);
-            textViewAnswer.setText("CORRECT!" + "\n" + flag.toString());
-            textViewAnswer.setTextColor(Color.parseColor("#FF00893C"));
+            imageViewResult.setVisibility(View.VISIBLE);
+            imageViewResult.setImageResource(R.drawable.correct);
+            //textViewAnswer.setText("CORRECT!" + "\n" + flag.toString());
+            //textViewAnswer.setTextColor(Color.parseColor("#FF00893C"));
             if(p_sound.equals("on")) {
                 soundPool.play(soundCorrect, 1, 1, 0, 0, 1.0f);
             }
@@ -123,8 +132,10 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         else {
             Animation shake = AnimationUtils.loadAnimation(this,R.anim.shake);
             imageViewFlag.startAnimation(shake);
-            textViewAnswer.setText("INCORRECT!" + "\n" + flag.toString());
-            textViewAnswer.setTextColor(Color.RED);
+            imageViewResult.setVisibility(View.VISIBLE);
+            imageViewResult.setImageResource(R.drawable.incorrect);
+            //textViewAnswer.setText("INCORRECT!" + "\n" + flag.toString());
+            //textViewAnswer.setTextColor(Color.RED);
             if(p_sound.equals("on")) {
                 soundPool.play(soundIncorrect, 1, 1, 0, 0, 1.0f);
             }
@@ -143,7 +154,8 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
     public void Init(){
         quizNum = 0;
         score = 0;
-        textViewAnswer.setVisibility(View.GONE);
+        //textViewAnswer.setVisibility(View.GONE);
+        imageViewResult.setVisibility(View.GONE);
     }
 
     //퀴즈 새로 셋팅
@@ -253,7 +265,8 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
             @Override
             public void run() {
                 QuizSet();
-                textViewAnswer.setVisibility(View.GONE);
+                //textViewAnswer.setVisibility(View.GONE);
+                imageViewResult.setVisibility(View.GONE);
             }
         }, 500);//지연
     }
