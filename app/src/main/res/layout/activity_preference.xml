@@ -166,7 +166,8 @@
         android:text="@string/btnClear"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnSave" />
+        app:layout_constraintEnd_toStartOf="@+id/btnSave"
+        android:background="@drawable/button_shape"/>
 
     <Button
         android:id="@+id/btnSave"
@@ -177,7 +178,8 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/button_shape"/>
 
 
     <Button
@@ -190,7 +192,8 @@
         android:text="@string/btnQuit"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/barrier2"
-        app:layout_constraintStart_toEndOf="@+id/btnSave" />
+        app:layout_constraintStart_toEndOf="@+id/btnSave"
+        android:background="@drawable/button_shape"/>
 
     <TextView
         android:id="@+id/textby"

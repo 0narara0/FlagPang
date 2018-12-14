@@ -31,7 +31,7 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
     ImageView imageViewOXFlag;
     TextView textViewQuiz, textViewProgress, textViewScore, textViewAnswer;
     int score, quizNum;
-    String country,country_kor,countryQuiz;
+    String quiz,country_kor,imageFlag;
     Button btn_O, btn_X, btn_Info;
     Handler handler = new Handler();
     String p_level="1", p_language="korean", p_sound="on";
@@ -95,12 +95,12 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
                 break;
 
             case R.id.btn_O:
-                if(country==countryQuiz) result = 1;
+                if(quiz==imageFlag) result = 1;
                 else result = 2;
                 break;
 
             case R.id.btn_X:
-                if(country!=countryQuiz) result = 1;
+                if(quiz!=imageFlag) result = 1;
                 else result = 2;
                 break;
 
@@ -146,7 +146,7 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
         }
 
         if(quizNum == 10){
-            country = "";
+            quiz = "";
             quizNum = 0;
             textViewScore.setText(" Score : " + score);
            // textViewProgress.setText("game over");
@@ -158,13 +158,6 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
             delayResult();
         }
     }
-
-
-
-
-
-
-
 
     //퀴즈세팅
     public void quizSet(){
@@ -187,20 +180,27 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
         AssetManager am = getResources().getAssets();
         InputStream is = null ;
 
-        String filename = arrayList.get(rid[0]).getContinent().toString();
-        filename += "/";
-        filename += arrayList.get(rid[0]).getImage().toString();
+
 //        Bitmap bitmap = null;
-        country = arrayList.get(rid[0]).getCountry().toString();
+        quiz = arrayList.get(rid[0]).getCountry().toString();//정답
+//        text = (p_language .equals( "korean")) ? country_kor : imageFlag;
+//        textViewQuiz.setText(imageFlag);
+
+        if(p_language .equals( "korean")){
+            text = arrayList.get(rid[0]).getCountryKor().toString();// 정답
+        }else {
+            text = arrayList.get(rid[0]).getCountry().toString();
+        }
+
+        textViewQuiz.setText(text);
 
         int randomIndex = (int) ((Math.random()) * 10 % 2);//정답 오답을 랜덤하게 뽑음
-        countryQuiz = arrayList.get(rid[randomIndex]).getCountry().toString();
+        imageFlag = arrayList.get(rid[randomIndex]).getCountry().toString();// 정답
         country_kor = arrayList.get(rid[randomIndex]).getCountryKor().toString();
 
-
-        text = (p_language .equals( "korean")) ? country_kor : countryQuiz;
-//        textViewQuiz.setText(countryQuiz);
-        textViewQuiz.setText(text);
+        String filename = arrayList.get(rid[randomIndex]).getContinent().toString();
+        filename += "/";
+        filename += arrayList.get(rid[randomIndex]).getImage().toString();
 
         try {
             is = am.open(filename) ;
@@ -259,7 +259,5 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
     @Override
     protected void onPause() {
         super.onPause();
-
     }
-
 }

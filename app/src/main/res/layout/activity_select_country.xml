@@ -50,21 +50,6 @@
         app:layout_constraintTop_toTopOf="@+id/guideline2"
         tools:text="Score:0" />
 
-    <Button
-        android:id="@+id/buttonReset"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        android:background="@android:color/transparent"
-        android:padding="1dp"
-        android:text="@string/buttonReset"
-        android:textColor="#ffffff"
-        android:textSize="26sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/buttonMain" />
-
     <ImageView
         android:id="@+id/imageViewFlag"
         android:layout_width="260dp"
@@ -175,17 +160,31 @@
 
     <Button
         android:id="@+id/buttonMain"
-        android:layout_width="wrap_content"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        android:background="@android:color/transparent"
+        android:layout_marginBottom="52dp"
+        android:background="@drawable/button_shape"
         android:text="@string/buttonMain"
         android:textColor="#ffffff"
-        android:textSize="26sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonReset"
-        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonReset"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="52dp"
+        android:background="@drawable/button_shape"
+        android:text="@string/buttonReset"
+        android:textColor="#ffffff"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/buttonMain" />
 
     <TextView
         android:id="@+id/textViewAnswer"
