@@ -17,7 +17,7 @@ import android.widget.ImageView;
 public class FlagPang extends AppCompatActivity implements View.OnClickListener {
     private DBOpenHelper dbOpenHelper;
     private SQLiteDatabase mdb;
-    String language, level, sound;
+    String language, level, sound = "on";
     private MediaPlayer mediaPlayer = null;
 
     @Override
@@ -38,7 +38,9 @@ public class FlagPang extends AppCompatActivity implements View.OnClickListener 
         imageViewFlagpang.invalidate();
 
         //배경음악
-        mediaPlayerStart();
+        if( sound.equals("on")){
+            mediaPlayerStart();
+        }
 
         dbOpenHelper = DBOpenHelper.getInstance(this);
     }
@@ -46,7 +48,6 @@ public class FlagPang extends AppCompatActivity implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         Bundle bundle = new Bundle();
-        loadPreference();
         bundle.putString("p_language",language);
         bundle.putString("p_level",level);
         bundle.putString("p_sound",sound);
@@ -107,7 +108,11 @@ public class FlagPang extends AppCompatActivity implements View.OnClickListener 
     @Override
     protected void onResume() {
         super.onResume();
-        mediaPlayerStart();
+
+        loadPreference();
+        if( sound.equals("on")){
+            mediaPlayerStart();
+        }
     }
 
     @Override

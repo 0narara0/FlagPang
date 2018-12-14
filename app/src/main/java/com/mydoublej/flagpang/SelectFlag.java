@@ -37,6 +37,7 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
     Handler handler = new Handler();
     SoundPool soundPool;
     int soundCorrect, soundIncorrect;
+    ImageView imageViewResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +61,7 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
         ((Button)findViewById(R.id.flagReset)).setOnClickListener(this);
         ((Button)findViewById(R.id.flagMain)).setOnClickListener(this);
         textViewAnswer = findViewById(R.id.textViewAnswer);
+        imageViewResult = findViewById(R.id.imageViewResult);
 
         //사운드
         soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
@@ -84,6 +86,7 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
             case R.id.flagReset:
                 score = 0;
                 quizNum = 0;
+                imageViewResult.setVisibility(View.GONE);
                 QuizSet();
                 break;
             case R.id.flagMain:
@@ -112,9 +115,13 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
             score++;
             flagScore.setText(" Score : " + score);
             textViewAnswer.setVisibility(View.VISIBLE);
-            text = (p_language .equals( "korean")) ? ("정답!!" + "\n" + country_kor):("CORRECT!!" + "\n" + country);
+            text = (p_language .equals( "korean")) ? (country_kor):(country);
             textViewAnswer.setText(text);
             textViewAnswer.setTextColor(Color.parseColor("#FF00893C"));
+
+            imageViewResult.setVisibility(View.VISIBLE);
+            imageViewResult.setImageResource(R.drawable.correct);
+
             if(p_sound.equals("on")) {
                 soundPool.play(soundCorrect, 1, 1, 0, 0, 1.0f);
             }
@@ -122,9 +129,13 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
             Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
             ((ImageView)findViewById(view.getId())).startAnimation(shake);
             textViewAnswer.setVisibility(View.VISIBLE);
-            text = (p_language .equals( "korean")) ? ("오답!!" + "\n" + country_kor):("INCORRECT!!" + "\n" + country);
+            text = (p_language .equals( "korean")) ? (country_kor):(country);
             textViewAnswer.setText(text);
             textViewAnswer.setTextColor(Color.RED);
+
+            imageViewResult.setVisibility(View.VISIBLE);
+            imageViewResult.setImageResource(R.drawable.incorrect);
+
             if(p_sound.equals("on")) {
                 soundPool.play(soundIncorrect, 1, 1, 0, 0, 1.0f);
             }
@@ -235,6 +246,7 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
                 flagImage[correctIndex].setBackgroundResource(R.drawable.solid);
                 QuizSet();
                 textViewAnswer.setVisibility(View.GONE);
+                imageViewResult.setVisibility(View.GONE);
             }
         }, 500);//지연
     }

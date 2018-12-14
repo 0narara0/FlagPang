@@ -288,12 +288,12 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
+    protected void onPause() {
+        super.onPause();
 
-        if(soundPool != null) {
+        /*if(soundPool != null) {
             soundPool.release();
             soundPool = null;
-        }
+        }*/
     }
 }
