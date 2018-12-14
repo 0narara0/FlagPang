@@ -66,7 +66,7 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
 
         //사운드
         soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
-        soundCorrect = soundPool.load(this, R.raw.polong, 1);
+        soundCorrect = soundPool.load(this, R.raw.dingdongdang, 1);
         soundIncorrect = soundPool.load(this, R.raw.tick, 1);
 
         dbOpenHelper = DBOpenHelper.getInstance(this);

@@ -63,7 +63,7 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
 
         //사운드
         soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
-        soundCorrect = soundPool.load(this, R.raw.polong, 1);
+        soundCorrect = soundPool.load(this, R.raw.dingdongdang, 1);
         soundIncorrect = soundPool.load(this, R.raw.tick, 1);
 
         dbOpenHelper = DBOpenHelper.getInstance(this);
@@ -126,7 +126,7 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
             textViewAnswer.setText(text);
             textViewAnswer.setTextColor(Color.RED);
             if(p_sound.equals("on")) {
-                soundPool.play(soundCorrect, 1, 1, 0, 0, 1.0f);
+                soundPool.play(soundIncorrect, 1, 1, 0, 0, 1.0f);
             }
         }
 
