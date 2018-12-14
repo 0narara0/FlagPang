@@ -167,7 +167,8 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnSave"
-        android:background="@drawable/button_shape"/>
+        android:background="@drawable/button_shape"
+        android:textColor="#ffffff"/>
 
     <Button
         android:id="@+id/btnSave"
@@ -179,7 +180,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/button_shape"/>
+        android:background="@drawable/button_shape"
+        android:textColor="#ffffff"/>
 
 
     <Button
@@ -193,18 +195,20 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/barrier2"
         app:layout_constraintStart_toEndOf="@+id/btnSave"
-        android:background="@drawable/button_shape"/>
+        android:background="@drawable/button_shape"
+        android:textColor="#ffffff"/>
+
 
     <TextView
-        android:id="@+id/textby"
+        android:id="@+id/flagtextby"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="14dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="40dp"
-        android:text="@string/textby"
+        android:layout_marginBottom="16dp"
+        android:text="@string/flagtextby"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
