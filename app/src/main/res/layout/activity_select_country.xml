@@ -101,7 +101,7 @@
     <Button
         android:id="@+id/buttonCountry1"
         android:layout_width="280dp"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:background="#FF8193BF"
         android:padding="5dp"
         android:text="@string/buttonCountry1"
@@ -116,7 +116,7 @@
     <Button
         android:id="@+id/buttonCountry2"
         android:layout_width="280dp"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:background="#FF8193BF"
         android:padding="5dp"
         android:text="@string/buttonCountry2"
@@ -131,7 +131,7 @@
     <Button
         android:id="@+id/buttonCountry3"
         android:layout_width="280dp"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:background="#FF8193BF"
         android:padding="5dp"
         android:text="@string/buttonCountry3"
@@ -146,13 +146,14 @@
     <Button
         android:id="@+id/buttonCountry4"
         android:layout_width="280dp"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:background="#FF8193BF"
         android:padding="5dp"
         android:text="@string/buttonCountry4"
         android:textColor="#ffffff"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintBottom_toTopOf="@+id/buttonReset"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -249,14 +250,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="282dp" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:visibility="invisible"
-        app:layout_constraintGuide_begin="489dp" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline7"

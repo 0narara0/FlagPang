@@ -260,4 +260,14 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
     protected void onPause() {
         super.onPause();
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        if(soundPool != null) {
+            soundPool.release();
+            soundPool = null;
+        }
+    }
 }

@@ -273,5 +273,15 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
         super.onPause();
 //        finish();
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        if(soundPool != null) {
+            soundPool.release();
+            soundPool = null;
+        }
+    }
 }
 

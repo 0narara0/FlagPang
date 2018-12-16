@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#e1d27d"
     tools:context=".PreferenceSetting"
-    tools:layout_editor_absoluteY="25dp"
-    android:background="#e1d27d">
+    tools:layout_editor_absoluteY="25dp">
 
     <TextView
         android:id="@+id/textSettingTitle"
@@ -160,43 +160,44 @@
         android:id="@+id/btnClear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="76dp"
+        android:background="@drawable/button_shape"
         android:text="@string/btnClear"
+        android:textColor="#ffffff"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnSave"
-        android:background="@drawable/button_shape"
-        android:textColor="#ffffff"/>
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="76dp"
+        android:background="@drawable/button_shape"
         android:text="@string/btnSave"
+        android:textColor="#ffffff"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/button_shape"
-        android:textColor="#ffffff"/>
+        app:layout_constraintEnd_toStartOf="@+id/btnQuit"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnClear" />
 
 
     <Button
         android:id="@+id/btnQuit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="76dp"
+        android:background="@drawable/button_shape"
         android:text="@string/btnQuit"
+        android:textColor="#ffffff"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/barrier2"
-        app:layout_constraintStart_toEndOf="@+id/btnSave"
-        android:background="@drawable/button_shape"
-        android:textColor="#ffffff"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnSave" />
 
 
     <TextView
