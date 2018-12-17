@@ -48,6 +48,7 @@ public class FlagPang extends AppCompatActivity implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         Bundle bundle = new Bundle();
+        loadPreference();
         bundle.putString("p_language",language);
         bundle.putString("p_level",level);
         bundle.putString("p_sound",sound);
@@ -108,11 +109,7 @@ public class FlagPang extends AppCompatActivity implements View.OnClickListener 
     @Override
     protected void onResume() {
         super.onResume();
-
-        loadPreference();
-        if( sound.equals("on")){
-            mediaPlayerStart();
-        }
+        mediaPlayerStart();
     }
 
     @Override

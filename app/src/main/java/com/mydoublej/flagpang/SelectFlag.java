@@ -154,6 +154,8 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
 
     //퀴즈 새로 셋팅
     public void QuizSet(){
+        textViewAnswer.setVisibility(View.GONE);
+        imageViewResult.setVisibility(View.GONE);
         ++quizNum;
         flagScore.setText(" Score : " + score);
         flagProgress.setText(quizNum + " of 10");
@@ -245,8 +247,6 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
             public void run() {
                 flagImage[correctIndex].setBackgroundResource(R.drawable.solid);
                 QuizSet();
-                textViewAnswer.setVisibility(View.GONE);
-                imageViewResult.setVisibility(View.GONE);
             }
         }, 500);//지연
     }

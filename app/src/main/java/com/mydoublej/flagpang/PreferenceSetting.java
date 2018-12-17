@@ -1,13 +1,17 @@
 package com.mydoublej.flagpang;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+
+import java.util.HashMap;
 
 public class PreferenceSetting extends AppCompatActivity implements View.OnClickListener{
     String language, level, sound;
@@ -24,7 +28,6 @@ public class PreferenceSetting extends AppCompatActivity implements View.OnClick
         ((Button)findViewById(R.id.btnClear)).setOnClickListener(this);
         ((Button)findViewById(R.id.btnSave)).setOnClickListener(this);
         ((Button)findViewById(R.id.btnQuit)).setOnClickListener(this);
-        loadPreference();
         setRadiobutton();
     }
 
@@ -44,7 +47,7 @@ public class PreferenceSetting extends AppCompatActivity implements View.OnClick
                 savePreference();
                 break;
             case R.id.btnQuit:
-                loadPreference();
+                loadPreference(this);
                 Intent intent = new Intent();
                 intent.putExtra("result_msg", 400);
                 setResult(RESULT_OK, intent);
@@ -61,6 +64,11 @@ public class PreferenceSetting extends AppCompatActivity implements View.OnClick
     }
     //
     private  void setRadiobutton(){
+        HashMap<String, String> mm = loadPreference(this);
+        language = mm.get("p_language");
+        level = mm.get("p_level");
+        sound = mm.get("p_sound");
+
         if(language.equals("korean")){
             ((RadioButton)findViewById(R.id.rbKorean)).setChecked(true);
             ((RadioButton)findViewById(R.id.rbEnglish)).setChecked(false);
@@ -98,11 +106,8 @@ public class PreferenceSetting extends AppCompatActivity implements View.OnClick
         }
     }
 
-    private  void savePreference(){
-        //ShardPreferences와 Editor 객체 얻어오기
-        SharedPreferences pref = getSharedPreferences("pref", 0);
-        SharedPreferences.Editor editor = pref.edit();
-        int id;
+    private  void savePreference() {
+         int id;
         RadioButton rb;
 
         id = rgLanguage.getCheckedRadioButtonId();
@@ -116,8 +121,14 @@ public class PreferenceSetting extends AppCompatActivity implements View.OnClick
         id = rgSound.getCheckedRadioButtonId();
         rb = (RadioButton) findViewById(id);
         sound = rb.getText().toString().toLowerCase();
+        saveData(language,level,sound);
+    }
 
-        if(level.equals("basic")) level="1";
+    private void saveData(String language, String level, String sound) {
+         //ShardPreferences와 Editor 객체 얻어오기
+         SharedPreferences pref = getSharedPreferences("pref", 0);
+         SharedPreferences.Editor editor = pref.edit();
+         if(level.equals("basic")) level="1";
         else if(level.equals("middle")) level="2";
         else level = "3"; //"advanced"
 
@@ -126,13 +137,20 @@ public class PreferenceSetting extends AppCompatActivity implements View.OnClick
         editor.putString("p_sound", sound);
         editor.commit();
     }
-    private void loadPreference() {
+
+    public HashMap<String,String> loadPreference(Context context) {
         //ShardPreferences와 Editor 객체 얻어오기
-        SharedPreferences pref = getSharedPreferences("pref", 0);
-        SharedPreferences.Editor editor = pref.edit();
+        SharedPreferences pref = context.getSharedPreferences("pref", 0);
+        //SharedPreferences.Editor editor = pref.edit();
         language = pref.getString("p_language", "korean");
         level = pref.getString("p_level", "1");
         sound = pref.getString("p_sound", "on");
+
+        HashMap<String,String> map = new HashMap<>();
+        map.put("p_language",language);
+        map.put("p_level",level);
+        map.put("p_sound",sound);
+        return  map;
     }
     @Override
     protected void onPause() {
