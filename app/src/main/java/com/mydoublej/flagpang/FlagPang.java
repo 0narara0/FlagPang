@@ -41,6 +41,7 @@ public class FlagPang extends AppCompatActivity implements View.OnClickListener 
         if( sound.equals("on")){
             mediaPlayerStart();
         }
+        else mediaPlayerStop();
 
         dbOpenHelper = DBOpenHelper.getInstance(this);
     }

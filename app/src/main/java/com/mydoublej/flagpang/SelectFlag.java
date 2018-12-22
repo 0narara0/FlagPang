@@ -247,6 +247,8 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
             public void run() {
                 flagImage[correctIndex].setBackgroundResource(R.drawable.solid);
                 QuizSet();
+                textViewAnswer.setVisibility(View.GONE);
+                imageViewResult.setVisibility(View.GONE);
             }
         }, 500);//지연
     }
