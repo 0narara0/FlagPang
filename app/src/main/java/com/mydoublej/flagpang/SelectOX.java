@@ -142,8 +142,6 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
         }
 
         if (quizNum == 10) {
-
-            delayResult();
             quiz = "";
             quizNum = 0;
             textViewScore.setText(" Score : " + score);

@@ -31,17 +31,17 @@ import java.util.LinkedHashSet;
 import static com.mydoublej.flagpang.R.drawable.correct;
 
 public class SelectCountry extends AppCompatActivity implements View.OnClickListener {
-    int score = 0, quizNum = 0, quizTotal = 10, buttonCount = 4;
     private DBOpenHelper dbOpenHelper;
+    private int correctIndex = 0;
+    private int randomFlag;
+    int score = 0, quizNum = 0, quizTotal = 10, buttonCount = 4;
+    int soundCorrect, soundIncorrect;
     TextView textViewScore, textViewProgress, textViewSelectCountry, textViewAnswer;
     ImageView imageViewFlag, imageViewResult;
     Button[] buttonCountry = new Button[buttonCount];
     Button buttonReset, buttonMain, buttonInfo;
     Handler handler = new Handler();
-    private int correctIndex = 0;
     SoundPool soundPool;
-    int soundCorrect, soundIncorrect;
-    private int randomFlag;
     String p_level, p_language, p_sound;
 
 
@@ -111,7 +111,6 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
     public void pressNationButton(View view) {
         String nation = view.getTag().toString();
         String flag = imageViewFlag.getTag().toString();
-        //textViewAnswer.setVisibility(View.VISIBLE);
 
         imageViewResult.setVisibility(View.VISIBLE);
         for (int i = 0; i < buttonCount; i++)
@@ -123,8 +122,6 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
             textViewScore.setText(" Score : " + score);
             imageViewResult.setVisibility(View.VISIBLE);
             imageViewResult.setImageResource(R.drawable.correct);
-            //textViewAnswer.setText("CORRECT!" + "\n" + flag.toString());
-            //textViewAnswer.setTextColor(Color.parseColor("#FF00893C"));
             if (p_sound.equals("on")) {
                 soundPool.play(soundCorrect, 1, 1, 0, 0, 1.0f);
             }
@@ -135,8 +132,6 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
             imageViewFlag.startAnimation(shake);
             imageViewResult.setVisibility(View.VISIBLE);
             imageViewResult.setImageResource(R.drawable.incorrect);
-            //textViewAnswer.setText("INCORRECT!" + "\n" + flag.toString());
-            //textViewAnswer.setTextColor(Color.RED);
             if (p_sound.equals("on")) {
                 soundPool.play(soundIncorrect, 1, 1, 0, 0, 1.0f);
             }
