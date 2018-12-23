@@ -38,10 +38,7 @@ public class FlagPang extends AppCompatActivity implements View.OnClickListener 
         imageViewFlagpang.invalidate();
 
         //배경음악
-        if( sound.equals("on")){
-            mediaPlayerStart();
-        }
-        else mediaPlayerStop();
+        mediaPlayerStart();
 
         dbOpenHelper = DBOpenHelper.getInstance(this);
     }
@@ -92,11 +89,14 @@ public class FlagPang extends AppCompatActivity implements View.OnClickListener 
     }
 
     void mediaPlayerStart(){
-        if (mediaPlayer == null) {
-            mediaPlayer = MediaPlayer.create(this, R.raw.cupcake_marshall);
-            mediaPlayer.setLooping(true);
-            mediaPlayer.start();
+        if( sound.equals("on")){
+            if (mediaPlayer == null) {
+                mediaPlayer = MediaPlayer.create(this, R.raw.cupcake_marshall);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.start();
+            }
         }
+        else mediaPlayerStop();
     }
 
     void mediaPlayerStop(){
