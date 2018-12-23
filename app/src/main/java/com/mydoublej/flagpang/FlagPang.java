@@ -25,10 +25,10 @@ public class FlagPang extends AppCompatActivity implements View.OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ((Button)findViewById(R.id.btn_country)).setOnClickListener(this);
-        ((Button)findViewById(R.id.btn_ox)).setOnClickListener(this);
-        ((Button)findViewById(R.id.btn_flag)).setOnClickListener(this);
-        ((ImageButton)findViewById(R.id.btn_setting)).setOnClickListener(this);
+        ((Button) findViewById(R.id.btn_country)).setOnClickListener(this);
+        ((Button) findViewById(R.id.btn_ox)).setOnClickListener(this);
+        ((Button) findViewById(R.id.btn_flag)).setOnClickListener(this);
+        ((ImageButton) findViewById(R.id.btn_setting)).setOnClickListener(this);
         //애니메이션xml 파일을 로드
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.wave);
         ImageView imageViewFlagpang = findViewById(R.id.imageViewFlagpang);
@@ -46,31 +46,30 @@ public class FlagPang extends AppCompatActivity implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         Bundle bundle = new Bundle();
-        loadPreference();
-        bundle.putString("p_language",language);
-        bundle.putString("p_level",level);
-        bundle.putString("p_sound",sound);
+        bundle.putString("p_language", language);
+        bundle.putString("p_level", level);
+        bundle.putString("p_sound", sound);
 
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btn_country:
-                Intent intentCountry = new Intent(this,SelectCountry.class);
+                Intent intentCountry = new Intent(this, SelectCountry.class);
                 intentCountry.putExtras(bundle);
-                startActivityForResult(intentCountry,100);
+                startActivityForResult(intentCountry, 100);
                 break;
             case R.id.btn_ox:
-                Intent intentOX = new Intent(this,SelectOX.class);
+                Intent intentOX = new Intent(this, SelectOX.class);
                 intentOX.putExtras(bundle);
-                startActivityForResult(intentOX,200);
+                startActivityForResult(intentOX, 200);
                 break;
             case R.id.btn_flag:
-                Intent intentFlag = new Intent(this,SelectFlag.class);
+                Intent intentFlag = new Intent(this, SelectFlag.class);
                 intentFlag.putExtras(bundle);
-                startActivityForResult(intentFlag,300);
+                startActivityForResult(intentFlag, 300);
                 break;
             case R.id.btn_setting:
-                Intent intent = new Intent(this,PreferenceSetting.class);
+                Intent intent = new Intent(this, PreferenceSetting.class);
                 intent.putExtras(bundle);
-                startActivityForResult(intent,500);
+                startActivityForResult(intent, 500);
                 break;
         }
     }
@@ -78,7 +77,9 @@ public class FlagPang extends AppCompatActivity implements View.OnClickListener 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        loadPreference();
     }
+
     private void loadPreference() {
         //ShardPreferences와 Editor 객체 얻어오기
         SharedPreferences pref = getSharedPreferences("pref", 0);
@@ -88,19 +89,18 @@ public class FlagPang extends AppCompatActivity implements View.OnClickListener 
         sound = pref.getString("p_sound", "on");
     }
 
-    void mediaPlayerStart(){
-        if( sound.equals("on")){
+    void mediaPlayerStart() {
+        if (sound.equals("on")) {
             if (mediaPlayer == null) {
                 mediaPlayer = MediaPlayer.create(this, R.raw.cupcake_marshall);
                 mediaPlayer.setLooping(true);
                 mediaPlayer.start();
             }
-        }
-        else mediaPlayerStop();
+        } else mediaPlayerStop();
     }
 
-    void mediaPlayerStop(){
-        if(mediaPlayer != null) {
+    void mediaPlayerStop() {
+        if (mediaPlayer != null) {
             mediaPlayer.stop();
             mediaPlayer.release();
             mediaPlayer = null;
@@ -122,6 +122,5 @@ public class FlagPang extends AppCompatActivity implements View.OnClickListener 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mediaPlayerStop();
     }
 }

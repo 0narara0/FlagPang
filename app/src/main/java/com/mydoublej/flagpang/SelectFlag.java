@@ -27,11 +27,11 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 
-public class SelectFlag extends AppCompatActivity implements View.OnClickListener{
+public class SelectFlag extends AppCompatActivity implements View.OnClickListener {
     int score = 0, quizNum = 0, quizTotal = 10, imageCount = 4, correctIndex;
-    String p_level="1", p_language="korean", p_sound="on";
+    String p_level = "1", p_language = "korean", p_sound = "on";
     String country, country_kor, countryQuiz;
-    private  DBOpenHelper dbOpenHelper;
+    private DBOpenHelper dbOpenHelper;
     TextView flagScore, flagProgress, flagSelectCountry, textViewAnswer;
     ImageView[] flagImage = new ImageView[imageCount];
     Handler handler = new Handler();
@@ -45,7 +45,7 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
         setContentView(R.layout.activity_select_flag);
 
         Bundle bundle = getIntent().getExtras();
-        p_language = bundle.getString("p_language","korean");
+        p_language = bundle.getString("p_language", "korean");
         p_level = bundle.getString("p_level", "1");
         p_sound = bundle.getString("p_sound", "on");
 
@@ -56,10 +56,10 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
         flagImage[1] = findViewById(R.id.flagImage2);
         flagImage[2] = findViewById(R.id.flagImage3);
         flagImage[3] = findViewById(R.id.flagImage4);
-        for(int i=0; i < imageCount; i++)flagImage[i].setOnClickListener(this);
-        ((Button)findViewById(R.id.flagInfo)).setOnClickListener(this);
-        ((Button)findViewById(R.id.flagReset)).setOnClickListener(this);
-        ((Button)findViewById(R.id.flagMain)).setOnClickListener(this);
+        for (int i = 0; i < imageCount; i++) flagImage[i].setOnClickListener(this);
+        ((Button) findViewById(R.id.flagInfo)).setOnClickListener(this);
+        ((Button) findViewById(R.id.flagReset)).setOnClickListener(this);
+        ((Button) findViewById(R.id.flagMain)).setOnClickListener(this);
         textViewAnswer = findViewById(R.id.textViewAnswer);
         imageViewResult = findViewById(R.id.imageViewResult);
 
@@ -74,11 +74,11 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
 
     @Override
     public void onClick(View view) {
-        switch(view.getId()){
+        switch (view.getId()) {
 
             //wikipedia button 추가
             case R.id.flagInfo:
-                String defaultUrl = "https://ko.wikipedia.org/wiki/"+country_kor;
+                String defaultUrl = "https://ko.wikipedia.org/wiki/" + country_kor;
                 Intent intentWikipedia = new Intent(Intent.ACTION_VIEW, Uri.parse(defaultUrl));
                 startActivity(intentWikipedia);
                 break;
@@ -115,28 +115,28 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
             score++;
             flagScore.setText(" Score : " + score);
             textViewAnswer.setVisibility(View.VISIBLE);
-            text = (p_language .equals( "korean")) ? (country_kor):(country);
+            text = (p_language.equals("korean")) ? (country_kor) : (country);
             textViewAnswer.setText(text);
             textViewAnswer.setTextColor(Color.parseColor("#FF00893C"));
 
             imageViewResult.setVisibility(View.VISIBLE);
             imageViewResult.setImageResource(R.drawable.correct);
 
-            if(p_sound.equals("on")) {
+            if (p_sound.equals("on")) {
                 soundPool.play(soundCorrect, 1, 1, 0, 0, 1.0f);
             }
         } else {  //오답일때...
             Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
-            ((ImageView)findViewById(view.getId())).startAnimation(shake);
+            ((ImageView) findViewById(view.getId())).startAnimation(shake);
             textViewAnswer.setVisibility(View.VISIBLE);
-            text = (p_language .equals( "korean")) ? (country_kor):(country);
+            text = (p_language.equals("korean")) ? (country_kor) : (country);
             textViewAnswer.setText(text);
             textViewAnswer.setTextColor(Color.RED);
 
             imageViewResult.setVisibility(View.VISIBLE);
             imageViewResult.setImageResource(R.drawable.incorrect);
 
-            if(p_sound.equals("on")) {
+            if (p_sound.equals("on")) {
                 soundPool.play(soundIncorrect, 1, 1, 0, 0, 1.0f);
             }
         }
@@ -153,7 +153,7 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
     }
 
     //퀴즈 새로 셋팅
-    public void QuizSet(){
+    public void QuizSet() {
         textViewAnswer.setVisibility(View.GONE);
         imageViewResult.setVisibility(View.GONE);
         ++quizNum;
@@ -166,7 +166,7 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
         // DB 가져오기
         ArrayList<GetRecord> arrayList = dbOpenHelper.selectGetRecord(p_level);
         int member = arrayList.size();
-        int rid =(int) (Math.random() * member);
+        int rid = (int) (Math.random() * member);
 
         // 이미지뷰에 국기 적용
         setCountryTextView(arrayList, rid);
@@ -179,24 +179,24 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
         country = arrayList.get(rid).getCountry().toString();
         country_kor = arrayList.get(rid).getCountryKor().toString();
 
-        text = (p_language .equals( "korean")) ? country_kor : country;
+        text = (p_language.equals("korean")) ? country_kor : country;
         flagSelectCountry.setText(text);
     }
 
-    public void setContryImage (ArrayList<GetRecord>  arrayList, int randomID) {
+    public void setContryImage(ArrayList<GetRecord> arrayList, int randomID) {
 
         // db에서 랜덤하게 나라 가져옴.
         LinkedHashSet<Integer> setDBPK = new LinkedHashSet<>();
         setDBPK.add(randomID);// image에 적용한 나라 넣어줌.
         int arraySize = arrayList.size();
         while (setDBPK.size() < imageCount) {// set은 중복된 값을 허용하지 않음. 다른 수 4개가 저장되면 루프 탈출
-            int num = (int)(Math.random() * arraySize);
+            int num = (int) (Math.random() * arraySize);
             setDBPK.add(num);
         }
 
         // 이미지 가져오기
         AssetManager am = getResources().getAssets();
-        InputStream is = null ;
+        InputStream is = null;
         int index, id;
 
         // 이미지 인덱스 랜덤하게
@@ -208,9 +208,9 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
 
         Collections.shuffle(listIndex);
 
-        Iterator<Integer> iterDBPK =  setDBPK.iterator();
+        Iterator<Integer> iterDBPK = setDBPK.iterator();
         Iterator<Integer> iterImageIndex = listIndex.iterator();
-        while(iterDBPK.hasNext() && iterImageIndex.hasNext()) {
+        while (iterDBPK.hasNext() && iterImageIndex.hasNext()) {
             index = iterImageIndex.next();
             id = iterDBPK.next();
             countryQuiz = arrayList.get(id).getCountry().toString();
@@ -220,24 +220,24 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
             Bitmap bitmap = null;
 
             try {
-                is = am.open(filename) ;
+                is = am.open(filename);
                 bitmap = BitmapFactory.decodeStream(is);
             } catch (Exception e) {
-                e.printStackTrace() ;
+                e.printStackTrace();
                 Log.d("country", filename);
             }
 
             if (is != null) {
                 try {
-                    is.close() ;
+                    is.close();
                 } catch (Exception e) {
-                    e.printStackTrace() ;
+                    e.printStackTrace();
                 }
             }
             // 이미지 적용
             flagImage[index].setImageBitmap(bitmap);
             flagImage[index].setTag(countryQuiz);
-            if(country.equals(countryQuiz)) correctIndex = index;
+            if (country.equals(countryQuiz)) correctIndex = index;
         }
     }
 
@@ -280,7 +280,7 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
     protected void onStop() {
         super.onStop();
 
-        if(soundPool != null) {
+        if (soundPool != null) {
             soundPool.release();
             soundPool = null;
         }

@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.View;
+
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,9 +30,9 @@ import java.util.LinkedHashSet;
 
 import static com.mydoublej.flagpang.R.drawable.correct;
 
-public class SelectCountry extends AppCompatActivity implements View.OnClickListener{
+public class SelectCountry extends AppCompatActivity implements View.OnClickListener {
     int score = 0, quizNum = 0, quizTotal = 10, buttonCount = 4;
-    private  DBOpenHelper dbOpenHelper;
+    private DBOpenHelper dbOpenHelper;
     TextView textViewScore, textViewProgress, textViewSelectCountry, textViewAnswer;
     ImageView imageViewFlag, imageViewResult;
     Button[] buttonCountry = new Button[buttonCount];
@@ -79,10 +80,10 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View view) {
-        switch(view.getId()) {
+        switch (view.getId()) {
 
             case R.id.buttonInfo:
-                String defaultUrl = "https://ko.wikipedia.org/wiki/"+ imageViewFlag.getTag().toString();
+                String defaultUrl = "https://ko.wikipedia.org/wiki/" + imageViewFlag.getTag().toString();
                 Intent intentWikipedia = new Intent(Intent.ACTION_VIEW, Uri.parse(defaultUrl));
                 startActivity(intentWikipedia);
                 break;
@@ -107,7 +108,7 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
     }
 
     @SuppressLint("WrongConstant")
-    public void pressNationButton(View view){
+    public void pressNationButton(View view) {
         String nation = view.getTag().toString();
         String flag = imageViewFlag.getTag().toString();
         //textViewAnswer.setVisibility(View.VISIBLE);
@@ -124,19 +125,19 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
             imageViewResult.setImageResource(R.drawable.correct);
             //textViewAnswer.setText("CORRECT!" + "\n" + flag.toString());
             //textViewAnswer.setTextColor(Color.parseColor("#FF00893C"));
-            if(p_sound.equals("on")) {
+            if (p_sound.equals("on")) {
                 soundPool.play(soundCorrect, 1, 1, 0, 0, 1.0f);
             }
         }
         // 오답일 때
         else {
-            Animation shake = AnimationUtils.loadAnimation(this,R.anim.shake);
+            Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
             imageViewFlag.startAnimation(shake);
             imageViewResult.setVisibility(View.VISIBLE);
             imageViewResult.setImageResource(R.drawable.incorrect);
             //textViewAnswer.setText("INCORRECT!" + "\n" + flag.toString());
             //textViewAnswer.setTextColor(Color.RED);
-            if(p_sound.equals("on")) {
+            if (p_sound.equals("on")) {
                 soundPool.play(soundIncorrect, 1, 1, 0, 0, 1.0f);
             }
         }
@@ -145,13 +146,13 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         buttonCountry[correctIndex].setBackgroundResource(R.drawable.stroke);
 
         // 문제 다 풀었는지 체크
-        if(quizNum >= quizTotal)
+        if (quizNum >= quizTotal)
             delayGameOver();
         else
             delayResult();
     }
 
-    public void Init(){
+    public void Init() {
         quizNum = 0;
         score = 0;
         //textViewAnswer.setVisibility(View.GONE);
@@ -159,7 +160,7 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
     }
 
     //퀴즈 새로 셋팅
-    public void QuizSet(){
+    public void QuizSet() {
         quizNum++;
         textViewScore.setText(" Score : " + score);
         textViewProgress.setText(quizNum + " of 10");
@@ -168,13 +169,13 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         buttonCountry[correctIndex].setBackgroundColor(0xFF8498CA);
 
         // 버튼 활성화
-        for(int i = 0; i < buttonCount; i++)
+        for (int i = 0; i < buttonCount; i++)
             buttonCountry[i].setEnabled(true);
 
         // DB 가져오기
         ArrayList<GetRecord> arrayList = dbOpenHelper.selectGetRecord(p_level);
         int member = arrayList.size();
-        randomFlag =(int) (Math.random() * member);
+        randomFlag = (int) (Math.random() * member);
 
         // 이미지뷰에 국기 적용
         setCountryImageView(arrayList, randomFlag);
@@ -182,11 +183,11 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         setContryButton(arrayList, randomFlag);
     }
 
-    public void setCountryImageView(ArrayList<GetRecord> arrayList, int randomId){
+    public void setCountryImageView(ArrayList<GetRecord> arrayList, int randomId) {
 
         // 이미지 가져오기
         AssetManager am = getResources().getAssets();
-        InputStream is = null ;
+        InputStream is = null;
 
         // String filename = "oceania/austria.png";
         String filename = arrayList.get(randomFlag).getContinent().toString();
@@ -195,40 +196,39 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         Bitmap bitmap = null;
 
         try {
-            is = am.open(filename) ;
+            is = am.open(filename);
             bitmap = BitmapFactory.decodeStream(is);
             // TODO : use is(InputStream).
 
         } catch (Exception e) {
-            e.printStackTrace() ;
+            e.printStackTrace();
         }
 
         if (is != null) {
             try {
-                is.close() ;
+                is.close();
             } catch (Exception e) {
-                e.printStackTrace() ;
+                e.printStackTrace();
             }
         }
 
         // 이미지 적용
         imageViewFlag.setImageBitmap(bitmap);
-        if("korean".equals(p_language)){
+        if ("korean".equals(p_language)) {
             imageViewFlag.setTag(arrayList.get(randomFlag).getCountryKor());
-        }
-        else if("english".equals(p_language)){
+        } else if ("english".equals(p_language)) {
             imageViewFlag.setTag(arrayList.get(randomFlag).getCountry());
         }
     }
 
-    public void setContryButton (ArrayList<GetRecord>  arrayList, int randomFlag) {
+    public void setContryButton(ArrayList<GetRecord> arrayList, int randomFlag) {
 
         // db에서 랜덤하게 나라 가져옴.
         LinkedHashSet<Integer> setDBPK = new LinkedHashSet<>();
         setDBPK.add(randomFlag);// image에 적용한 나라 넣어줌.
         int arraySize = arrayList.size();
         while (setDBPK.size() < buttonCount) {// set은 중복된 값을 허용하지 않음. 다른 수 4개가 저장되면 루프 탈출
-            int num = (int)(Math.random() * arraySize);
+            int num = (int) (Math.random() * arraySize);
             setDBPK.add(num);
         }
 
@@ -242,16 +242,15 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         correctIndex = listIndex.get(0);
 
         // 버튼에 텍스트 적용
-        Iterator<Integer> iterDBPK =  setDBPK.iterator();
+        Iterator<Integer> iterDBPK = setDBPK.iterator();
         Iterator<Integer> iterButtonIndex = listIndex.iterator();
-        while(iterDBPK.hasNext() && iterButtonIndex.hasNext()) {
+        while (iterDBPK.hasNext() && iterButtonIndex.hasNext()) {
             int index = iterButtonIndex.next();
 
             String country = null;
-            if("korean".equals(p_language)){
+            if ("korean".equals(p_language)) {
                 country = arrayList.get(iterDBPK.next()).getCountryKor();
-            }
-            else if("english".equals(p_language)){
+            } else if ("english".equals(p_language)) {
                 country = arrayList.get(iterDBPK.next()).getCountry();
             }
 
@@ -296,7 +295,7 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
     protected void onStop() {
         super.onStop();
 
-        if(soundPool != null) {
+        if (soundPool != null) {
             soundPool.release();
             soundPool = null;
         }

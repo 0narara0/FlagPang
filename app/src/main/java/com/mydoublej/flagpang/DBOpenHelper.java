@@ -8,17 +8,17 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 
 public class DBOpenHelper extends SQLiteOpenHelper {
-    private  static DBOpenHelper instance;
-    private  static SQLiteDatabase mdb;
-    public static final  String DB_NAME = "flagpang.db";
-    private static  final SQLiteDatabase.CursorFactory FACTORY = null;
-    public  static final  int VERSION = 1;
+    private static DBOpenHelper instance;
+    private static SQLiteDatabase mdb;
+    public static final String DB_NAME = "flagpang.db";
+    private static final SQLiteDatabase.CursorFactory FACTORY = null;
+    public static final int VERSION = 1;
 
     String sql;
     Cursor cursor;
 
-    public  static DBOpenHelper getInstance(Context context) {
-        if(instance == null){
+    public static DBOpenHelper getInstance(Context context) {
+        if (instance == null) {
             instance = new DBOpenHelper(context);
         }
         mdb = instance.getWritableDatabase();
@@ -26,7 +26,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
     }
 
 
-    private DBOpenHelper(Context context){
+    private DBOpenHelper(Context context) {
         super(context, DB_NAME, FACTORY, VERSION);
 
     }
@@ -42,7 +42,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
                 "level text NOT NULL);";
         db.execSQL(sql);
 
-       table_inputdata(db);
+        table_inputdata(db);
     }
 
     @Override
@@ -51,17 +51,17 @@ public class DBOpenHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public ArrayList<GetRecord> selectGetRecord(String plevel){
+    public ArrayList<GetRecord> selectGetRecord(String plevel) {
         sql = "SELECT * FROM flag WHERE level <= '" + plevel + "'";
- //       sql = "SELECT * FROM flag";
-        cursor = mdb.rawQuery(sql,null);
+        //       sql = "SELECT * FROM flag";
+        cursor = mdb.rawQuery(sql, null);
 
         ArrayList<GetRecord> arrayList = new ArrayList<>();
         GetRecord getRecord;
         String country, country_kor, continent, image, level;
         int id;
 
-        while(cursor.moveToNext()){
+        while (cursor.moveToNext()) {
             id = cursor.getInt(cursor.getColumnIndex("id"));
             country = cursor.getString(cursor.getColumnIndex("country"));
             country_kor = cursor.getString(cursor.getColumnIndex("country_kor"));
@@ -69,13 +69,13 @@ public class DBOpenHelper extends SQLiteOpenHelper {
             image = cursor.getString(cursor.getColumnIndex("image"));
             level = cursor.getString(cursor.getColumnIndex("level"));
 
-            getRecord = new GetRecord(id, country, country_kor,continent, image, level);
+            getRecord = new GetRecord(id, country, country_kor, continent, image, level);
             arrayList.add(getRecord);
         }
         return arrayList;
     }
 
-    private void table_inputdata(SQLiteDatabase db){
+    private void table_inputdata(SQLiteDatabase db) {
         //south-america
         sql = "INSERT INTO flag " +
                 "VALUES(null, 'argentina','아르헨티나', 'samerica', 'argentina.png','1')";
@@ -688,4 +688,4 @@ public class DBOpenHelper extends SQLiteOpenHelper {
                 "VALUES(null, 'yemen', '예멘', 'asia', 'yemen.png','2')";
         db.execSQL(sql);
     }
- }
+}
