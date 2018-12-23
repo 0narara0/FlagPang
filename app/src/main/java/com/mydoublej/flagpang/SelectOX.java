@@ -147,7 +147,7 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
             textViewScore.setText(" Score : " + score);
             // textViewProgress.setText("game over");
             delayGameOver();
-            textViewAnswer.setVisibility(View.GONE);
+            //textViewAnswer.setVisibility(View.GONE);
 
         } else if (result == 1 || result == 2) {
             delayResult();
@@ -160,6 +160,8 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
         ArrayList<GetRecord> arrayList = new ArrayList<>();
         String continent, image, level;
         int id;
+
+        textViewAnswer.setVisibility(View.GONE);
 
         quizNum++;
         textViewScore.setText(" Score: " + score);
@@ -228,7 +230,6 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
             @Override
             public void run() {
                 quizSet();
-                textViewAnswer.setVisibility(View.GONE);
             }
         }, 500);//지연
     }
