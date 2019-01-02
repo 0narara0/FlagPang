@@ -28,6 +28,8 @@ public class PreferenceSetting extends AppCompatActivity implements View.OnClick
         ((Button) findViewById(R.id.btnClear)).setOnClickListener(this);
         ((Button) findViewById(R.id.btnSave)).setOnClickListener(this);
         ((Button) findViewById(R.id.btnQuit)).setOnClickListener(this);
+
+        loadPreference(this);
         setRadiobutton();
     }
 
@@ -63,12 +65,7 @@ public class PreferenceSetting extends AppCompatActivity implements View.OnClick
         sound = "on";
     }
 
-    //
     private void setRadiobutton() {
-        HashMap<String, String> mm = loadPreference(this);
-        language = mm.get("p_language");
-        level = mm.get("p_level");
-        sound = mm.get("p_sound");
 
         if (language.equals("korean")) {
             ((RadioButton) findViewById(R.id.rbKorean)).setChecked(true);
