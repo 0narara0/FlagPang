@@ -31,18 +31,20 @@ import java.util.LinkedHashSet;
 import static com.mydoublej.flagpang.R.drawable.correct;
 
 public class SelectCountry extends AppCompatActivity implements View.OnClickListener {
+
     private DBOpenHelper dbOpenHelper;
-    private int correctIndex = 0;
+    private int correctIndex;
     private int randomFlag;
-    int score = 0, quizNum = 0, quizTotal = 10, buttonCount = 4;
+    int score, quizNum, quizTotal, mTime;
     int soundCorrect, soundIncorrect;
     TextView textViewScore, textViewProgress, textViewSelectCountry, textViewAnswer;
     ImageView imageViewFlag, imageViewResult;
+    int buttonCount = 4;
     Button[] buttonCountry = new Button[buttonCount];
     Button buttonReset, buttonMain, buttonInfo;
     Handler handler = new Handler();
     SoundPool soundPool;
-    String p_level, p_language, p_sound;
+    String p_level, p_language, p_sound, p_time;
 
 
     @Override
@@ -68,6 +70,8 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         p_level = bundle.getString("p_level", "1");
         p_language = bundle.getString("p_language", "korean");
         p_sound = bundle.getString("p_sound", "on");
+        p_time = bundle.getString("p_time", "1000");
+        mTime = Integer.parseInt(p_time);
 
         //사운드
         soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
@@ -75,7 +79,12 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         soundIncorrect = soundPool.load(this, R.raw.tick, 1);
 
         dbOpenHelper = DBOpenHelper.getInstance(this);
+        init();
         QuizSet();
+    }
+
+    public void init() {
+        quizTotal = 10;
     }
 
     @Override
@@ -150,7 +159,6 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
     public void Init() {
         quizNum = 0;
         score = 0;
-        //textViewAnswer.setVisibility(View.GONE);
         imageViewResult.setVisibility(View.GONE);
     }
 
@@ -184,7 +192,6 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         AssetManager am = getResources().getAssets();
         InputStream is = null;
 
-        // String filename = "oceania/austria.png";
         String filename = arrayList.get(randomFlag).getContinent().toString();
         filename += "/";
         filename += arrayList.get(randomFlag).getImage().toString();
@@ -194,7 +201,6 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
             is = am.open(filename);
             bitmap = BitmapFactory.decodeStream(is);
             // TODO : use is(InputStream).
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -259,10 +265,9 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
             @Override
             public void run() {
                 QuizSet();
-                //textViewAnswer.setVisibility(View.GONE);
                 imageViewResult.setVisibility(View.GONE);
             }
-        }, 500);//지연
+        }, mTime);//지연
     }
 
     public void delayGameOver() {

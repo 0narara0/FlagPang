@@ -28,8 +28,8 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 
 public class SelectFlag extends AppCompatActivity implements View.OnClickListener {
-    int score = 0, quizNum = 0, quizTotal = 10, imageCount = 4, correctIndex;
-    String p_level = "1", p_language = "korean", p_sound = "on";
+    int score = 0, quizNum = 0, quizTotal = 10, imageCount = 4, correctIndex, mTime;
+    String p_level = "1", p_language = "korean", p_sound = "on", p_time;
     String country, country_kor, countryQuiz;
     private DBOpenHelper dbOpenHelper;
     TextView flagScore, flagProgress, flagSelectCountry, textViewAnswer;
@@ -48,6 +48,8 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
         p_language = bundle.getString("p_language", "korean");
         p_level = bundle.getString("p_level", "1");
         p_sound = bundle.getString("p_sound", "on");
+        p_time = bundle.getString("p_time", "1000");
+        mTime = Integer.parseInt(p_time);
 
         flagScore = findViewById(R.id.flagScore);
         flagProgress = findViewById(R.id.flagProgress);
@@ -250,7 +252,7 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
                 textViewAnswer.setVisibility(View.GONE);
                 imageViewResult.setVisibility(View.GONE);
             }
-        }, 500);//지연
+        }, mTime);//지연
     }
 
     public void delayGameOver() {

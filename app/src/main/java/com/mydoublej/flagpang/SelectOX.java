@@ -35,9 +35,9 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
     String quiz, country_kor, imageFlag;
     Button btn_O, btn_X, btn_Info;
     Handler handler = new Handler();
-    String p_level = "1", p_language = "korean", p_sound = "on";
+    String p_level = "1", p_language = "korean", p_sound = "on", p_time;
     SoundPool soundPool;
-    int soundCorrect, soundIncorrect;
+    int soundCorrect, soundIncorrect, mTime;
     Bitmap bitmap = null;
 
 
@@ -69,6 +69,8 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
         p_language = bundle.getString("p_language", "korean");
         p_level = bundle.getString("p_level", "1");
         p_sound = bundle.getString("p_sound", "on");
+        p_time = bundle.getString("p_time", "1000");
+        mTime = Integer.parseInt(p_time);
 
         dbOpenHelper = DBOpenHelper.getInstance(this);
         quizSet();
@@ -231,7 +233,7 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
             public void run() {
                 quizSet();
             }
-        }, 500);//지연
+        }, mTime);//지연
     }
 
     public void delayGameOver() {

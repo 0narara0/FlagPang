@@ -34,4 +34,8 @@
     <string name="textby">MyDoubleJ</string>
     <string name="flagtextby">MyDoubleJ</string>
     <string name="buttonInfo" />
+    <string name="textTime">Correct answer display time</string>
+    <string name="rbSlow">Slow</string>
+    <string name="rbMedium">Medium</string>
+    <string name="rbFast">Fast</string>
 </resources>

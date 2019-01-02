@@ -17,7 +17,7 @@ import android.widget.ImageView;
 public class FlagPang extends AppCompatActivity implements View.OnClickListener {
     private DBOpenHelper dbOpenHelper;
     private SQLiteDatabase mdb;
-    String language, level, sound = "on";
+    String language, level, sound, time;
     private MediaPlayer mediaPlayer = null;
 
     @Override
@@ -37,6 +37,8 @@ public class FlagPang extends AppCompatActivity implements View.OnClickListener 
         //화면을 갱신
         imageViewFlagpang.invalidate();
 
+        loadPreference();
+
         //배경음악
         mediaPlayerStart();
 
@@ -49,6 +51,7 @@ public class FlagPang extends AppCompatActivity implements View.OnClickListener 
         bundle.putString("p_language", language);
         bundle.putString("p_level", level);
         bundle.putString("p_sound", sound);
+        bundle.putString("p_time", time);
 
         switch (v.getId()) {
             case R.id.btn_country:
@@ -87,6 +90,7 @@ public class FlagPang extends AppCompatActivity implements View.OnClickListener 
         language = pref.getString("p_language", "korean");
         level = pref.getString("p_level", "1");
         sound = pref.getString("p_sound", "on");
+        time = pref.getString("p_time", "1000");
     }
 
     void mediaPlayerStart() {

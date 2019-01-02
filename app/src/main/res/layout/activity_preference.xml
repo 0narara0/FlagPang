@@ -9,6 +9,18 @@
     tools:layout_editor_absoluteY="25dp">
 
     <TextView
+        android:id="@+id/textTime"
+        android:layout_width="113dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="42dp"
+        android:text="@string/textTime"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textSound" />
+
+    <TextView
         android:id="@+id/textSettingTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -28,9 +40,9 @@
         android:id="@+id/textLanguage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="32dp"
         android:text="@string/textLanguage"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,9 +52,9 @@
         android:id="@+id/textLevel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginLeft="68dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="52dp"
         android:text="@string/textLevel"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,15 +64,11 @@
         android:id="@+id/textSound"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="92dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="72dp"
         android:text="@string/textSound"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/rgSound"
-        app:layout_constraintHorizontal_bias="0.163"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textLevel" />
 
@@ -70,7 +78,7 @@
         android:layout_height="56dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="44dp"
         android:layout_marginRight="44dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -99,11 +107,11 @@
         android:layout_height="83dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.937"
         app:layout_constraintStart_toEndOf="@+id/textLevel"
         app:layout_constraintTop_toBottomOf="@+id/rgLanguage">
 
@@ -130,14 +138,19 @@
 
     </RadioGroup>
 
+
     <RadioGroup
         android:id="@+id/rgSound"
         android:layout_width="180dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="40dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.928"
+        app:layout_constraintStart_toEndOf="@+id/textSound"
         app:layout_constraintTop_toBottomOf="@+id/rgLevel">
 
         <RadioButton
@@ -153,6 +166,43 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/rbOff" />
+
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/rgTime"
+        android:layout_width="180dp"
+        android:layout_height="83dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textTime"
+        app:layout_constraintTop_toBottomOf="@+id/rgSound">
+
+        <RadioButton
+            android:id="@+id/rbSlow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/rbSlow" />
+
+        <RadioButton
+            android:id="@+id/rbMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/rbMedium" />
+
+        <RadioButton
+            android:id="@+id/rbFast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/rbFast" />
 
     </RadioGroup>
 
@@ -183,7 +233,6 @@
         app:layout_constraintEnd_toStartOf="@+id/btnQuit"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnClear" />
-
 
     <Button
         android:id="@+id/btnQuit"
