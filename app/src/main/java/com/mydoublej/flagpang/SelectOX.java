@@ -88,7 +88,7 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
             //wikipedia button 추가
             case R.id.btn_Info:
                 result = 0;
-                String defaultUrl = "https://ko.wikipedia.org/wiki/" + country_kor;
+                String defaultUrl = "https://ko.wikipedia.org/wiki/" + quiz; // url 깃발 주소에서 문제 주소로 수정
                 Intent intentWikipedia = new Intent(Intent.ACTION_VIEW, Uri.parse(defaultUrl));
                 startActivity(intentWikipedia);
                 break;
@@ -254,6 +254,18 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
     }
 
     @Override
+    protected void onRestart() {
+        super.onRestart();
+        soundCorrect = soundPool.load(this, R.raw.dingdongdang, 1);
+        soundIncorrect = soundPool.load(this, R.raw.tick, 1);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
     protected void onPause() {
         super.onPause();
     }
@@ -262,9 +274,22 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
     protected void onStop() {
         super.onStop();
 
+        soundPool.unload(soundCorrect);
+        soundPool.unload(soundIncorrect);
+
+//        if (soundPool != null) {
+//            soundPool.release();
+            //soundPool = null;
+//        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
         if (soundPool != null) {
             soundPool.release();
-            soundPool = null;
         }
+
     }
 }

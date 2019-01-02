@@ -273,6 +273,18 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
     }
 
     @Override
+    protected void onRestart() {
+        super.onRestart();
+        soundCorrect = soundPool.load(this, R.raw.dingdongdang, 1);
+        soundIncorrect = soundPool.load(this, R.raw.tick, 1);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
     protected void onPause() {
         super.onPause();
 //        finish();
@@ -282,10 +294,23 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
     protected void onStop() {
         super.onStop();
 
+        soundPool.unload(soundCorrect);
+        soundPool.unload(soundIncorrect);
+
+//        if (soundPool != null) {
+//            soundPool.release();
+//            soundPool = null;
+//        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
         if (soundPool != null) {
             soundPool.release();
-            soundPool = null;
         }
+
     }
 }
 
