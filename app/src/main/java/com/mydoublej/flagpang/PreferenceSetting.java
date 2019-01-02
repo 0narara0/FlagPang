@@ -111,15 +111,18 @@ public class PreferenceSetting extends AppCompatActivity implements View.OnClick
             ((RadioButton) findViewById(R.id.rbOff)).setChecked(true);
         }
 
-        ((RadioButton) findViewById(R.id.rbFast)).setChecked(false);
-        ((RadioButton) findViewById(R.id.rbMedium)).setChecked(false);
-        ((RadioButton) findViewById(R.id.rbSlow)).setChecked(false);
         if (time.equals("1500")) {
+            ((RadioButton) findViewById(R.id.rbFast)).setChecked(false);
+            ((RadioButton) findViewById(R.id.rbMedium)).setChecked(false);
             ((RadioButton) findViewById(R.id.rbSlow)).setChecked(true);
         } else if (time.equals("1000")) {
+            ((RadioButton) findViewById(R.id.rbFast)).setChecked(false);
             ((RadioButton) findViewById(R.id.rbMedium)).setChecked(true);
+            ((RadioButton) findViewById(R.id.rbSlow)).setChecked(false);
         } else if (time.equals("500")) {
             ((RadioButton) findViewById(R.id.rbFast)).setChecked(true);
+            ((RadioButton) findViewById(R.id.rbMedium)).setChecked(false);
+            ((RadioButton) findViewById(R.id.rbSlow)).setChecked(false);
         }
     }
 
