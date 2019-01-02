@@ -5,15 +5,12 @@
         android:left="1dp"
         android:right="1dp"
         android:top="1dp">
-        <shape android:shape="rectangle" >
+        <shape android:shape="rectangle">
             <stroke
                 android:width="8sp"
                 android:color="#469939" />
-            <corners
-                android:radius="10sp" />
-            <solid
-                android:color="#9345983a" />
+            <corners android:radius="10sp" />
+            <solid android:color="#9345983a" />
         </shape>
     </item>
-
 </layer-list>
