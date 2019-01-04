@@ -309,11 +309,6 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
 
         soundPool.unload(soundCorrect);
         soundPool.unload(soundIncorrect);
-
-//        if (soundPool != null) {
-//            soundPool.release();
-//            soundPool = null;
-//        }
     }
 
     @Override
@@ -323,6 +318,5 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
         if (soundPool != null) {
             soundPool.release();
         }
-
     }
 }
