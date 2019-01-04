@@ -299,11 +299,6 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
 
         soundPool.unload(soundCorrect);
         soundPool.unload(soundIncorrect);
-
-//        if (soundPool != null) {
-//            soundPool.release();
-//            soundPool = null;
-//        }
     }
 
     @Override
@@ -313,7 +308,6 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
         if (soundPool != null) {
             soundPool.release();
         }
-
     }
 }
 

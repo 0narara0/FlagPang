@@ -280,11 +280,6 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
 
         soundPool.unload(soundCorrect);
         soundPool.unload(soundIncorrect);
-
-//        if (soundPool != null) {
-//            soundPool.release();
-            //soundPool = null;
-//        }
     }
 
     @Override
@@ -294,6 +289,5 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
         if (soundPool != null) {
             soundPool.release();
         }
-
     }
 }
