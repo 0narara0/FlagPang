@@ -89,10 +89,13 @@ public class SelectCountry extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View view) {
+        String defaultUrl = null;
         switch (view.getId()) {
 
             case R.id.buttonInfo:
-                String defaultUrl = "https://ko.wikipedia.org/wiki/" + imageViewFlag.getTag().toString();
+                if(p_language.equals("korean")){
+                    defaultUrl = "https://ko.wikipedia.org/wiki/" + imageViewFlag.getTag().toString();
+                } else{defaultUrl = "https://en.wikipedia.org/wiki/" + imageViewFlag.getTag().toString();}
                 Intent intentWikipedia = new Intent(Intent.ACTION_VIEW, Uri.parse(defaultUrl));
                 startActivity(intentWikipedia);
                 break;

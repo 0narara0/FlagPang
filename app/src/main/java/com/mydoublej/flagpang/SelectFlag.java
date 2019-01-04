@@ -76,11 +76,14 @@ public class SelectFlag extends AppCompatActivity implements View.OnClickListene
 
     @Override
     public void onClick(View view) {
+        String defaultUrl = null;
         switch (view.getId()) {
 
             //wikipedia button 추가
             case R.id.flagInfo:
-                String defaultUrl = "https://ko.wikipedia.org/wiki/" + country_kor;
+                if(p_language.equals("korean")){
+                    defaultUrl = "https://ko.wikipedia.org/wiki/" + country_kor;
+                } else{defaultUrl = "https://en.wikipedia.org/wiki/" + country;}
                 Intent intentWikipedia = new Intent(Intent.ACTION_VIEW, Uri.parse(defaultUrl));
                 startActivity(intentWikipedia);
                 break;

@@ -39,6 +39,7 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
     SoundPool soundPool;
     int soundCorrect, soundIncorrect, mTime;
     Bitmap bitmap = null;
+    String textQuiz;
 
 
     @Override
@@ -82,13 +83,16 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
         String text;
         int result = 0; //0-textviewAnswer x, 1-정답 ,2-오답
         String flag = imageViewOXFlag.getTag().toString();
+        String defaultUrl = null;
 
         switch (v.getId()) {
 
             //wikipedia button 추가
             case R.id.btn_Info:
                 result = 0;
-                String defaultUrl = "https://ko.wikipedia.org/wiki/" + quiz; // url 깃발 주소에서 문제 주소로 수정
+                if(p_language.equals("korean")){
+                    defaultUrl = "https://ko.wikipedia.org/wiki/" + textQuiz;
+                } else{defaultUrl = "https://en.wikipedia.org/wiki/" + quiz;}
                 Intent intentWikipedia = new Intent(Intent.ACTION_VIEW, Uri.parse(defaultUrl));
                 startActivity(intentWikipedia);
                 break;
@@ -158,7 +162,7 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
 
     //퀴즈세팅
     public void quizSet() {
-        String text;
+
         ArrayList<GetRecord> arrayList = new ArrayList<>();
         String continent, image, level;
         int id;
@@ -182,16 +186,16 @@ public class SelectOX extends AppCompatActivity implements View.OnClickListener 
 
 //        Bitmap bitmap = null;
         quiz = arrayList.get(rid[0]).getCountry().toString();//정답
-//        text = (p_language .equals( "korean")) ? country_kor : imageFlag;
+//        textQuiz = (p_language .equals( "korean")) ? country_kor : imageFlag;
 //        textViewQuiz.setText(imageFlag);
 
         if (p_language.equals("korean")) {
-            text = arrayList.get(rid[0]).getCountryKor().toString();// 정답
+            textQuiz = arrayList.get(rid[0]).getCountryKor().toString();// 정답
         } else {
-            text = arrayList.get(rid[0]).getCountry().toString();
+            textQuiz = arrayList.get(rid[0]).getCountry().toString();
         }
 
-        textViewQuiz.setText(text);
+        textViewQuiz.setText(textQuiz);
 
         int randomIndex = (int) ((Math.random()) * 10 % 2);//정답 오답을 랜덤하게 뽑음
         imageFlag = arrayList.get(rid[randomIndex]).getCountry().toString();// 정답
